@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZarzadzanieNieruchomosciami", "ZarzadzanieNieruchomosciami\ZarzadzanieNieruchomosciami.csproj", "{F40399F5-E954-4C74-AC8E-D80C41F9397E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZarzadzanieNieruchomosciami.Tests", "ZarzadzanieNieruchomosciami.Tests\ZarzadzanieNieruchomosciami.Tests.csproj", "{5A05001C-70CC-4154-98BA-C62A9A045EBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F40399F5-E954-4C74-AC8E-D80C41F9397E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40399F5-E954-4C74-AC8E-D80C41F9397E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40399F5-E954-4C74-AC8E-D80C41F9397E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40399F5-E954-4C74-AC8E-D80C41F9397E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A05001C-70CC-4154-98BA-C62A9A045EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A05001C-70CC-4154-98BA-C62A9A045EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A05001C-70CC-4154-98BA-C62A9A045EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A05001C-70CC-4154-98BA-C62A9A045EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A976B682-40FC-4A51-B25E-8C89CF94C51B}
+	EndGlobalSection
+EndGlobal
