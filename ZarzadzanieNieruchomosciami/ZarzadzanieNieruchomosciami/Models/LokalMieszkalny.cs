@@ -10,16 +10,16 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int LokalId { get; set; }
-        //public int BlokMieszkalnyId { get; set; }
+        public int BlokMieszkalnyId { get; set; }
 
       //  [Required(ErrorMessage = "Wprowadz numer lokalu")]
      //   [StringLength(100)]
-       // public int NumerLokalu { get; set; }
-        public float PowierzchniaLokalu { get; set; }
+        public int NumerLokalu { get; set; }
+        public double PowierzchniaLokalu { get; set; }
         public int LiczbaIzb { get; set; }
-        public float PowPiwnicy { get; set; }
+        public double PowPiwnicy { get; set; }
         public int Pietro { get; set; }
-        public Balkon Balkon { get; set; }
+        //public Balkon Balkon { get; set; }
 
         //Liczniki
         public int WodaZimna { get; set; }

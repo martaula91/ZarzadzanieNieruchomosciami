@@ -14,9 +14,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         public ActionResult Index()
         {
-            BlokMieszkalny blok = new BlokMieszkalny { BlokMieszkalnyId = 1, Ulica = "Lipowa", NumerBlokuMieszkalnego = 12, PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123 };
-            db.BlokiMieszkalne.Add(blok);
-            db.SaveChanges();
+            var listablokow = db.BlokiMieszkalne.ToList();
 
             return View();
         }

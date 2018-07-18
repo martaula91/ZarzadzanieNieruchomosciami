@@ -15,10 +15,14 @@ namespace ZarzadzanieNieruchomosciami.DAL
         // If you wish to target a different database and/or database provider, modify the 'ZarzadzanieContext' 
         // connection string in the application configuration file.
 
-        public ZarzadzanieContext()
-            : base("name=ZarzadzanieContext")
+        public ZarzadzanieContext() : base("name=ZarzadzanieContext")
         {
         }
+
+        static ZarzadzanieContext()
+            {
+            Database.SetInitializer<ZarzadzanieContext>(new ZarzadzanieInitializer());
+            }
 
         public DbSet<LokalMieszkalny> LokaleMieszkalne { get; set; }
         public DbSet<BlokMieszkalny> BlokiMieszkalne { get; set; }
