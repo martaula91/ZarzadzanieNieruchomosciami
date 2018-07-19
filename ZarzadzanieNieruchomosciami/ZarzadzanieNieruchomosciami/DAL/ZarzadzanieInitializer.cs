@@ -14,7 +14,7 @@ using ZarzadzanieNieruchomosciami.Models;
 
 namespace ZarzadzanieNieruchomosciami.DAL
 {
-    public class ZarzadzanieInitializer : MigrateDatabaseToLatestVersion<ZarzadzanieContext, Configuration>
+    public class ZarzadzanieInitializer : MigrateDatabaseToLatestVersion<ZarzadzanieContext, Migrations.Configuration>
     {
 
 

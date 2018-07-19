@@ -14,7 +14,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         public ActionResult Index()
         {
-            var listablokow = db.BlokiMieszkalne.ToList();
+           // var listablokow = db.BlokiMieszkalne.ToList();
 
             return View();
         }
