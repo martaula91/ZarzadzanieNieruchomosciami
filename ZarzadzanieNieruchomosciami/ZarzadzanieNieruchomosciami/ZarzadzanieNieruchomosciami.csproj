@@ -97,13 +97,85 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\ajax-loader.png" />
+    <Content Include="Content\Images\baner.png" />
+    <Content Include="Content\Images\bestseller.png" />
+    <Content Include="Content\Images\dommaly.png" />
+    <Content Include="Content\Images\footer-cd.png" />
+    <Content Include="Content\Images\icons-18-black.png" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\icons-36-black.png" />
+    <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\koszyk-details.png" />
+    <Content Include="Content\Images\koszyk.png" />
+    <Content Include="Content\Images\koszyk_white.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\searchlogo.png" />
+    <Content Include="Content\Images\upload.png" />
+    <Content Include="Content\Kategorie\aspnet.png" />
+    <Content Include="Content\Kategorie\csharp.png" />
+    <Content Include="Content\Kategorie\css.png" />
+    <Content Include="Content\Kategorie\html.png" />
+    <Content Include="Content\Kategorie\javascript.png" />
+    <Content Include="Content\Kategorie\jquery.png" />
+    <Content Include="Content\Kategorie\xml.png" />
+    <Content Include="Content\Kursy\obrazekaspnet.png" />
+    <Content Include="Content\Kursy\obrazekcsharp.png" />
+    <Content Include="Content\Kursy\obrazekcss.png" />
+    <Content Include="Content\Kursy\obrazekhtml.png" />
+    <Content Include="Content\Kursy\obrazekjavascript.png" />
+    <Content Include="Content\Kursy\obrazekjquery.png" />
+    <Content Include="Content\Kursy\obrazekmvc.png" />
+    <Content Include="Content\Kursy\obrazekmvc2.png" />
+    <Content Include="Content\Kursy\obrazekxml.png" />
+    <Content Include="Content\Prototype.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -118,6 +190,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807182323344_InitialCreate.cs" />
+    <Compile Include="Migrations\201807182323344_InitialCreate.Designer.cs">
+      <DependentUpon>201807182323344_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807191636203_dodanie.cs" />
+    <Compile Include="Migrations\201807191636203_dodanie.Designer.cs">
+      <DependentUpon>201807191636203_dodanie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUzytkownika.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -143,6 +224,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807182323344_InitialCreate.resx">
+      <DependentUpon>201807182323344_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807191636203_dodanie.resx">
+      <DependentUpon>201807191636203_dodanie.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

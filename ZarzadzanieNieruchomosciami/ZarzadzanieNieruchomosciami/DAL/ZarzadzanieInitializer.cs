@@ -14,17 +14,13 @@ using ZarzadzanieNieruchomosciami.Models;
 
 namespace ZarzadzanieNieruchomosciami.DAL
 {
-    public class ZarzadzanieInitializer : DropCreateDatabaseAlways<ZarzadzanieContext>//MigrateDatabaseToLatestVersion<ZarzadzanieContext, Migrations.Configuration>
+    public class ZarzadzanieInitializer : MigrateDatabaseToLatestVersion<ZarzadzanieContext, Configuration>
     {
 
 
-        protected override void Seed(ZarzadzanieContext context)
-        {
-            SeedZarzadzanieData(context);
-            base.Seed(context);
-        }
+       
 
-        private void SeedZarzadzanieData(ZarzadzanieContext context)
+        public static void SeedZarzadzanieData(ZarzadzanieContext context)
         {
             var bloki = new List<BlokMieszkalny>
             {
