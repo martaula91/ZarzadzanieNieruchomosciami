@@ -18,5 +18,10 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             return View();
         }
+
+        public ActionResult StronyStatyczne(string nazwa)
+        {
+            return View(nazwa);
+        }
     }
 }
