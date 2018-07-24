@@ -1,12 +1,13 @@
 namespace ZarzadzanieNieruchomosciami.DAL
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
     using ZarzadzanieNieruchomosciami.Models;
 
-    public class ZarzadzanieContext : DbContext
+    public class ZarzadzanieContext : IdentityDbContext<ApplicationUser>
     {
         // Your context has been configured to use a 'ZarzadzanieContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -23,6 +24,12 @@ namespace ZarzadzanieNieruchomosciami.DAL
             {
             Database.SetInitializer<ZarzadzanieContext>(new ZarzadzanieInitializer());
             }
+
+        public static ZarzadzanieContext Create()
+        {
+            return new ZarzadzanieContext();
+        }
+
 
         public DbSet<LokalMieszkalny> LokaleMieszkalne { get; set; }
         public DbSet<BlokMieszkalny> BlokiMieszkalne { get; set; }

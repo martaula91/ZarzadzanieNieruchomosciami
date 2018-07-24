@@ -3,7 +3,7 @@ namespace ZarzadzanieNieruchomosciami.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class dodanie : DbMigration
+    public partial class Dodanie : DbMigration
     {
         public override void Up()
         {
