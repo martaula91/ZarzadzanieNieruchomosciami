@@ -10,6 +10,9 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int UzytkownikId { get; set; }
+        public int KategoriaId { get; set; }
+        
+
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public string Adres { get; set; }
@@ -21,5 +24,11 @@ namespace ZarzadzanieNieruchomosciami.Models
 
         [EmailAddress(ErrorMessage = "Błędny format adresu e-mail.")]
         public string Email { get; set; }
+
+        
+        public virtual Kategoria Kategoria { get; set; }
+
     }
+
+
 }

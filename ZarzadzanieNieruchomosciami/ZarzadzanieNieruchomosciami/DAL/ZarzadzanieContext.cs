@@ -30,12 +30,12 @@ namespace ZarzadzanieNieruchomosciami.DAL
             return new ZarzadzanieContext();
         }
 
-
+        public DbSet<Kategoria> Kategorie { get; set; }
         public DbSet<LokalMieszkalny> LokaleMieszkalne { get; set; }
         public DbSet<BlokMieszkalny> BlokiMieszkalne { get; set; }
         public DbSet<Dokument> Dokumenty { get; set; }
-
-
+        
+       
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

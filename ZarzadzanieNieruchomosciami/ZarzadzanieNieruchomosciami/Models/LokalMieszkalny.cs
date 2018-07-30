@@ -11,9 +11,10 @@ namespace ZarzadzanieNieruchomosciami.Models
         [Key]
         public int LokalId { get; set; }
         public int BlokMieszkalnyId { get; set; }
-
-      //  [Required(ErrorMessage = "Wprowadz numer lokalu")]
-     //   [StringLength(100)]
+        public int KategoriaId { get; set; }
+        
+        //  [Required(ErrorMessage = "Wprowadz numer lokalu")]
+        //   [StringLength(100)]
         public int NumerLokalu { get; set; }
         public double PowierzchniaLokalu { get; set; }
         public int LiczbaIzb { get; set; }
@@ -27,8 +28,11 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int EnergiaElektryczna { get; set; }
         public int Gaz { get; set; }
 
-                        
-       // public virtual BlokMieszkalny BlokMieszkalny { get; set; }
+
+        // public virtual BlokMieszkalny BlokMieszkalny { get; set; }
+
+        public virtual Kategoria Kategoria { get; set; }
+        
     }
 
     public enum Balkon

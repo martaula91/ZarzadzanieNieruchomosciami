@@ -23,5 +23,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             return View(nazwa);
         }
+
+        
     }
 }

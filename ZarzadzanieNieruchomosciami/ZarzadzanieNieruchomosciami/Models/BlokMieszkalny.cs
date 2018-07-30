@@ -8,8 +8,10 @@ namespace ZarzadzanieNieruchomosciami.Models
 {
     public class BlokMieszkalny
     {
-        [Key]
+        
         public int BlokMieszkalnyId { get; set; }
+        public int KategoriaId { get; set; }
+
         public string Ulica { get; set; }
         public int NumerBlokuMieszkalnego { get; set; } 
         public int PowierzchniaUzytkowa { get; set; }
@@ -17,9 +19,13 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int PowDzialki { get; set; }
         public int NrEwidDzialki { get; set; }
 
+       public virtual Kategoria Kategoria { get; set; }
+
+
         //public virtual LokalMieszkalny lokalMieszkalny { get; set; }
-       
         // public List<LokalMieszkalny> LokaleMieszkalne { get; set; }
         //public List<Dokument> Dokumenty { get; set; }
+
+        
     }
 }

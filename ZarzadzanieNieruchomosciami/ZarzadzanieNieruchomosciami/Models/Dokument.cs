@@ -10,14 +10,20 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int DokumentID { get; set; }
+        public int KategoriaId { get; set; }
+        
         public string NazwaDokumentu { get; set; }
         [Required(ErrorMessage = "Wprowadz nazwę dokumentu")]
         [StringLength(100)]
         public string TypDokumentu { get; set; } // zarzadzenie, informacja etc
         public string AutorDokumentu { get; set; } //Zarzad, firma zarzadzajaca, wspolnota, prywatny
-        public DateTime DataDodania { get; set; }
+       // public DateTime DataDodania { get; set; }
         // [StringLength(100)]
         public string NazwaPlikuDokumentu { get; set; }
         public string OpisDokumentu { get; set; }
+
+
+        public virtual Kategoria Kategoria { get; set; }
+        
     }
 }
