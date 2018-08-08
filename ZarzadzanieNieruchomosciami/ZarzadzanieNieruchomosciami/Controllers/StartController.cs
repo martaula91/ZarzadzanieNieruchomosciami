@@ -17,17 +17,17 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         // GET: Start
         public ActionResult Index()
         {
-            ///var KategoriaUser = db.KategoriaUser.ToList();
+           
             var Kategoria = db.Kategorie.ToList();
 
-            var vm = new StartViewModel()
-            {
+           var vm = new StartViewModel()
+             {
                 Kategoria = Kategoria,
-                //KategoriaUser = KategoriaUser,
-            };
-            return View(vm);
-
             
+              };
+            return View(vm);
+            //return View();
+
         }
 
 

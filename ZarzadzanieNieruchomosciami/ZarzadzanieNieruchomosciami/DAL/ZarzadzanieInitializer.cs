@@ -25,15 +25,15 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var kategoria = new List<Kategoria>
             {
-                new Kategoria { KategoriaId = 1, NazwaKategoria="Lokale"},
-                new Kategoria { KategoriaId = 2, NazwaKategoria="Bloki"},
-                new Kategoria { KategoriaId = 3, NazwaKategoria="Dokumenty"},
-                new Kategoria { KategoriaId = 4, NazwaKategoria="Mieszkańcy"},
+                new Kategoria { KategoriaId = 1, nazwaKategori="Lokale"},
+                new Kategoria { KategoriaId = 2, nazwaKategori="Bloki"},
+                new Kategoria { KategoriaId = 3, nazwaKategori="Dokumenty"},
+                new Kategoria { KategoriaId = 4, nazwaKategori="Mieszkańcy"},
 
-                new Kategoria { KategoriaId = 5, NazwaKategoria="Rachunki"},
-                new Kategoria { KategoriaId = 6, NazwaKategoria="Głosowanie"},
-                new Kategoria { KategoriaId = 7, NazwaKategoria="Tablica Informacyjna"},
-                new Kategoria { KategoriaId = 8, NazwaKategoria="Zgłoszenia"},
+                new Kategoria { KategoriaId = 5, nazwaKategori="Rachunki"},
+                new Kategoria { KategoriaId = 6, nazwaKategori="Głosowanie"},
+                new Kategoria { KategoriaId = 7, nazwaKategori="Tablica Informacyjna"},
+                new Kategoria { KategoriaId = 8, nazwaKategori="Zgłoszenia"},
 
             };
 

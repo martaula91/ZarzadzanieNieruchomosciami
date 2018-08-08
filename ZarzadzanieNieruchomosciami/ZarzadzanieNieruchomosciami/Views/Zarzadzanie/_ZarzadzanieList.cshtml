@@ -1,0 +1,23 @@
+﻿@using ZarzadzanieNieruchomosciami.Infrastructure
+@model  ZarzadzanieNieruchomosciami.ViewModels.ListaViewModel
+
+<h2>Index</h2>
+
+
+<div id="SekcjaListaKategori">
+    <ul class="KursyTrzyKolumny MalaListaKategorii">
+        @foreach (var kategoria in ViewModels)
+        {
+            <li>
+                <article>
+                    
+                  
+                    <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly","Zarzadzanie", new { id = kategoria.KategoriaId, nrKolumny= kategoria.KategoriaId })">
+                       
+                        
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</div>

@@ -8,7 +8,7 @@ namespace ZarzadzanieNieruchomosciami.Models
     public class Kategoria
     {
         public int KategoriaId { get; set; }
-        public string NazwaKategoria { get; set; }
+        public string nazwaKategori { get; set; }
 
         public virtual ICollection<BlokMieszkalny> BlokMieszkalny { get; set; }
         public virtual ICollection<Dokument> Dokument { get; set; }

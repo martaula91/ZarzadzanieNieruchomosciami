@@ -1,5 +1,6 @@
 ﻿
 @model ZarzadzanieNieruchomosciami.ViewModels.StartViewModel
+@using ZarzadzanieNieruchomosciami.Infrastructure
 
 @{
     ViewBag.Title = "Start";
@@ -8,6 +9,20 @@
 
 <h2>Index</h2>
 
+<nav class="kategorieHorizontal">
+    <ul>
+        @foreach (var kategoria in Model.Kategoria)
+        {
+            <li>
+                <!-- metoda lista -Kontroler zarzadzanie-->
+                <a href="@Url.Action("Lista", "Zarzadzanie", new { nazwaKategori = kategoria.NazwaKategoria.ToLower() })"
+                   style="background-image: url(../Content/Kategorie/aspnet.png);">
+                    <!--background-image: url(<malpa>Url.IkonyKategoriiSciezka(kategoria.NazwaPlikuIkony));  -->
+                    @kategoria.NazwaKategoria
+                </a>
+            </li>
+        }
+    </ul>
 
 
     <a href="@Url.Content("~/")">

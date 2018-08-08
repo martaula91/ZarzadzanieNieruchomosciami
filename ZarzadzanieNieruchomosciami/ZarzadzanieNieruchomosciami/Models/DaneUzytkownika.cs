@@ -10,7 +10,7 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int UzytkownikId { get; set; }
-        public int KategoriaId { get; set; }
+        //public int KategoriaId { get; set; }
         
 
         public string Imie { get; set; }
@@ -26,7 +26,7 @@ namespace ZarzadzanieNieruchomosciami.Models
         public string Email { get; set; }
 
         
-        public virtual Kategoria Kategoria { get; set; }
+       // public virtual Kategoria Kategoria { get; set; }
 
     }
 
