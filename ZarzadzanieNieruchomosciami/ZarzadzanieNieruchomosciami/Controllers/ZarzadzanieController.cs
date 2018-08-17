@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZarzadzanieNieruchomosciami.DAL;
+using ZarzadzanieNieruchomosciami.ViewModels;
 
 namespace ZarzadzanieNieruchomosciami.Controllers
 {
@@ -15,67 +16,55 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         // GET: Zarzadzanie
         public ActionResult Index()
         {
-            return View();
+
+            var Kategoria = db.Kategorie.ToList();
+
+            var vm = new StartViewModel()
+            {
+                Kategoria = Kategoria,
+
+            };
+            return View(vm);
+
+
+            //return View();
         }
 
         public ActionResult Lista(string nazwaKategori) //string nazwaKategori
         {
 
 
+            var name = User.Identity.Name;
+            // logger.Info("Strona kategoria | " + nazwaKategori + " | " + name);
             //var kategoria = db.Kategorie.Include("Kursy").Where(k => k.NazwaKategorii.ToUpper() == nazwaKategori.ToUpper()).Single();
-            //var kursy = kategoria.LokalMieszkalny.ToList();
-            // return View(kursy);
 
-            
-                var kategoria = db.Kategorie.Where(k => k.nazwaKategori.ToUpper() == nazwaKategori.ToUpper()).Single();
+            //var kursy = kategoria.Kursy.Where(a => (searchQuery == null ||
+            //                                  a.TytulKursu.ToLower().Contains(searchQuery.ToLower()) ||
+            //                                  a.AutorKursu.ToLower().Contains(searchQuery.ToLower())) &&
+            //                                  !a.Ukryty);
 
-            if (kategoria.KategoriaId == 1)
-            { var kursy = kategoria.LokalMieszkalny.ToList(); //Where(a => a.KategoriaId == kategoria.KategoriaId);
-                return View(kursy);
-            }
-           else
-                 if (kategoria.KategoriaId == 2)
-            {
-                var kursy = kategoria.BlokMieszkalny.ToList(); //Where(a => a.KategoriaId == kategoria.KategoriaId);
-                return View(kursy);
-            }
-            
-            else
+            //if (Request.IsAjaxRequest())
+            //{
+            //    return PartialView("_KursyList", kursy);
+            // }
+            var lokal = db.LokaleMieszkalne;        //
 
-            return View();
+            return View(lokal);
 
 
-
-
-
-            // var lokale = db.LokalMieszkalny.Where(a => !a.Ukryty)
-            // var kurs = db.Kategorie.Find(kategoria);
+            //return View();
 
         }
 
-        public ActionResult Szczegoly(int id, int nrKolumny)
+        public ActionResult Szczegoly(int id)
         {
-            //var kurs = db.Kursy.Find(id);
-
-            if (nrKolumny == 1)
-            {
-                var lokal = db.LokaleMieszkalne.Find(id);
-                return View(lokal);
-            }
-            else
-                if (nrKolumny == 2)
-            {
-                var blok = db.BlokiMieszkalne.Find(id);
-                return View(blok);
-            }
-
-            else
-                // var name = User.Identity.Name;
-                // logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
+            var lokal = db.LokaleMieszkalne.Find(id);
+            var name = User.Identity.Name;
+            //logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
+            return View(lokal);
 
 
-                // return View(opcja);
-                return View();
+           // return View();
         }
 
         [ChildActionOnly]
@@ -86,6 +75,10 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return PartialView("_KategorieMenu", kategorie);
         }
 
+        public ActionResult StronyKategori(string nazwa)
+        {
+            return View(nazwa);
+        }
 
     }
 }

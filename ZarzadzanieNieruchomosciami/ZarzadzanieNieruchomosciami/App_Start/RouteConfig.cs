@@ -19,9 +19,14 @@ namespace ZarzadzanieNieruchomosciami
                  defaults: new { controller = "Home", action = "StronyStatyczne" });
 
             routes.MapRoute(
+                name: "StronyKategori",
+                url: "kategoria/{nazwa}.html",
+                defaults: new { controller = "Zarzadzanie", action = "StronyKategori" });
+
+            routes.MapRoute(
                  name: "StronaStartowa",
                  url: "Start/index.html",
-                 defaults: new { controller = "Start", action = "Index" }
+                 defaults: new { controller = "Zarzadzanie", action = "Index" }
                  );
 
             routes.MapRoute(

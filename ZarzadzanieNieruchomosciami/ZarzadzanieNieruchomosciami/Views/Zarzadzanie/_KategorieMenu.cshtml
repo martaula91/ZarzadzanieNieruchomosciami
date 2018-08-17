@@ -2,18 +2,23 @@
 @using ZarzadzanieNieruchomosciami.Infrastructure
 
 <nav class="KategorieVertical">
+
+
+
+
     <ul>
-        @foreach (var kategoria in Model)
-            {
-            <li>
-                <a href="@Url.Action("Lista","Zarzadzanie", new { nazwaKategori = kategoria.nazwaKategori.ToString() })"
-                   style="background-image: url(../Content/Kategorie/aspnet.png); ">
-                    <!--"background-image: url( Url.IkonyKategoriiSciezka(kategoria.NazwaPlikuIkony)); "-->
-                   
-                    @kategoria.nazwaKategori
-                </a>
-            </li>
-        }
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Lokal" })" style="">Lokal/Lokale</a></li>
+        <!-- <li><a href="Url.Action("StronyKategori","Zarzadzanie", new {  nazwaKategori = kategoria.NazwaKategorii.ToLower()  })" style="">Lokal/Lokale</a></li> -->
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Budynek" })" style="">Budynki</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Dokumety" })" style="">Dokumety</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Mieszkańcy" })" style="">Mieszkańcy</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Rachunki" })" style="">Rachunki</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Głosowanie" })" style="">Głosowanie</a></li>
     </ul>
+
+
 </nav>
+
+        
+  
 
