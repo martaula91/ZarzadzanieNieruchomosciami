@@ -9,7 +9,23 @@
 
     <div id="SekcjaListaKategori">
         <h2>Lista aaa</h2>
-       
+        <ul class="KursyTrzyKolumny MalaListaKategorii">
+            @foreach (var lokal in Model)
+            {
+                <li>
+                    <article>
+
+
+                        <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly","Kursy", new { id = lokal.LokalId })">
+                            <!-- <img class="kurs" src="Url.ObrazkiSciezka(lokal.NazwaPlikuObrazka)" />-->
+                            <h1>
+                                @lokal.LokalId - @lokal.PowierzchniaLokalu
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            }
+        </ul>
     </div>
 
 
