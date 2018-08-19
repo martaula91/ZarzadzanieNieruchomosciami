@@ -30,33 +30,9 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             //return View();
         }
 
-        public ActionResult Lista(string nazwaKategori) //string nazwaKategori
-        {
+       
 
-
-            var name = User.Identity.Name;
-            // logger.Info("Strona kategoria | " + nazwaKategori + " | " + name);
-            //var kategoria = db.Kategorie.Include("Kursy").Where(k => k.NazwaKategorii.ToUpper() == nazwaKategori.ToUpper()).Single();
-
-            //var kursy = kategoria.Kursy.Where(a => (searchQuery == null ||
-            //                                  a.TytulKursu.ToLower().Contains(searchQuery.ToLower()) ||
-            //                                  a.AutorKursu.ToLower().Contains(searchQuery.ToLower())) &&
-            //                                  !a.Ukryty);
-
-            //if (Request.IsAjaxRequest())
-            //{
-            //    return PartialView("_KursyList", kursy);
-            // }
-            var lokal = db.LokaleMieszkalne;        //
-
-            return View(lokal);
-
-
-            //return View();
-
-        }
-
-        public ActionResult Szczegoly(int id)
+        public ActionResult SzczegolyLokalu(int id)
         {
             var lokal = db.LokaleMieszkalne.Find(id);
             var name = User.Identity.Name;
@@ -77,8 +53,22 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         public ActionResult StronyKategori(string nazwa)
         {
+           if  (nazwa == "Lokal")
+            {
+                var lokal = db.LokaleMieszkalne.ToList();
+                return View(nazwa, lokal);
+            }
+
+            if(nazwa == "Budynek")
+            {
+                var blok = db.BlokiMieszkalne.ToList();
+                return View(nazwa, blok);
+            }
+
             return View(nazwa);
         }
+
+
 
     }
 }

@@ -6,27 +6,38 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
 
-    <div id="SekcjaListaKategori">
-        <h2>Lista aaa</h2>
-        <ul class="KursyTrzyKolumny MalaListaKategorii">
-            @foreach (var lokal in Model)
+<h2>Lista aaa</h2>
+
+
+<div id="SekcjaListaKategori">
+
+    <ul class="KursyTrzyKolumny MalaListaKategorii">
+        @foreach (var lokal in Model)
             {
-                <li>
-                    <article>
+            <li>
+                <article>
 
 
-                        <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly","Kursy", new { id = lokal.LokalId })">
-                            <!-- <img class="kurs" src="Url.ObrazkiSciezka(lokal.NazwaPlikuObrazka)" />-->
-                            <h1>
-                                @lokal.LokalId - @lokal.PowierzchniaLokalu
-                            </h1>
-                        </a>
-                    </article>
-                </li>
-            }
-        </ul>
-    </div>
+                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalId})">
+                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                        <h1>
+                            @lokal.LokalId - @lokal.PowierzchniaLokalu
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</div>
+
+
 
 
 

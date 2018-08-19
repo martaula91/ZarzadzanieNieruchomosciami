@@ -281,6 +281,10 @@
     <Compile Include="Migrations\201808091737522_zmiana1.Designer.cs">
       <DependentUpon>201808091737522_zmiana1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808172203585_add.cs" />
+    <Compile Include="Migrations\201808172203585_add.Designer.cs">
+      <DependentUpon>201808172203585_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUzytkownika.cs" />
@@ -326,6 +330,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Zarzadzanie\Budynek.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyLokalu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -363,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808091737522_zmiana1.resx">
       <DependentUpon>201808091737522_zmiana1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808172203585_add.resx">
+      <DependentUpon>201808172203585_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
