@@ -7,13 +7,13 @@ namespace ZarzadzanieNieruchomosciami.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DodanieAspIdentity : IMigrationMetadata
+    public sealed partial class Pierwsza : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DodanieAspIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Pierwsza));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807242137527_DodanieAspIdentity"; }
+            get { return "201809261917166_Pierwsza"; }
         }
         
         string IMigrationMetadata.Source
