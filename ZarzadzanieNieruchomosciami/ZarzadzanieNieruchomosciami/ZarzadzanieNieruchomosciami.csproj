@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201812190012273_poprawkiModeli.Designer.cs">
       <DependentUpon>201812190012273_poprawkiModeli.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812190027148_poprawkiModelDokument.cs" />
+    <Compile Include="Migrations\201812190027148_poprawkiModelDokument.Designer.cs">
+      <DependentUpon>201812190027148_poprawkiModelDokument.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUser.cs" />
@@ -364,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812190012273_poprawkiModeli.resx">
       <DependentUpon>201812190012273_poprawkiModeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812190027148_poprawkiModelDokument.resx">
+      <DependentUpon>201812190027148_poprawkiModelDokument.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

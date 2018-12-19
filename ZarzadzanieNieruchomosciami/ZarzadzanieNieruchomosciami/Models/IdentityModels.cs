@@ -11,7 +11,7 @@ namespace ZarzadzanieNieruchomosciami.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        //public virtual ICollection<Zamowienie> Zamowienia { get; set; }
+        public virtual ICollection<LokalMieszkalny> LokalMieszkalny { get; set; }
 
         public DaneUser DaneUser { get; set; }
 
