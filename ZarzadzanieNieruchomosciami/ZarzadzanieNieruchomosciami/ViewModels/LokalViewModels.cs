@@ -6,9 +6,9 @@ using ZarzadzanieNieruchomosciami.Models;
 
 namespace ZarzadzanieNieruchomosciami.ViewModels
 {
-    public class StartViewModel
+    public class LokalViewModels
     {
-       public IEnumerable<Dzial> Kategoria { get; set; }
-        
+        public LokalMieszkalny Lokal { get; set; }
+        public IEnumerable<BlokMieszkalny> BlokiMieszkalne { get; set; }
     }
 }

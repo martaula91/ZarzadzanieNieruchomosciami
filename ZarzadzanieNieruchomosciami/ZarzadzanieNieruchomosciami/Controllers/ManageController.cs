@@ -3,6 +3,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -90,7 +92,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             var model = new ManageCredentialsViewModel
             {
                 Message = message,
-                DaneUzytkownika = user.DaneUzytkownika
+                DaneUzytkownika = user.DaneUser
             };
 
             return View(model);
@@ -98,12 +100,12 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangeProfile([Bind(Prefix = "DaneUzytkownika")]DaneUzytkownika daneUzytkownika)
+        public async Task<ActionResult> ChangeProfile([Bind(Prefix = "DaneUzytkownika")]DaneUser daneUzytkownika)
         {
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                user.DaneUzytkownika = daneUzytkownika;
+                user.DaneUser = daneUzytkownika;
                 var result = await UserManager.UpdateAsync(user);
 
                 AddErrors(result);
@@ -164,121 +166,133 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
         }
-/*
-        public ActionResult ListaZamowien()
-        {
-            var name = User.Identity.Name;
-            logger.Info("Admin zamowienia | " + name);
 
-            bool isAdmin = User.IsInRole("Admin");
-            ViewBag.UserIsAdmin = isAdmin;
 
-            IEnumerable<Zamowienie> zamowieniaUzytkownika;
+
+
+         public ActionResult ListaLokali()
+                {
+                    var name = User.Identity.Name;
+                    //logger.Info("Admin zamowienia | " + name);
+
+                    bool isAdmin = User.IsInRole("Admin");
+                    ViewBag.UserIsAdmin = isAdmin;
+            
+            //IEnumerable<Wlasnosc> wlasnoscUzytkownika;
 
             // Dla administratora zwracamy wszystkie zamowienia
             if (isAdmin)
-            {
-                zamowieniaUzytkownika = db.Zamowienia.Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
-            }
-            else
-            {
-                var userId = User.Identity.GetUserId();
-                zamowieniaUzytkownika = db.Zamowienia.Where(o => o.UserId == userId).Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
-            }
+                     {
+                         //wlasnoscUzytkownika = db.Wlasnosci.Include("PozycjeWlasnosci").OrderByDescending(o => o.WlasnoscId).ToArray();
+                     }
+                     else
+                     {
+                         var userId = User.Identity.GetUserId();
+                        // wlasnoscUzytkownika = db.Wlasnosci.Where(o => o.UserId == userId).Include("PozycjeWlasnosci").OrderByDescending(o => o.WlasnoscId).ToArray();
+                     }
 
-            return View(zamowieniaUzytkownika);
+                     return View(); // return View(wlasnoscUzytkownika);
+
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
-        {
-            Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
-            zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
-            db.SaveChanges();
+    /*   [HttpPost]
+      [Authorize(Roles = "Admin")]
+      public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
+      {
+          Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
+          zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
+          db.SaveChanges();
 
-            if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-            {
-                this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-            }
+          if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
+          {
+              this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
+          }
 
-            return zamowienie.StanZamowienia;
-        }
+          return zamowienie.StanZamowienia;
+      }
+      */
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)
-        {
-            Kurs kurs;
-            if (kursId.HasValue)
-            {
-                ViewBag.EditMode = true;
-                kurs = db.Kursy.Find(kursId);
-            }
-            else
-            {
-                ViewBag.EditMode = false;
-                kurs = new Kurs();
-            }
+    /////////////////////////
 
-            var result = new EditKursViewModel();
-            result.Kategorie = db.Kategorie.ToList();
-            result.Kurs = kurs;
-            result.Potwierdzenie = potwierdzenie;
-
-            return View(result);
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public ActionResult DodajKurs(EditKursViewModel model, HttpPostedFileBase file)
-        {
-            if (model.Kurs.KursId > 0)
-            {
-                // modyfikacja kursu
-                db.Entry(model.Kurs).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-            }
-            else
-            {
-                // Sprawdzenie, czy użytkownik wybrał plik
-                if (file != null && file.ContentLength > 0)
+    [Authorize(Roles = "Admin")]
+                public ActionResult DodajLokal(int? lokalId, bool? potwierdzenie)
                 {
-                    if (ModelState.IsValid)
+                    LokalMieszkalny lokal; 
+
+                    if (lokalId.HasValue)
                     {
-                        // Generowanie pliku
-                        var fileExt = Path.GetExtension(file.FileName);
-                        var filename = Guid.NewGuid() + fileExt;
+                        ViewBag.EditMode = true;
+                        lokal = db.LokaleMieszkalne.Find(lokalId);
+                    }
+                    else
+                    {
+                        ViewBag.EditMode = false;
+                        lokal = new LokalMieszkalny();
+                    }
 
-                        var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiFolderWzgledny), filename);
-                        file.SaveAs(path);
+                    var result = new EditLokalViewModel();
+                    result.BlokiMieszkalne = db.BlokiMieszkalne.ToList();
+            //result.DaneUsera = db.DaneUsera.ToList();
+            result.Lokal = lokal;
+                    result.Potwierdzenie = potwierdzenie;
 
-                        model.Kurs.NazwaPlikuObrazka = filename;
-                        model.Kurs.DataDodania = DateTime.Now;
+                    return View(result);
+                }
 
-                        db.Entry(model.Kurs).State = EntityState.Added;
+                [HttpPost]
+                [Authorize(Roles = "Admin")]
+                public ActionResult DodajLokal(EditLokalViewModel model, HttpPostedFileBase file)
+                {
+                    if (model.Lokal.LokalID > 0)
+                    {
+                        // modyfikacja kursu
+                        db.Entry(model.Lokal).State = EntityState.Modified;
                         db.SaveChanges();
-
                         return RedirectToAction("DodajKurs", new { potwierdzenie = true });
                     }
                     else
                     {
-                        var kategorie = db.Kategorie.ToList();
-                        model.Kategorie = kategorie;
-                        return View(model);
+                // Sprawdzenie, czy użytkownik wybrał plik
+
+                if (file != null && file.ContentLength > 0)
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                // Generowanie pliku
+                                var fileExt = Path.GetExtension(file.FileName);
+                                var filename = Guid.NewGuid() + fileExt;
+
+                               // var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiFolderWzgledny), filename);
+                               // file.SaveAs(path);
+
+                               // model.Lokal.NazwaPlikuObrazka = filename;
+                                //model.Lokal.DataDodania = DateTime.Now;
+
+                                db.Entry(model.Lokal).State = EntityState.Added;
+                                db.SaveChanges();
+
+                                return RedirectToAction("DodajKurs", new { potwierdzenie = true });
+                            }
+                            else
+                            {
+                               // var kategorie = db.Kategorie.ToList();
+                               // model.Kategorie = kategorie;
+                                return View(model);
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Nie wskazano pliku");
+                            var kategorie = db.Kategorie.ToList();
+                           // model.Kategorie = kategorie;
+                            return View(model);
+                        }
                     }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Nie wskazano pliku");
-                    var kategorie = db.Kategorie.ToList();
-                    model.Kategorie = kategorie;
-                    return View(model);
-                }
-            }
 
-        }
+                }
 
+                
+                /*
         [Authorize(Roles = "Admin")]
         public ActionResult UkryjKurs(int kursId)
         {

@@ -8,9 +8,13 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Musisz wprowadzić e-mail")]
-        [EmailAddress]
-        public string Email { get; set; }
+        // [Required(ErrorMessage = "Musisz wprowadzić e-mail")]
+        //  [EmailAddress]
+        // public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Musisz wprowadzić hasło")]
         [DataType(DataType.Password)]
@@ -23,6 +27,14 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "UserRoles")]
+        public string UserRoles { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }

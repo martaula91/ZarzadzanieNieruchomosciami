@@ -1,0 +1,35 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.BlokMieszkalny
+@using ZarzadzanieNieruchomosciami.Infrastructure
+@{
+    ViewBag.Title = "SzczegolyBloku";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<table id="lokale">
+    <tr class="header">
+        <td>Ulica:</td>
+        <td>Numer Bloku Mieszkalnego:</td>
+        <td>Powierzchnia Uzytkowa:</td>
+        <td>LiczbaLokali:</td>
+        <td>Nr Ewidencyjny Dzialki:</td>
+        <td>Powierzchnia Dzialki:</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.Ulica</td>
+        <td>@Model.NumerBlokuMieszkalnego</td>
+        <td>@Model.PowierzchniaUzytkowa</td>
+        <td>LiczbaLokali</td>
+        <td>@Model.NrEwidDzialki</td>
+        <td>@Model.PowDzialki</td>
+
+    </tr>
+
+</table>
+
+<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+           {
+               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
+           }-->
+
+

@@ -13,7 +13,7 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         //public virtual ICollection<Zamowienie> Zamowienia { get; set; }
 
-        public DaneUzytkownika DaneUzytkownika { get; set; }
+        public DaneUser DaneUser { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

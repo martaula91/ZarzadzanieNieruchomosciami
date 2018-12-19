@@ -1,5 +1,4 @@
-﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Kategoria>
-@using ZarzadzanieNieruchomosciami.Infrastructure
+﻿@using ZarzadzanieNieruchomosciami.Infrastructure
 
 <nav class="KategorieVertical">
 
@@ -10,9 +9,9 @@
         <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Lokal" })" style="">Lokal/Lokale</a></li>
         <!-- <li><a href="Url.Action("StronyKategori","Zarzadzanie", new {  nazwaKategori = kategoria.NazwaKategorii.ToLower()  })" style="">Lokal/Lokale</a></li> -->
         <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Budynek" })" style="">Budynki</a></li>
-        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Dokumety" })" style="">Dokumety</a></li>
-        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Mieszkańcy" })" style="">Mieszkańcy</a></li>
-        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Rachunki" })" style="">Rachunki</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Dokumenty" })" style="">Dokumenty</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "StanLicznikow" })" style="">Stan Licznikow</a></li>
+        <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Rozliczenia" })" style="">Rachunki</a></li>
         <li><a href="@Url.Action("StronyKategori","Zarzadzanie", new { nazwa = "Głosowanie" })" style="">Głosowanie</a></li>
     </ul>
 

@@ -1,0 +1,33 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.StanLicznikow
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyLicznikow";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>WodaZimna:</td>
+        <td>WodaCiepla:</td>
+        <td>EnergiaElektryczna:</td>
+        <td>Gaz:</td>
+
+    </tr>
+
+    <tr class="local">
+        <td>@Model.WodaZimna</td>
+        <td>@Model.WodaCiepla</td>
+        <td>@Model.EnergiaElektryczna</td>
+        <td>@Model.Gaz</td>
+
+    </tr>
+
+</table>
+
+<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+           {
+               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
+           }-->

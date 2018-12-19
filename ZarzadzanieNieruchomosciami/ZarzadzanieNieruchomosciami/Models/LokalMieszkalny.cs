@@ -9,30 +9,32 @@ namespace ZarzadzanieNieruchomosciami.Models
     public class LokalMieszkalny
     {
         [Key]
-        public int LokalId { get; set; }
-        public int BlokMieszkalnyId { get; set; }
-        public int KategoriaId { get; set; }
+               public int LokalID { get; set; }
+        public int BlokMieszkalnyID { get; set; }
         
+
+        public string Adres { get; set; }
         //  [Required(ErrorMessage = "Wprowadz numer lokalu")]
-        //   [StringLength(100)]
         public int NumerLokalu { get; set; }
+        //  [Required(ErrorMessage = "Wprowadz powierzchnie lokalu")]
         public double PowierzchniaLokalu { get; set; }
+        //  [Required(ErrorMessage = "Wprowadz liczbe izb lokalu")]
         public int LiczbaIzb { get; set; }
+        //  [Required(ErrorMessage = "Wprowadz powierzchnie piwnicy przynaleznej do lokalu")]
         public double PowPiwnicy { get; set; }
+        //  [Required(ErrorMessage = "Wprowadz pietro")]
         public int Pietro { get; set; }
+        public bool Ukryty { get; set; }
+
         //public Balkon Balkon { get; set; }
 
-        //Liczniki
-        public int WodaZimna { get; set; }
-        public int WodaCiepla { get; set; }
-        public int EnergiaElektryczna { get; set; }
-        public int Gaz { get; set; }
 
 
-        // public virtual BlokMieszkalny BlokMieszkalny { get; set; }
+        public virtual BlokMieszkalny BlokMieszkalny { get; set; }
 
-        public virtual Kategoria Kategoria { get; set; }
-        
+
+        public virtual ICollection<StanLicznikow> StanLicznikow { get; set; }
+    
     }
 
     public enum Balkon

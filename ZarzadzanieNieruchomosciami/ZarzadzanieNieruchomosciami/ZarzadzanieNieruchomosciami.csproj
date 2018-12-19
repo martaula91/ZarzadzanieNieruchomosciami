@@ -246,56 +246,45 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201807182323344_InitialCreate.cs" />
-    <Compile Include="Migrations\201807182323344_InitialCreate.Designer.cs">
-      <DependentUpon>201807182323344_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201810042155499_first.cs" />
+    <Compile Include="Migrations\201810042155499_first.Designer.cs">
+      <DependentUpon>201810042155499_first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807191636203_dodanie.cs" />
-    <Compile Include="Migrations\201807191636203_dodanie.Designer.cs">
-      <DependentUpon>201807191636203_dodanie.cs</DependentUpon>
+    <Compile Include="Migrations\201811052110002_wlasnosc lokali.cs" />
+    <Compile Include="Migrations\201811052110002_wlasnosc lokali.Designer.cs">
+      <DependentUpon>201811052110002_wlasnosc lokali.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807242137527_DodanieAspIdentity.cs" />
-    <Compile Include="Migrations\201807242137527_DodanieAspIdentity.Designer.cs">
-      <DependentUpon>201807242137527_DodanieAspIdentity.cs</DependentUpon>
+    <Compile Include="Migrations\201811082209239_poloczenieProba1.cs" />
+    <Compile Include="Migrations\201811082209239_poloczenieProba1.Designer.cs">
+      <DependentUpon>201811082209239_poloczenieProba1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807301746007_zmianaKategorii.cs" />
-    <Compile Include="Migrations\201807301746007_zmianaKategorii.Designer.cs">
-      <DependentUpon>201807301746007_zmianaKategorii.cs</DependentUpon>
+    <Compile Include="Migrations\201811082231016_poloczenieProba3.cs" />
+    <Compile Include="Migrations\201811082231016_poloczenieProba3.Designer.cs">
+      <DependentUpon>201811082231016_poloczenieProba3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807301753326_change.cs" />
-    <Compile Include="Migrations\201807301753326_change.Designer.cs">
-      <DependentUpon>201807301753326_change.cs</DependentUpon>
+    <Compile Include="Migrations\201811082232432_poloczenieProba4.cs" />
+    <Compile Include="Migrations\201811082232432_poloczenieProba4.Designer.cs">
+      <DependentUpon>201811082232432_poloczenieProba4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807302248067_zmiana.cs" />
-    <Compile Include="Migrations\201807302248067_zmiana.Designer.cs">
-      <DependentUpon>201807302248067_zmiana.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808012119396_poprawaUsera.cs" />
-    <Compile Include="Migrations\201808012119396_poprawaUsera.Designer.cs">
-      <DependentUpon>201808012119396_poprawaUsera.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808012135496_poprawauser.cs" />
-    <Compile Include="Migrations\201808012135496_poprawauser.Designer.cs">
-      <DependentUpon>201808012135496_poprawauser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808091737522_zmiana1.cs" />
-    <Compile Include="Migrations\201808091737522_zmiana1.Designer.cs">
-      <DependentUpon>201808091737522_zmiana1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808172203585_add.cs" />
-    <Compile Include="Migrations\201808172203585_add.Designer.cs">
-      <DependentUpon>201808172203585_add.cs</DependentUpon>
+    <Compile Include="Migrations\201812190012273_poprawkiModeli.cs" />
+    <Compile Include="Migrations\201812190012273_poprawkiModeli.Designer.cs">
+      <DependentUpon>201812190012273_poprawkiModeli.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
-    <Compile Include="Models\DaneUzytkownika.cs" />
+    <Compile Include="Models\DaneUser.cs" />
     <Compile Include="Models\Dokument.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Kategoria.cs" />
+    <Compile Include="Models\Dzial.cs" />
     <Compile Include="Models\LokalMieszkalny.cs" />
+    <Compile Include="Models\PozycjaWlasnosci.cs" />
+    <Compile Include="Models\Rozliczenie.cs" />
+    <Compile Include="Models\StanLicznikow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\EditLokalViewModel.cs" />
+    <Compile Include="ViewModels\LokalViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
   </ItemGroup>
@@ -335,6 +324,18 @@
     <Content Include="Views\Zarzadzanie\SzczegolyLokalu.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
+    <Content Include="Views\Manage\DodajLokal.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyBloku.cshtml" />
+    <Content Include="Views\Zarzadzanie\Dokumenty.cshtml" />
+    <Content Include="Views\Zarzadzanie\Rachunki.cshtml" />
+    <Content Include="Views\Zarzadzanie\StanLicznikow.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyDokumentu.cshtml" />
+    <Content Include="Views\Zarzadzanie\Rozliczenia.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyRozliczen.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyLicznikow.cshtml" />
+    <Content Include="Views\Shared\_LoginHome.cshtml" />
+    <Content Include="Views\Manage\ListaLokali.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -346,35 +347,23 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807182323344_InitialCreate.resx">
-      <DependentUpon>201807182323344_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810042155499_first.resx">
+      <DependentUpon>201810042155499_first.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807191636203_dodanie.resx">
-      <DependentUpon>201807191636203_dodanie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811052110002_wlasnosc lokali.resx">
+      <DependentUpon>201811052110002_wlasnosc lokali.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807242137527_DodanieAspIdentity.resx">
-      <DependentUpon>201807242137527_DodanieAspIdentity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811082209239_poloczenieProba1.resx">
+      <DependentUpon>201811082209239_poloczenieProba1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807301746007_zmianaKategorii.resx">
-      <DependentUpon>201807301746007_zmianaKategorii.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811082231016_poloczenieProba3.resx">
+      <DependentUpon>201811082231016_poloczenieProba3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807301753326_change.resx">
-      <DependentUpon>201807301753326_change.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811082232432_poloczenieProba4.resx">
+      <DependentUpon>201811082232432_poloczenieProba4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807302248067_zmiana.resx">
-      <DependentUpon>201807302248067_zmiana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808012119396_poprawaUsera.resx">
-      <DependentUpon>201808012119396_poprawaUsera.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808012135496_poprawauser.resx">
-      <DependentUpon>201808012135496_poprawauser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808091737522_zmiana1.resx">
-      <DependentUpon>201808091737522_zmiana1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808172203585_add.resx">
-      <DependentUpon>201808172203585_add.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812190012273_poprawkiModeli.resx">
+      <DependentUpon>201812190012273_poprawkiModeli.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

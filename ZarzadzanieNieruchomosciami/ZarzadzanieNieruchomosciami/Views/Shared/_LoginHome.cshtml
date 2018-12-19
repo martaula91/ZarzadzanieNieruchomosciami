@@ -18,10 +18,12 @@
     }
     else
     {
-       
-        @*<div>
+        @if (@User.IsInRole("Admin"))
+        {
+        <div>
             @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        </div>*@
+        </div>
+        }
         <div>
             @Html.ActionLink("Strefa mieszkańca", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
         </div>

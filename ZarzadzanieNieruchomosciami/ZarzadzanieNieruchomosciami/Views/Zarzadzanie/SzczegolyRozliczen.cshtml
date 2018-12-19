@@ -1,0 +1,35 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.Rozliczenie
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyRozliczen";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>CentralneOgrzewanie:</td>
+        <td>StawkaCentralneOgrzewanie:</td>
+        <td>ZWiSCLicznik:</td>
+        <td>StawkaZWiSC:</td>
+        <td>CWLicznik:</td>
+        <td>StawkaCW:</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.CentralneOgrzewanie</td>
+        <td>@Model.StawkaCentralneOgrzewanie</td>
+        <td>@Model.ZWiSCLicznik</td>
+        <td>@Model.StawkaZWiSC</td>
+        <td>@Model.CWLicznik</td>
+        <td>@Model.StawkaCW</td>
+    </tr>
+
+</table>
+
+<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+           {
+               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
+           }-->

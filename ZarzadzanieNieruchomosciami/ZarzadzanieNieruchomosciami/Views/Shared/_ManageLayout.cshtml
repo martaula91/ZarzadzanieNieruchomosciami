@@ -15,12 +15,12 @@
             <a class="manageLink" href="@Url.Action("Index", "Manage")">
                 Twoje dane
             </a>
-             <!-- <a class="manageLink" href="Url.Action("ListaZamowien", "Manage")" style="width: 100px">
+             <a class="manageLink" href="Url.Action("ListaLokali", "Manage")" style="width: 100px">
                 Zamówienia
-            </a>-->
+            </a>
             @if (@User.IsInRole("Admin"))
             {
-                <a class="manageLink" href="@Url.Action("DodajKurs", "Manage")">
+                <a class="manageLink" href="@Url.Action("DodajLokal", "Manage")">
                     Dodaj
                 </a>
                <!-- <a class="manageLink" href="@Url.Content("~/elmah")">

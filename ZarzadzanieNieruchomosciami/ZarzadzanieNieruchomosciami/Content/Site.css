@@ -267,6 +267,8 @@ nav.KategorieVertical {
             background-position-y: 50%;
         }
 
+/*SZCZEGOLY KURSU*/
+
 #SekcjaKurs {
     width: 768px;
     float: left;
@@ -402,6 +404,46 @@ nav.KategorieVertical {
     border-top: 1px solid #E5E5E5;
     padding-top: 40px;
 }
+
+    /*TEST SZCZEGOLY MOJE LOKALE*/
+#SekcjaSzczegołyLokalu {
+    width: 768px;
+    float: left;
+    margin-top: 20px;
+}
+
+table#lokale {
+    border-collapse: collapse;
+    width: 500px;
+}
+
+#lokale td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 5px;
+}
+
+#lokale .header {
+    background-color: #0066cc
+    font-weight: bold;
+}
+
+#lokale .local {
+    background-color: #f3f3f3;
+}
+
+/*TEST SZCZEGOLY MOJE LOKALE*/
+
+
+
+
+
+
+
+
+
+
 
 #SekcjaListaKategori {
     width: 768px;

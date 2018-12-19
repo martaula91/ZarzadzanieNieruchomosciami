@@ -30,12 +30,16 @@ namespace ZarzadzanieNieruchomosciami.DAL
             return new ZarzadzanieContext();
         }
 
-        public DbSet<Kategoria> Kategorie { get; set; }
-        public DbSet<LokalMieszkalny> LokaleMieszkalne { get; set; }
-        public DbSet<BlokMieszkalny> BlokiMieszkalne { get; set; }
-        public DbSet<Dokument> Dokumenty { get; set; }
-        
-       
+
+        public virtual DbSet<LokalMieszkalny> LokaleMieszkalne { get; set; }
+        public virtual DbSet<BlokMieszkalny> BlokiMieszkalne { get; set; }
+        public virtual DbSet<Dokument> Dokumenty { get; set; }
+        public virtual DbSet<StanLicznikow> StanyLicznikow { get; set; }
+        public virtual DbSet<Dzial> Kategorie { get; set; }
+        public virtual DbSet<Rozliczenie> Rozliczenia { get; set; }
+       // public virtual DbSet<Wlasnosc> Wlasnosci { get; set; }
+        public DbSet<PozycjaWlasnosci> PozycjeWlasnosci { get; set; }
+       // public virtual DbSet<AspNetUsers> DaneUsera { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

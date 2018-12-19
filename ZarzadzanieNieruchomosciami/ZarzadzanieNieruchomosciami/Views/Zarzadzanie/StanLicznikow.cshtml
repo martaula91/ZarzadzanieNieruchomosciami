@@ -1,8 +1,8 @@
-﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.LokalMieszkalny>
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.StanLicznikow>
 @using ZarzadzanieNieruchomosciami.Infrastructure
 
 @{
-    ViewBag.Title = "Lokal";
+    ViewBag.Title = "StanLicznikow";
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
@@ -18,16 +18,16 @@
 <div id="SekcjaListaKategori">
 
     <ul class="KursyTrzyKolumny MalaListaKategorii">
-        @foreach (var lokal in Model)
+        @foreach (var licznik in Model)
             {
             <li>
                 <article>
 
 
-                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalId})">
+                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowId})">
                         <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
                         <h1>
-                            @lokal.LokalId - @lokal.Adres
+                            @licznik.StanLicznikowId
                         </h1>
                     </a>
                 </article>
@@ -35,6 +35,7 @@
         }
     </ul>
 </div>
+
 
 
 

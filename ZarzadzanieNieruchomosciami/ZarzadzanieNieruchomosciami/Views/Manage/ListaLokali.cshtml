@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Wlasnosc>
+@{
+    ViewBag.Title = "ListaLokali";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div>
+    <hr />
+    <h2 class="manageHeader">Twoje lokale</h2>
+
+    <div>
+        @if (Model.Any())
+        {
+            <table id="zamowienia-table">
+
+                @foreach (var wlasnosc in Model)
+                {
+                    <tr >
+                       
+                        <td>
+                            <strong>Komentarz: </strong>
+                            @wlasnosc.Komentarz
+                        </td>
+                        <td>
+                            <strong>Uwagi: </strong>
+                            @wlasnosc.Komentarz
+                     
+                        </td>
+                        
+                       
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <section>
+                                <ul class="TrzyKolumnyList duzaListaKursy-bottom">
+
+                                    @foreach (var pozycjaWlasnosci in wlasnosc.PozycjeWlasnosci)
+                                    {
+                                        <li>
+                                            <article>
+                                                <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = pozycjaWlasnosci.LokalId })">
+                                                    <img class="kurs" src="@Url.Content("~/Content/Kursy/obrazekaspnet.png" )" />
+                                                    <h1>
+                                                        @pozycjaWlasnosci.lokal.Adres - @pozycjaWlasnosci.lokal.PowierzchniaLokalu<br />
+                                                        
+                                                    </h1>
+                                                </a>
+                                            </article>
+                                        </li>
+                                    }
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                <!-- nastepne zamowienie -->
+                }
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                Brak zamówień.
+            </div>
+        }
+    </div>
+</div>
+
+}

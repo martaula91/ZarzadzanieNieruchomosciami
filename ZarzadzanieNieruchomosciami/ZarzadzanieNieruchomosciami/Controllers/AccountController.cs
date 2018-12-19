@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ZarzadzanieNieruchomosciami.App_Start;
+using ZarzadzanieNieruchomosciami.DAL;
 using ZarzadzanieNieruchomosciami.Models;
 using ZarzadzanieNieruchomosciami.ViewModels;
 
@@ -18,6 +19,13 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         private ApplicationUserManager _userManager;
         private ApplicationSignInManager _signInManager;
         //private static Logger logger = LogManager.GetCurrentClassLogger();
+
+       ZarzadzanieContext context;
+        public AccountController()
+        {
+            context = new ZarzadzanieContext();
+        }
+
 
         public ApplicationUserManager UserManager
         {
@@ -72,8 +80,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)                                           //Email
             {
                 case SignInStatus.Success:
                     //logger.Info("Logowanie udane | " + model.Email);
@@ -96,14 +104,15 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Zarzadzanie");
         }
 
 
         public ActionResult Register()
         {
-           // logger.Info("Rejestracja start");
-
+            // logger.Info("Rejestracja start");
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                             .ToList(), "Name", "Name");
             return View();
         }
 
@@ -113,15 +122,18 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DaneUzytkownika = new DaneUzytkownika() };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DaneUser = new DaneUser() };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                   // logger.Info("Rejestracja udana");
+                    // logger.Info("Rejestracja udana");
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return RedirectToAction("Index", "Home");
                 }
-               // logger.Info("Rejestracja nie udana");
+                // logger.Info("Rejestracja nie udana");
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                           .ToList(), "Name", "Name");
                 AddErrors(result);
             }
 

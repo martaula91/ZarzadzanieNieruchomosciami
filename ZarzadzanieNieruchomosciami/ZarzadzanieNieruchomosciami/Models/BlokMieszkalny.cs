@@ -10,22 +10,19 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         
         public int BlokMieszkalnyId { get; set; }
-        public int KategoriaId { get; set; }
+        
 
         public string Ulica { get; set; }
-        public int NumerBlokuMieszkalnego { get; set; } 
-        public int PowierzchniaUzytkowa { get; set; }
+        public int NumerBlokuMieszkalnego { get; set; }
+        public string Adres { get; set; }
+        public double PowierzchniaUzytkowa { get; set; }
         public int LiczbaLokali { get; set; }
-        public int PowDzialki { get; set; }
+        public double PowDzialki { get; set; }
         public int NrEwidDzialki { get; set; }
 
-       public virtual Kategoria Kategoria { get; set; }
+        public virtual ICollection<LokalMieszkalny> Lokal { get; set; }
+        public virtual ICollection<Dokument> Dokument { get; set; }
 
 
-        //public virtual LokalMieszkalny lokalMieszkalny { get; set; }
-        // public List<LokalMieszkalny> LokaleMieszkalne { get; set; }
-        //public List<Dokument> Dokumenty { get; set; }
-
-        
     }
 }

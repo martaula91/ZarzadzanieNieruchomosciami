@@ -11,7 +11,7 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
     {
         public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
         public ZarzadzanieNieruchomosciami.Controllers.ManageController.ManageMessageId? Message { get; set; }
-        public DaneUzytkownika DaneUzytkownika { get; set; }
+        public DaneUser DaneUzytkownika { get; set; }
     }
 
     public class ChangePasswordViewModel

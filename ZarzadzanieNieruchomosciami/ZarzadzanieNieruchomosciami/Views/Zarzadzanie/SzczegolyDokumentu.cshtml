@@ -1,0 +1,35 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.Dokument
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyDokumentu";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>NazwaDokumentu:</td>
+        <td>Adres budynku:</td>
+        <td>Typ Dokumentu:</td>
+        <td>Autor Dokumentu:</td>
+        <td>Opis Dokumentu:</td>
+        
+    </tr>
+
+    <tr class="local">
+        <td>@Model.NazwaDokumentu</td>
+        <td>@Model.Adres</td>
+        <td>@Model.TypDokumentu</td>
+        <td>@Model.AutorDokumentu</td>
+        <td>@Model.OpisDokumentu</td>
+        
+
+    </tr>
+
+</table>
+
+<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+           {
+               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
+           }-->

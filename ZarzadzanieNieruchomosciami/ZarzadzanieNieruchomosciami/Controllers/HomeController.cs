@@ -25,5 +25,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         
+
     }
 }

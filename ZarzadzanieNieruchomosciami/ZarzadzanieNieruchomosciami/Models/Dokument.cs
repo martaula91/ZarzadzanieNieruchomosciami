@@ -10,8 +10,9 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int DokumentID { get; set; }
-        public int KategoriaId { get; set; }
-        
+        public int BudynekID { get; set; }
+
+        public string Adres { get; set; }
         public string NazwaDokumentu { get; set; }
         [Required(ErrorMessage = "Wprowadz nazwę dokumentu")]
         [StringLength(100)]
@@ -21,9 +22,9 @@ namespace ZarzadzanieNieruchomosciami.Models
         // [StringLength(100)]
         public string NazwaPlikuDokumentu { get; set; }
         public string OpisDokumentu { get; set; }
+        public DateTime DataDokumentu { get; set; }
 
+        public virtual BlokMieszkalny BlokMieszkalny { get; set; }
 
-        public virtual Kategoria Kategoria { get; set; }
-        
     }
 }

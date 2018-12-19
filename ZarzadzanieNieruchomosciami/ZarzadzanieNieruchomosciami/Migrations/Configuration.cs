@@ -1,4 +1,4 @@
-namespace ZarzadzanieNieruchomosciami.Migrations
+﻿namespace ZarzadzanieNieruchomosciami.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -17,7 +17,7 @@ namespace ZarzadzanieNieruchomosciami.Migrations
         protected override void Seed(ZarzadzanieNieruchomosciami.DAL.ZarzadzanieContext context)
         {
             ZarzadzanieInitializer.SeedZarzadzanieData(context);
-           // ZarzadzanieInitializer.SeedUzytkownicy(context);
+            ZarzadzanieInitializer.SeedUzytkownicy(context);
 
 
             //  This method will be called after migrating to the latest version.
