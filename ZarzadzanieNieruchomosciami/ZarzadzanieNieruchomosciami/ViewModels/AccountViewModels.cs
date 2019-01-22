@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,14 +29,6 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "UserRoles")]
-        public string UserRoles { get; set; }
-
-        [Required]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
-
-        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -47,7 +40,24 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Potwierdz Hasło ")]
-        [Compare("Password", ErrorMessage = "Hasło i potwierdzenie hasła nie pasują do siebie.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Hasło i potwierdzenie hasła nie pasują do siebie.")]
         public string ConfirmPassword { get; set; }
+        
+        [Required]
+        [Display(Name = "Rola użytkownika")]
+        public string SelectedRoleName { get; set; }
+
+        public List<IdentityRole> AvailableRoles { get; set; }
+        
+        [Display(Name = "Lokal")]
+        public int SelectedApartmentId { get; set; }
+
+        public List<AvailableApartment> AvailableApartments { get; set; }
+    }
+
+    public class AvailableApartment
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

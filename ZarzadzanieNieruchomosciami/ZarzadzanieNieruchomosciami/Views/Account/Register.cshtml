@@ -16,6 +16,17 @@
     {
         @Html.AntiForgeryToken()
 
+        for (int i = 0; i < Model.AvailableRoles.Count; i++)
+        {
+            @Html.HiddenFor(model => Model.AvailableRoles[i].Id)
+            @Html.HiddenFor(model => Model.AvailableRoles[i].Name)
+        }
+        for (int i = 0; i < Model.AvailableApartments.Count; i++)
+        {
+            @Html.HiddenFor(model => Model.AvailableApartments[i].Id)
+            @Html.HiddenFor(model => Model.AvailableApartments[i].Name)
+        }
+
         <div id="login-error">
             @Html.ValidationMessage("loginerror", "")
             @Html.ValidationSummary()
@@ -52,19 +63,23 @@
                     </div>
                 </td>
 
-                <td  style="padding: 0px 20px 0px 0px; text-align: left;">
-                    @Html.Label("user Role", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @*@Html.DropDownList("Name")*@
-                        @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
-                    </div>
-                </td> 
-
-
-
-
-
                 <td></td>
+            </tr>
+            <tr>
+                <td style="padding: 0px 20px 0px 0px; text-align: left;">
+                    @Html.LabelFor(m => m.SelectedRoleName, "Rola użytkownika:")
+                </td>
+                <td style="padding: 0px; text-align: left;">
+                    @Html.DropDownListFor(m => m.SelectedRoleName, new SelectList(Model.AvailableRoles, "Name", "Name"))                    
+                </td>
+            </tr>
+            <tr id="apartment_panel" @(Model.SelectedRoleName == "User" ? "" : "class=hidden")>
+                <td style="padding: 0px 20px 0px 0px; text-align: left;">
+                    @Html.LabelFor(m => m.SelectedApartmentId, "Lokal:")
+                </td>
+                <td style="padding: 0px; text-align: left;">
+                    @Html.DropDownListFor(m => m.SelectedApartmentId, new SelectList(Model.AvailableApartments, "Id", "Name"))
+                </td>               
             </tr>
             <tr>
                 <td></td>
@@ -78,7 +93,22 @@
 
 @section Scripts
 {
-    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#SelectedRoleName").change(function () {
+                var val = $(this).val();
+                if (val == 'Employee') {
+                    $("#apartment_panel").hide();
+                } else if (val == 'Manager') {
+                    $("#apartment_panel").hide();
+                } else if (val == 'User') {
+                    $("#apartment_panel").show();
+                }
+            });
+        });
+    </script>
 }

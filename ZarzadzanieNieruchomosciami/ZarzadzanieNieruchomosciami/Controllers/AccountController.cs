@@ -107,13 +107,15 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return RedirectToAction("Index", "Zarzadzanie");
         }
 
-
+        [HttpGet]
         public ActionResult Register()
         {
-            // logger.Info("Rejestracja start");
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
-                                             .ToList(), "Name", "Name");
-            return View();
+            var model = new RegisterViewModel();
+            model.AvailableRoles = context.Roles.Where(u => !u.Name.Contains("Admin")).ToList();
+            var reservedApartmentsIds = context.Users.Select(u => u.DaneUser.LokalId).Distinct().ToList();
+            model.AvailableApartments = context.LokaleMieszkalne.Where(l => !reservedApartmentsIds.Contains(l.LokalID)).Select(l => new AvailableApartment() { Id = l.LokalID, Name = string.Concat(l.Adres, " m.", l.NumerLokalu) }).ToList();
+            
+            return View(model);
         }
 
         [HttpPost]
@@ -123,17 +125,19 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DaneUser = new DaneUser() };
+                if (model.SelectedRoleName == "User")
+                {
+                    user.DaneUser.LokalId = model.SelectedApartmentId;
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    // logger.Info("Rejestracja udana");
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    await UserManager.AddToRoleAsync(user.Id, model.SelectedRoleName);
+                    
                     return RedirectToAction("Index", "Home");
                 }
-                // logger.Info("Rejestracja nie udana");
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
-                                           .ToList(), "Name", "Name");
+
                 AddErrors(result);
             }
 

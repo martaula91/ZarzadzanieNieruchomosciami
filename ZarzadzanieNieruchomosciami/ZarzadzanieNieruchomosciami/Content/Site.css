@@ -1058,6 +1058,12 @@ div.upload input {
     #login-table .text-danger {
         text-decoration: none;
     }
+    
+    #login-table select {
+        border: 1px solid gray;
+        width: 262px;
+        padding: 5px;
+    }
 
 #login-header {
 }
