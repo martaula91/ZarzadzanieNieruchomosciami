@@ -10,36 +10,39 @@
     <header>
         <div style="overflow: hidden; margin-bottom: 30px;">
             <a class="manageLink" href="@Url.Action("Index", "Home")">
-                Start
+                Strona domowa
+            </a>
+            <a class="manageLink" href="@Url.Action("Index", "Zarzadzanie")">
+                Strefa mieszkańca
             </a>
             <a class="manageLink" href="@Url.Action("Index", "Manage")">
                 Twoje dane
             </a>
-             
+
             @if (@User.IsInRole("Admin"))
             {
                 <a class="manageLink" href="@Url.Action("Register", "Account")">
                     Dodaj konto
                 </a>
 
-                
-               <!--
-                    <a class="manageLink" href="@Url.Action("DodajLokal", "Manage")">
-                    Dodaj
-                </a>
-                   <a class="manageLink" href="@Url.Content("~/elmah")">
-                    Logi
-                </a>
-                <a class="manageLink" href="@Url.Content("~/hangfire")">
-                    Jobs
-                </a>-->
+
+                <!--
+                     <a class="manageLink" href="@Url.Action("DodajLokal", "Manage")">
+                     Dodaj
+                 </a>
+                    <a class="manageLink" href="@Url.Content("~/elmah")">
+                     Logi
+                 </a>
+                 <a class="manageLink" href="@Url.Content("~/hangfire")">
+                     Jobs
+                 </a>-->
 
             }
 
-           <!-- <a id="koszykHeaderLink" href="Url.Action("Index", "Koszyk")">
-                KOSZYK (<span id="koszyk-naglowek-ilosc-elementow">Html.Action("PobierzIloscElementowKoszyka", "Koszyk")</span>)
-                <span id="cart-header-logo"></span>
-            </a>-->
+            <!-- <a id="koszykHeaderLink" href="Url.Action("Index", "Koszyk")">
+                 KOSZYK (<span id="koszyk-naglowek-ilosc-elementow">Html.Action("PobierzIloscElementowKoszyka", "Koszyk")</span>)
+                 <span id="cart-header-logo"></span>
+             </a>-->
             @Html.Partial("_LoginPartial")
         </div>
         <div id="Breadcrumb">

@@ -1,0 +1,122 @@
+﻿@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "WazneTelefony";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+
+<div class='wiadomosc'>
+    <br /><br />
+    <b>Ważne telefony:</b><br /><br />
+
+    <table cellspacing='1' class='tabela'>
+
+
+        <tr>
+            <td style='WIDTH:120px'></td>
+            <td></td>
+            <td style='WIDTH:140px'></td>
+        </tr>
+        <tr>
+            <th colspan='4'>ALARMOWE</th>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POGOTOWIE RATUNKOWE</td>
+            <td><b>Pogotowie Ratunkowe w Białymstoku</b><br />58-300 Białystok, ul. Curie-Skłodowskiej 26a<br /><a href='mailto:0200024[at] zoz.org.pl' target='_blank'>0200024[at] zoz.org.pl</a><br />uwagi: Dane ze strony <a href='http://www.mz.gov.pl/wwwmz/index?mr=m501&ms=&ml=pl&mi=72&mx=0&mt=&my=184&ma=4468' target='_blank'><b>Ministerstwa Zdrowia</b></a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>999; 74 842 61 10</b><br />kom: <b>112 z tel. kom.</b><br />fax:&nbsp;&nbsp;&nbsp;<b>74 842 64 42</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POLICJA</td>
+            <td><b>Policja</b><br /><a href='http://www.policja.pl/' target='_blank'>http://www.policja.pl/</a><br /><a href='mailto:zpkgp@policja.gov.pl ' target='_blank'>zpkgp@policja.gov.pl </a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>997</b><br />kom: <b>112 z tel. kom.</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>STRAŻ POŻARNA</td>
+            <td><b>Komenda Miejska Państwowej Straży Pożarnej w Białymstoku</b><br />58-300 Białystok, ul. Pogodna 5<br /><a href='http://www.kwpsp-bial.pl' target='_blank'>http://www.kwpsp-bial.pl</a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>998; 74 887 72 09; 74 887 7210</b><br />kom: <b>112 z tel. kom.</b><br />fax:&nbsp;&nbsp;&nbsp;<b>74 842 31 37</b><br /></td>
+        </tr>
+        <tr>
+            <th colspan='4'><br />AWARIE, SERWIS</th>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>AWARIE ELEKTRYCZNE</td>
+            <td><b>Instalatorstwo Elektryczne Adam Nowak</b><br />uwagi: można dzwonić bezpośrednio do zarządcy: 504083696</td>
+            <td style='WIDTH:140px'>kom: <b>0 693 999 422; 0 608 046 751</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>AWARIE WOD.-KAN., CO</td>
+            <td><b>BLUE Andrzej Gontar</b></td>
+            <td style='WIDTH:140px'>kom: <b>0666 168 801; 0 666 168 800</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>KOMINIARZ</td>
+            <td><b>Zakład Usług Kominiarskich Mirosław Kowalczuk</b></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>74 8449533</b><br />kom: <b>0 500 266 505</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>KONSERWATOR</td>
+            <td><b>PZ-BUD Paweł Zalewski</b></td>
+            <td style='WIDTH:140px'>kom: <b>0 512 152 198</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>SERWIS DOMOFONÓW</td>
+            <td><b>MB Grzegorczuk </b><br />58-309 Białystok, Złota 21<br /><a href='mailto:mbbednarski@wp.pl' target='_blank'>mbgrzegorczuk@wp.pl</a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>74 840 04 15</b><br />kom: <b>0 609 010 023</b><br />fax:&nbsp;&nbsp;&nbsp;<b>74 665 92 93</b><br /></td>
+        </tr>
+        <tr>
+            <th colspan='4'><br />POGOTOWIA TECHNICZNE</th>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POGOTOWIE ENERGETYCZNE</td>
+            <td><b>Pogotowie Energetyczne w Białymstoku</b></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>991; 74 84 283 11</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POGOTOWIE GAZOWE</td>
+            <td><b> Rejon Dystrybucji Gazu Białystok </b><br />58-302 Białystok, Dębowa 1</td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>992; 74 842 72 35; 74 842 72 3</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POGOTOWIE PEC</td>
+            <td><b>Pogotowie Cieplne PEC</b><br /><a href='http://www.pecsa.pl/' target='_blank'>http://www.pecsa.pl/</a><br /><a href='mailto:pec@pecsa.pl ' target='_blank'>pec@pecsa.pl </a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>993; 748424040</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>POGOTOWIE WODOCIĄGOWE</td>
+            <td><b>Białostockie Przedsiębiorstwo Wodociągów i Kanalizacji Sp. z o.o.</b><br />58-300 Białystok, Al. Niepodleglości 39</td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>994</b><br /></td>
+        </tr>
+        <tr>
+            <th colspan='4'><br /><br />POZOSTAŁE</th>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>WYWÓZ NIECZYSTOŚCI</td>
+            <td><B>Czyścioszek Sp. z o.o.</B><br />58-304 Białystok, ul. Piasta 6<br /><a href='http://www.czyscioszek.com.pl/firma/index.html' target='_blank'>http://www.czyscioszek.com.pl/firma/index.html</a><br /><a href='mailto:sekretariat.czyscioszek@abc.com.pl' target='_blank'>sekretariat.czyscioszek@abc.com.pl</a></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>74 843 42 20</b><br />fax:&nbsp;&nbsp;&nbsp;<b>74 848 29 60</b><br /></td>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>ZARZĄDCA</td>
+            <td><b>MART Zarządzanie Nieruchomościami</b><br />58-300 Białystok, Lipowa 38<br /><a href='http://www.mart.pl' target='_blank'>http://www.mart.pl</a><br /><a href='mailto:mart@sidom.pl' target='_blank'>mart@mart.pl</a><br />uwagi: Marta Zareba - <b>504 083 696</b></td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>74 666 66 46</b><br />kom: <b>512 095 229</b><br />fax:&nbsp;&nbsp;&nbsp;<b>74 665 98 73</b><br /></td>
+        </tr>
+        <tr>
+            <th colspan='4'><br /><br />UTRZYMANIE CZYSTOŚCI</th>
+        </tr>
+        <tr>
+            <td style='WIDTH:120px'>UTRZYMANIE TERENÓW ZEWNĘTRZNYCH</td>
+            <td><b>ABC Sp. z o.o.</b><br />58-309 Białystok, ul.Prosta 33</td>
+            <td style='WIDTH:140px'>tel:&nbsp;&nbsp;&nbsp; <b>74 843 28 57</b><br />kom: <b>0 693 823 220</b><br /></td>
+        </tr>
+
+    </table>
+</div>
+

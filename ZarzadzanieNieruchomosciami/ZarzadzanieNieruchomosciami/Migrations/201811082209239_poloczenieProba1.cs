@@ -23,7 +23,7 @@ namespace ZarzadzanieNieruchomosciami.Migrations
             AddColumn("dbo.LokalMieszkalny", "Users_Telefon", c => c.String());
             AddColumn("dbo.LokalMieszkalny", "Users_Email", c => c.String());
             AddColumn("dbo.AspNetUsers", "DaneUzytkownika_UzytkownikId", c => c.Int(nullable: false));
-            DropTable("dbo.Wlasnosc");
+           
         }
         
         public override void Down()

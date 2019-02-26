@@ -1,4 +1,5 @@
-﻿@model ZarzadzanieNieruchomosciami.Models.BlokMieszkalny
+﻿@*@model ZarzadzanieNieruchomosciami.Models.BlokMieszkalny*@
+@model ZarzadzanieNieruchomosciami.ViewModels.WypisanieLokaliZBlokuViewModel
 @using ZarzadzanieNieruchomosciami.Infrastructure
 @{
     ViewBag.Title = "SzczegolyBloku";
@@ -16,20 +17,39 @@
     </tr>
 
     <tr class="local">
-        <td>@Model.Ulica</td>
-        <td>@Model.NumerBlokuMieszkalnego</td>
-        <td>@Model.PowierzchniaUzytkowa</td>
-        <td>LiczbaLokali</td>
-        <td>@Model.NrEwidDzialki</td>
-        <td>@Model.PowDzialki</td>
-
+        <td>@Model.BlokiMieszkalne.Ulica</td>
+        <td>@Model.BlokiMieszkalne.NumerBlokuMieszkalnego</td>
+        <td>@Model.BlokiMieszkalne.PowierzchniaUzytkowa</td>
+        <td>@Model.BlokiMieszkalne.LiczbaLokali</td>
+        <td>@Model.BlokiMieszkalne.NrEwidDzialki</td>
+        <td>@Model.BlokiMieszkalne.PowDzialki</td>
     </tr>
 
 </table>
+<br /><br /><br />
 
-<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-           {
-               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
-           }-->
+<table id="lokale">
+    <tr class="header">LOKALE</tr>
+    @foreach (var lokal in Model.Lokal)
+            {
+        <tr class="local">
+            <td>
+                <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = @lokal.LokalID })">@lokal.LokalID </a>
+            </td>
+
+        </tr>
+    }
+</table>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajBudynek", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}
+
+
+
+
 
 

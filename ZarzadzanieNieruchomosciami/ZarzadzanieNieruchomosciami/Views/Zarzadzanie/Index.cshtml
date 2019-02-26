@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Informacja>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
@@ -7,5 +7,34 @@
 
 
 
-        <h2>Najważniejsze aktualności</h2>
+<h1 align="center">Najważniejsze aktualności</h1>
 
+@*<div id="SekcjaListaKategori">  //SekcjaInformacji *@
+<div id="SekcjaInformacji">
+
+    @*<ul class="KursyTrzyKolumny MalaListaKategorii">*@
+    <ul class="PojedynczaInformac">
+        @foreach (var informacja in Model)
+            {
+            <li>
+                <article>
+
+
+                    <a class="kursSzczeg">
+
+                        <h1>
+                            @informacja.Tytul - @informacja.DataDodania
+                        </h1>
+                        @informacja.Tresc
+                    </a>
+                    <br /><br /><br /><br /><br />
+                </article>
+            </li>
+        }
+    </ul>
+</div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajInformacje", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
+}

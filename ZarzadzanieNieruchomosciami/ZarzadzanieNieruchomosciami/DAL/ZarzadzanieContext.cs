@@ -21,9 +21,9 @@ namespace ZarzadzanieNieruchomosciami.DAL
         }
 
         static ZarzadzanieContext()
-            {
+        {
             Database.SetInitializer<ZarzadzanieContext>(new ZarzadzanieInitializer());
-            }
+        }
 
         public static ZarzadzanieContext Create()
         {
@@ -36,11 +36,15 @@ namespace ZarzadzanieNieruchomosciami.DAL
         public virtual DbSet<Dokument> Dokumenty { get; set; }
         public virtual DbSet<StanLicznikow> StanyLicznikow { get; set; }
         public virtual DbSet<Dzial> Kategorie { get; set; }
+        public virtual DbSet<Stawka> Stawka { get; set; }
         public virtual DbSet<Rozliczenie> Rozliczenia { get; set; }
-       // public virtual DbSet<Wlasnosc> Wlasnosci { get; set; }
-        public DbSet<PozycjaWlasnosci> PozycjeWlasnosci { get; set; }
-       // public virtual DbSet<AspNetUsers> DaneUsera { get; set; }
+        public virtual DbSet<Informacja> Informacje { get; set; }
 
+        public DbSet<PozycjaWlasnosci> PozycjeWlasnosci { get; set; }
+        public DbSet<Awaria> Awaria { get; set; }
+        public virtual DbSet<Ksiegowosc> Ksiegowosc { get; set; }
+        // public virtual DbSet<AspNetUsers> DaneUsera { get; set; }
+        //public virtual DbSet<IdentityUser> Identity { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -42,13 +42,13 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
         [Display(Name = "Potwierdz Hasło ")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Hasło i potwierdzenie hasła nie pasują do siebie.")]
         public string ConfirmPassword { get; set; }
-        
+
         [Required]
         [Display(Name = "Rola użytkownika")]
         public string SelectedRoleName { get; set; }
 
         public List<IdentityRole> AvailableRoles { get; set; }
-        
+
         [Display(Name = "Lokal")]
         public int SelectedApartmentId { get; set; }
 

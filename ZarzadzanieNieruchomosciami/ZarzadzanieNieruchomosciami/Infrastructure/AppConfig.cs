@@ -8,23 +8,23 @@ namespace ZarzadzanieNieruchomosciami.Infrastructure
 {
     public class AppConfig
     {
-        private static string _ikonyKategoriFolderWzgledny = ConfigurationManager.AppSettings["IkonyKategoriiFolder"];
+        private static string _dokumentyFolderWzgledny = ConfigurationManager.AppSettings["dokumentyFolder"];
 
-        public static string IkonyKategoriFolderWzgledny
+        public static string dokumentyFolderWzgledny
         {
             get
             {
-                return _ikonyKategoriFolderWzgledny;
+                return _dokumentyFolderWzgledny;
             }
         }
 
-        private static string _obrazkiFolderWzgledny = ConfigurationManager.AppSettings["ObrazkiFolder"];
+        private static string _dokWlasneFolderWzgledny = ConfigurationManager.AppSettings["dokWlasneFolder"];
 
-        public static string ObrazkiFolderWzgledny
+        public static string dokWlasneFolderrWzgledny
         {
             get
             {
-                return _obrazkiFolderWzgledny;
+                return _dokWlasneFolderWzgledny;
             }
         }
     }

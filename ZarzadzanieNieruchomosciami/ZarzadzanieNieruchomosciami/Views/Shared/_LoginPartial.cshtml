@@ -6,7 +6,9 @@
         using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
             @Html.AntiForgeryToken()
-
+            <div>
+                <a class="manageLink" href="@Url.Action("Index", "Zarzadzanie")">Strefa mieszkańca</a>
+            </div>
             <div>
                 @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 
@@ -18,10 +20,10 @@
     }
     else
     {
-       
+
         @*<div>
-            @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        </div>*@
+                @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            </div>*@
         <div>
             @Html.ActionLink("Strefa mieszkańca", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
         </div>

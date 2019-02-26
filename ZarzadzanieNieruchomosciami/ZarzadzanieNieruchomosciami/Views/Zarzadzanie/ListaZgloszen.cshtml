@@ -1,0 +1,122 @@
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Awaria>
+@{
+    ViewBag.Title = "ListaZgloszen";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div>
+    <hr />
+    <h2 class="manageHeader">Twoje zgloszenia</h2>
+
+    <div>
+        @if (Model.Any())
+        {
+            <table id="zamowienia-table">
+
+                @foreach (var zgloszenie in Model)
+                {
+                    <tr @if (zgloszenie.Status == ZarzadzanieNieruchomosciami.Models.Status.Nowe) { <text> class="noweZgloszenie" </text>         }>
+                        <td>
+                            <strong>Nr zgloszenia: </strong>@zgloszenie.AwariaID
+                        </td>
+                        <td>
+                            <strong>Data: </strong>
+                            @zgloszenie.DataDodania.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            <strong>Stan: </strong><br />
+
+                            @if (ViewBag.UserIsAdmin)
+                            {
+                                using (Html.BeginForm("ZmianaStanuAwari", "Zarzadzanie"))
+                                {
+                                    @Html.HiddenFor(o => zgloszenie.AwariaID)
+                                    @Html.EnumDropDownListFor(o => zgloszenie.Status, new { @class = "StanZamowieniaZmien" }) ////????SKRYPT
+                                }                                                           ////????SKRYPT
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(o => zgloszenie.Status)
+                            }
+                        </td>
+                        <td>
+                            @*<strong>Dane zglaszajcego:</strong><br />
+                                    @zgloszenie.Imie @zgloszenie.Nazwisko<br />
+                                    @zgloszenie.Adres<br />
+                                    @zgloszenie.KodPocztowy @zgloszenie.Miasto<br />
+                                </td>
+                                <td>
+                                    <strong>Uwagi: </strong><br />
+                                    @zgloszenie.Komentarz
+                                </td>*@
+                        <td>
+                            <strong>Typ:</strong> @zgloszenie.Typ
+                        </td>
+                        <td>
+                            <strong>Opis:</strong> @zgloszenie.Opis
+                        </td>
+                        <td>
+                            <strong>Blok:</strong> @zgloszenie.BlokMieszkalnyId
+                        </td>
+                    </tr>
+                    @*<tr>
+                            <td colspan="6">
+                                <section>
+                                    <ul class="TrzyKolumnyList duzaListaKursy-bottom">
+
+                                        @foreach (var pozycjaZamowienia in zgloszenie.PozycjeZamowienia)
+                                        {
+                                            <li>
+                                                <article>
+                                                    <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly", "Kursy", new { id = pozycjaZamowienia.KursId })">
+                                                        <img class="kurs" src="@Url.Content("~/Content/Kursy/" + pozycjaZamowienia.kurs.NazwaPlikuObrazka)" />
+                                                        <h1>
+                                                            @pozycjaZamowienia.kurs.AutorKursu - @pozycjaZamowienia.kurs.TytulKursu<br />
+                                                            <strong>sztuk: @pozycjaZamowienia.Ilosc, łącznie: @(pozycjaZamowienia.Ilosc * @pozycjaZamowienia.CenaZakupu)  zł</strong>
+                                                        </h1>
+                                                    </a>
+                                                </article>
+                                            </li>
+                                        }
+                                    </ul>
+                                </section>
+                            </td>
+                        </tr>*@
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                <!-- nastepne zamowienie -->
+                }
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                Brak zgloszen.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+
+    <script>
+    $(".StanZamowieniaZmien").on('change', function (e) {
+        //e.preventDefault();
+        var f = $(this.form);
+        var tr = f.closest("tr");
+        var action = f.attr("action");
+        var serializedForm = f.serialize();
+        $.post(action, serializedForm).done(function (data) {
+            if (data == '@ZarzadzanieNieruchomosciami.Models.Status.Nowe.ToString()') {
+                tr.addClass("noweZgloszenie")
+            }
+            else {
+                tr.removeClass("noweZgloszenie");
+            }
+          });
+    });
+    </script>
+}

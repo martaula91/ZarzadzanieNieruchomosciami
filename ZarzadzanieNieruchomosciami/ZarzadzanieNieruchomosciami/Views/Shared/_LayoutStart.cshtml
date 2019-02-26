@@ -7,14 +7,19 @@
 </head>
 <body>
     <header>
-        
+
         <div style="overflow: hidden;">
-            
+
             @Html.Partial("_LoginPartial")
-            
+
             <a id="indexHeaderLogo" href="@Url.Content("~/")">
                 <img src="@Url.Content("~/Content/Images/logo.png")" class="center" />
             </a>
+
+            <a class="manageLink" href="@Url.Action("Register", "Account")">
+                Dodaj konto
+            </a>
+
         </div>
     </header>
 
@@ -24,13 +29,13 @@
         @Html.Action("KategorieMenu")   <!--Html.MvcSiteMap().SiteMapPath()-->
 
         <div id="KategorieListPrawaSekcja">
-            <div id="Breadcrumb">
-                <img src="../Content/Images/dommaly.png" />
-                <a href="link">
-                    @Html.MvcSiteMap().SiteMapPath()
-                </a>
+            @*<div id="Breadcrumb">
+                    <img src="../Content/Images/dommaly.png" />
+                    <a href="link">
+                        @Html.MvcSiteMap().SiteMapPath()
+                    </a>
 
-            </div>
+                </div>*@
 
             <div>
                 @RenderBody()

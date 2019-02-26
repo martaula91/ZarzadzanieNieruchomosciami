@@ -145,6 +145,7 @@
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\baner.png" />
     <Content Include="Content\Images\bestseller.png" />
+    <Content Include="Content\Images\document.png" />
     <Content Include="Content\Images\dommaly.png" />
     <Content Include="Content\Images\footer-cd.png" />
     <Content Include="Content\Images\icons-18-black.png" />
@@ -218,6 +219,17 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Mvc.sitemap" />
+    <Content Include="Content\dokumenty\dokumenty\01. Oświadczenie w sprawie danych osobowych - kontaktowych - WZÓR DRUK.pdf" />
+    <Content Include="Content\dokumenty\dokumenty\02. Formularz głosowania nad uchwałami - WZÓR DRUK.pdf" />
+    <Content Include="Content\dokumenty\dokumenty\03. Protokół odczytu stanu liczników - WZÓR DRUK.pdf" />
+    <Content Include="Content\dokumenty\dokumenty\04. Oświadczenie na potrzeby złożenia deklaracji ws. wywozu śmieci - WZÓR DRUK.pdf" />
+    <Content Include="Content\dokumenty\dokWlasne\Z12018qwe.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Rozporządzenie zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Ustawa - Kodeks cywilny.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Ustawa - Prawo budowlane.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Ustawa - Prawo o miarach.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Ustawa o gospodarce nieruchomościami.pdf" />
+    <Content Include="Content\dokumenty\ustawy\Ustawa o własności lokali.pdf" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -246,6 +258,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\Helpers.cs" />
+    <Compile Include="Infrastructure\LokaleSzczegolyDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201810042155499_first.cs" />
     <Compile Include="Migrations\201810042155499_first.Designer.cs">
@@ -275,23 +289,62 @@
     <Compile Include="Migrations\201812190027148_poprawkiModelDokument.Designer.cs">
       <DependentUpon>201812190027148_poprawkiModelDokument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902210027346_rozliczenie.cs" />
+    <Compile Include="Migrations\201902210027346_rozliczenie.Designer.cs">
+      <DependentUpon>201902210027346_rozliczenie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210032071_nowy model rozliczenia.cs" />
+    <Compile Include="Migrations\201902210032071_nowy model rozliczenia.Designer.cs">
+      <DependentUpon>201902210032071_nowy model rozliczenia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210035445_pole w stawce.cs" />
+    <Compile Include="Migrations\201902210035445_pole w stawce.Designer.cs">
+      <DependentUpon>201902210035445_pole w stawce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902222239511_powiazanieLokalRozliczenie.cs" />
+    <Compile Include="Migrations\201902222239511_powiazanieLokalRozliczenie.Designer.cs">
+      <DependentUpon>201902222239511_powiazanieLokalRozliczenie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902222243077_powiazanie2.cs" />
+    <Compile Include="Migrations\201902222243077_powiazanie2.Designer.cs">
+      <DependentUpon>201902222243077_powiazanie2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902230106404_spr.cs" />
+    <Compile Include="Migrations\201902230106404_spr.Designer.cs">
+      <DependentUpon>201902230106404_spr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902260019058_test.cs" />
+    <Compile Include="Migrations\201902260019058_test.Designer.cs">
+      <DependentUpon>201902260019058_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUser.cs" />
     <Compile Include="Models\Dokument.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Dzial.cs" />
+    <Compile Include="Models\Informacja.cs" />
+    <Compile Include="Models\Ksiegowosc.cs" />
     <Compile Include="Models\LokalMieszkalny.cs" />
     <Compile Include="Models\PozycjaWlasnosci.cs" />
     <Compile Include="Models\Rozliczenie.cs" />
     <Compile Include="Models\StanLicznikow.cs" />
+    <Compile Include="Models\Stawka.cs" />
+    <Compile Include="Models\Wlasnosc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\EditAwariaViewModel.cs" />
+    <Compile Include="ViewModels\EditBudynekViewModel.cs" />
+    <Compile Include="ViewModels\EditDokumentViewModel.cs" />
+    <Compile Include="ViewModels\EditInformacjaViewModel.cs" />
+    <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="ViewModels\WypisanieLokaliZBlokuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -341,6 +394,16 @@
     <Content Include="Views\Shared\_LoginHome.cshtml" />
     <Content Include="Views\Manage\ListaLokali.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Manage\DodajBudynek.cshtml" />
+    <Content Include="Views\Manage\DodajDokument.cshtml" />
+    <Content Include="Views\Manage\DodajInformacje.cshtml" />
+    <Content Include="Views\Zarzadzanie\Biblioteka.cshtml" />
+    <Content Include="Views\Zarzadzanie\DodajAwarie.cshtml" />
+    <Content Include="Views\Zarzadzanie\ListaZgloszen.cshtml" />
+    <Content Include="Views\Zarzadzanie\Lista.cshtml" />
+    <Content Include="Views\Zarzadzanie\LokalOsoba.cshtml" />
+    <Content Include="Views\Zarzadzanie\OdczytLicznikow.cshtml" />
+    <Content Include="Views\Zarzadzanie\Telefony.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -372,6 +435,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812190027148_poprawkiModelDokument.resx">
       <DependentUpon>201812190027148_poprawkiModelDokument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210027346_rozliczenie.resx">
+      <DependentUpon>201902210027346_rozliczenie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210032071_nowy model rozliczenia.resx">
+      <DependentUpon>201902210032071_nowy model rozliczenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210035445_pole w stawce.resx">
+      <DependentUpon>201902210035445_pole w stawce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902222239511_powiazanieLokalRozliczenie.resx">
+      <DependentUpon>201902222239511_powiazanieLokalRozliczenie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902222243077_powiazanie2.resx">
+      <DependentUpon>201902222243077_powiazanie2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902230106404_spr.resx">
+      <DependentUpon>201902230106404_spr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902260019058_test.resx">
+      <DependentUpon>201902260019058_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

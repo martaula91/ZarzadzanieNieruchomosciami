@@ -6,28 +6,95 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
-
+<h2 class="manageHeader">Informacje o opłatach @Model.Nazwa</h2>
 
 <table id="lokale">
     <tr class="header">
-        <td>CentralneOgrzewanie:</td>
-        <td>StawkaCentralneOgrzewanie:</td>
-        <td>ZWiSCLicznik:</td>
-        <td>StawkaZWiSC:</td>
-        <td>CWLicznik:</td>
-        <td>StawkaCW:</td>
+        <td>Przedmiot opłaty</td>
+        <td>Jednostka naliczenia</td>
+        <td></td>
+        <td> Cena jednostkowa </td>
+        <td>  </td>
+        <td> Koszt </td>
+    </tr>
+    <tr class="local">
+        <td>Centralne ogrzewanie:</td>
+        <td>@Model.Lokal.PowierzchniaLokalu m2</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaCentralneOgrzewanie zł</td>
+        <td> = </td>
+        <td>@Model.CentralneOgrzewanie zł</td>
+    </tr>
+    <tr class="local">
+        <td>Zimna woda + ścieki:</td>
+        <td>@Model.Lokal.LiczbaWodyZimnej m3</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaZWiSC zł</td>
+        <td> = </td>
+        <td>@Model.ZWiSCLicznik zł</td>
+    </tr>
+    <tr class="local">
+        <td>Woda ciepła licznik:</td>
+        <td>@Model.Lokal.LiczbaWodyCieplej m3</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaCW zł</td>
+        <td> = </td>
+        <td>@Model.CWLicznik zł</td>
+    </tr>
+    <tr class="local">
+        <td>Energia elektryczna:</td>
+        <td>@Model.Lokal.PowierzchniaLokalu m2</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaEnergiaElekCzescWspolna zł</td>
+        <td> = </td>
+        <td>@Model.EnergiaElekCzescWspolna zł</td>
+    </tr>
+    <tr class="local">
+        <td>Wywóz śmieci:</td>
+        <td>@Model.Lokal.LiczbaLokatorow osoba/osoby</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaWywozSmieci zł</td>
+        <td> = </td>
+        <td>@Model.WywozSmieci zł</td>
+    </tr>
+    <tr class="local">
+        <td>Koszty administrowania:</td>
+        <td>@Model.Lokal.PowierzchniaLokalu m2</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaKosztyAdministrowania zł</td>
+        <td> = </td>
+        <td>@Model.KosztyAdministrowania zł</td>
+    </tr>
+    <tr class="local">
+        <td>Koszty obslugi bankowej i ubezp. :</td>
+        <td>@Model.Lokal.PowierzchniaLokalu m2</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaKosztyObslugiBankUbezp zł</td>
+        <td> = </td>
+        <td>@Model.KosztyObslugiBankUbezp zł</td>
     </tr>
 
     <tr class="local">
-        <td>@Model.CentralneOgrzewanie</td>
-        <td>@Model.StawkaCentralneOgrzewanie</td>
-        <td>@Model.ZWiSCLicznik</td>
-        <td>@Model.StawkaZWiSC</td>
-        <td>@Model.CWLicznik</td>
-        <td>@Model.StawkaCW</td>
+        <td>Fundusz Remontowy :</td>
+        <td>@Model.Lokal.PowierzchniaLokalu m2</td>
+        <td>*</td>
+        <td>@Model.Stawka.StawkaFunduszRemontowy zł</td>
+        <td> = </td>
+        <td>@Model.FunduszRemontowy zł</td>
     </tr>
 
+
+
 </table>
+
+ Ogołem do zapłaty :  @Model.OgolemDoZaplaty zł<br />
+stan na dzień @Model.StanNaDzien to :  @Model.StanObecny zł  (zawiera w sobie rozliczenie wody)
+
+<hr />
+Miesięczną opłate należy uiszczać do 10-go każdego miesiąca za bieżący miesiąc na rachunek bankowy:<br />
+PKO BP 58 1010 1333 0000 1202 1096 5582<br />
+
+@*Saldo na dzien 31.12.2018r. zawiera w sobie rozliczenie wody<br />*@
 
 <!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
            {

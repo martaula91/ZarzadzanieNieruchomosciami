@@ -1,0 +1,40 @@
+﻿ IEnumerable<ZarzadzanieNieruchomosciami.Models.LokalMieszkalny>
+    @using ZarzadzanieNieruchomosciami.Infrastructure
+
+    @{
+        ViewBag.Title = "Lokal";
+        Layout = "~/Views/Shared/_LayoutStart.cshtml";
+    }
+
+    <div id="Breadcrumb">
+        <img src="../Content/Images/dommaly.png" />
+        <a href="link">
+            @Html.MvcSiteMap().SiteMapPath()
+        </a>
+    </div>
+
+
+
+    <div id="SekcjaListaKategori">
+
+        <ul class="KursyTrzyKolumny MalaListaKategorii">
+
+            @foreach (var lokal in Model)
+            {
+                <li>
+                    <article>
+
+
+                        <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalID })">
+                            <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                            <h1>
+                                @lokal.LokalID - @lokal.Adres
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            }
+
+
+        </ul>
+    </div>

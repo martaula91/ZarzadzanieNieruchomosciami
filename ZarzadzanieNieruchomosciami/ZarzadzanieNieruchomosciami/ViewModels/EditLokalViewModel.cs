@@ -9,8 +9,8 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
     public class EditLokalViewModel
     {
         public LokalMieszkalny Lokal { get; set; }
-       // public IEnumerable<AspNetUsers> DaneUsera { get; set; }
-         public IEnumerable<BlokMieszkalny> BlokiMieszkalne { get; set; }
+        // public IEnumerable<AspNetUsers> DaneUsera { get; set; }
+        public IEnumerable<BlokMieszkalny> BlokiMieszkalne { get; set; }
         public bool? Potwierdzenie { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace ZarzadzanieNieruchomosciami.Models
 {
     public class BlokMieszkalny
     {
-        
+
         public int BlokMieszkalnyId { get; set; }
-        
+
 
         public string Ulica { get; set; }
         public int NumerBlokuMieszkalnego { get; set; }
@@ -19,8 +19,10 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int LiczbaLokali { get; set; }
         public double PowDzialki { get; set; }
         public int NrEwidDzialki { get; set; }
+        public bool Ukryty { get; set; }
 
         public virtual ICollection<LokalMieszkalny> Lokal { get; set; }
+        public virtual ICollection<Awaria> Awaria { get; set; }
         public virtual ICollection<Dokument> Dokument { get; set; }
 
 

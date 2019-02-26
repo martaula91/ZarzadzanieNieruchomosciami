@@ -9,20 +9,20 @@ namespace ZarzadzanieNieruchomosciami.Infrastructure
 {
     public static class UrlHelpers
     {
-       
-        public static string IkonyKategoriiSciezka(this UrlHelper helper, string nazwaIkonyKategorii)
+
+        public static string dokumentySciezka(this UrlHelper helper, string nazwaDokumentu)
         {
-            var IkonyKategoriFolder = AppConfig.IkonyKategoriFolderWzgledny;
-            var sciezka = Path.Combine(IkonyKategoriFolder, nazwaIkonyKategorii);
+            var dokumentyFolder = AppConfig.dokumentyFolderWzgledny;
+            var sciezka = Path.Combine(dokumentyFolder, nazwaDokumentu);
             var sciezkaBezwzglendna = helper.Content(sciezka);
 
             return sciezkaBezwzglendna;
         }
 
-        public static string ObrazkiSciezka(this UrlHelper helper, string nazwaObrazka)
+        public static string DokWlasneSciezka(this UrlHelper helper, string nazwaDokWlasnego)
         {
-            var ObrazkiFolder = AppConfig.ObrazkiFolderWzgledny;
-            var sciezka = Path.Combine(ObrazkiFolder, nazwaObrazka);
+            var DokWlasneFolder = AppConfig.dokWlasneFolderrWzgledny;
+            var sciezka = Path.Combine(DokWlasneFolder, nazwaDokWlasnego);
             var sciezkaBezwzglendna = helper.Content(sciezka);
 
             return sciezkaBezwzglendna;

@@ -15,7 +15,9 @@ namespace ZarzadzanieNieruchomosciami
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
             createRolesandUsers();
+
             //GlobalConfiguration.Configuration.UseSqlServerStorage("ZarzadzanieContext");
             //app.UseHangfireDashboard();
             // app.UseHangfireServer();
@@ -30,7 +32,7 @@ namespace ZarzadzanieNieruchomosciami
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
 
-            // In Startup iam creating first Admin Role and creating a default Admin User    
+            //In Startup iam creating first Admin Role and creating a default Admin User
             if (!roleManager.RoleExists("Admin"))
             {
 
@@ -57,7 +59,15 @@ namespace ZarzadzanieNieruchomosciami
                 }
             }
 
-            // creating Creating Manager role    
+
+
+
+
+
+
+
+
+            //creating Creating Manager role
             if (!roleManager.RoleExists("Manager"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
@@ -71,6 +81,14 @@ namespace ZarzadzanieNieruchomosciami
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Employee";
+                roleManager.Create(role);
+
+            }
+
+            if (!roleManager.RoleExists("User"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "User";
                 roleManager.Create(role);
 
             }

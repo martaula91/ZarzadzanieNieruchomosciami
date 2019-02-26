@@ -14,15 +14,15 @@
             Pomyślnie wprowadzono zmiany!
         </div>
     }
-                                                                     <!--"multipart/form-data"  możliwosc przeslania pliku -->
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
     @using (@Html.BeginForm("DodajLokal", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {                                                       
+    {
         @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
 
         <div class="error-summary-centered">
             @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
         </div>
-        @Html.HiddenFor(o => o.Lokal.LokalId)
+        @Html.HiddenFor(o => o.Lokal.LokalID)
         //Html.HiddenFor(o => o.Lokal.DataDodania)
         //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
 
@@ -53,10 +53,11 @@
                     <td>@Html.TextBoxFor(o => o.Lokal.Pietro)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.Pietro)</td>
                 </tr>
-                
+
                 <tr>
                     <td>@Html.LabelFor(o => o.BlokiMieszkalne, "Blok Mieszkalny:")</td>
-                    <td>@Html.DropDownListFor(m => m.Lokal.BlokMieszkalnyId, new SelectList(Model.BlokiMieszkalne, "BlokMieszkalnyId", "Adres", Model.BlokiMieszkalne.First().BlokMieszkalnyId))</td>
+                    <td>@Html.DropDownListFor(m => m.Lokal.BlokMieszkalnyID, new SelectList(Model.BlokiMieszkalne, "BlokMieszkalnyId", "Adres", Model.BlokiMieszkalne.First().BlokMieszkalnyId))</td>
+                    @*<td>@Html.DropDownListFor(m => m.Kurs.KategoriaId, new SelectList(Model.Kategorie, "KategoriaId", "NazwaKategorii",       Model.Kategorie.First().KategoriaId))</td>*@
                     <td></td>
                 </tr>
 
@@ -77,13 +78,13 @@
                         {
                             if (Model.Lokal.Ukryty)
                             {
-                                <a href="@Url.Action("PokazLokal", "Manage", new { LokalId = Model.Lokal.LokalId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("PokazLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Przywróć
                                 </a>
                             }
                             else
                             {
-                                <a href="@Url.Action("UkryjLokal", "Manage", new { LokalId = Model.Lokal.LokalId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("UkryjLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Usuń
                                 </a>
                             }

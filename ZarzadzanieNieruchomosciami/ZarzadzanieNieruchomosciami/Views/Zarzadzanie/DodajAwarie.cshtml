@@ -1,0 +1,115 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditAwariaViewModel
+
+@{
+    ViewBag.Title = "Dodajawarie";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<h2 class="manageHeader">Zgłoszenie awarii lub uwagi</h2>
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+
+
+
+    <div class="naglowekInformacyjny">
+        <p>
+            Dziękujemy za komplet informacji w formularzu.<br /><br />
+            Przyspieszy to naszą reakcję, a awaria zostanie usunięta zgodnie z Państwa oczekiwaniami.<br />
+        </p>
+        <p>
+            Na podany mail lub telefon otrzymają Państwo wiadomość o przebiegu napraw koordynowanych <br />przez administratora nieruchomości.<br /><br />
+        </p>
+
+        <p class="emergency">
+            <b>UWAGA:</b> W przypadku pożaru zadzwoń na 112.
+        </p>
+    </div>
+
+
+
+    @using (@Html.BeginForm("DodajAwarie", "Zarzadzanie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.Awaria.DataDodania)
+        @Html.HiddenFor(o => o.Awaria.UserId)
+        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
+
+        <div style="text-align: center;">
+            <table id="albumedit-address-table">
+                <tr>
+                    <td>@Html.LabelFor(o => o.Awaria.Opis, "Opis i szczegóły zgłoszenia:")</td>
+                    <td>@Html.TextBoxFor(o => o.Awaria.Opis)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Awaria.Opis)</td>
+                </tr>
+
+                <tr>
+                    @*<td>@Html.HiddenFor(o => o.Status, "Status:")</td>
+                        <td> @Html.EnumDropDownListFor(o => o.Status, new { @class = "Status" })</td>*@
+                    <td>@Html.LabelFor(o => o.Awaria.Status, "Status:")</td>
+                    <td>@Html.DisplayFor(o => o.Awaria.Status)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Awaria.Typ, "typ zgłoszenia:")</td>
+                    <td> @Html.EnumDropDownListFor(o => o.Awaria.Typ, new { @class = "Typ" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek, "Blok Mieszkalny:")</td>
+                    <td>@Html.DropDownListFor(m => m.Awaria.BlokMieszkalnyId, new SelectList(Model.Budynek, "BlokMieszkalnyId", "Adres", Model.Budynek.First().BlokMieszkalnyId))</td>
+                    <td></td>
+                </tr>
+
+
+                <tr>
+
+                    @*<td style="text-align: left">
+                            @if (ViewBag.EditMode)
+                            {
+                                if (Model.Budynek.Ukryty)
+                                {
+                                    <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Przywróć
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId  })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Usuń
+                                    </a>
+                                }
+                            }
+                        </td>*@
+
+
+                    <td style="text-align: right;">
+                        <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+
+    <p class="small-zgoda">Na podany adres e-mail automatycznie prześlemy potwierdzenie dostarczenia zgłoszenia<br /> wraz z kopią jego treści.</p>
+    <p class="small-zgoda">
+        W chwili udzielenia pomocy służby techniczne nie pobierają opłat, ale wypełniają stosowne <br />
+        protokoły kwalifikujące stronie Właściciela, w części wspólnej nieruchomości-płatnikiem<br /> jest Wspólnota Mieszkaniowa)
+    </p><br />
+    <p><span class="wpcf7-form-control-wrap Zgoda-platnosci"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="Zgoda-platnosci" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span> Zrozumiałam/em i akceptuję sposób kwalifikacji płatnika, przyjmując jednocześnie do <br />informacji o możliwości wystąpienia opłaty do uregulowania.</span></label></span></span></span></p>
+
+
+    @*<div class="submit-button">
+            <br />
+            <p><input type="submit" value="Wyślij" class="wpcf7-form-control wpcf7-submit" /></p>
+        </div>*@
+
+</div>

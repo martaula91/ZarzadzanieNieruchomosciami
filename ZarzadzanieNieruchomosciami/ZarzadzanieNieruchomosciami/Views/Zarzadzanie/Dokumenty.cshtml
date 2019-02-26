@@ -35,3 +35,8 @@
         }
     </ul>
 </div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajDokument", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Dokument</a>
+}

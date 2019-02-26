@@ -1,0 +1,109 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditBudynekViewModel
+
+@{
+    ViewBag.Title = "DodajBudynek";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<hr />
+<h2 class="manageHeader">Dodaj budynek</h2>
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+
+    @using (@Html.BeginForm("DodajLokal", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.Budynek.BlokMieszkalnyId)
+        //Html.HiddenFor(o => o.Lokal.DataDodania)
+        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
+
+        <div style="text-align: center;">
+            <table id="albumedit-address-table">
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.Ulica, "nazwa ulicy:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.Ulica)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.Ulica)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.NumerBlokuMieszkalnego, "Numer Bloku Mieszkalnego:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.NumerBlokuMieszkalnego)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.NumerBlokuMieszkalnego)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.PowierzchniaUzytkowa, "Powierzchnia Uzytkowa")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.PowierzchniaUzytkowa)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.PowierzchniaUzytkowa)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.LiczbaLokali, "Liczba Lokali")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.LiczbaLokali)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.LiczbaLokali)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.NrEwidDzialki, "NrEwidDzialki:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.NrEwidDzialki)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.NrEwidDzialki)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.PowDzialki, "PowDzialki w m2:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.PowDzialki)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.PowDzialki)</td>
+                </tr>
+
+
+                @*<tr>
+                        <td>@Html.LabelFor(o => o.BlokiMieszkalne, "Blok Mieszkalny:")</td>
+                        <td>@Html.DropDownListFor(m => m.Lokal.BlokMieszkalnyId, new SelectList(Model.BlokiMieszkalne, "BlokMieszkalnyId", "Adres", Model.BlokiMieszkalne.First().BlokMieszkalnyId))</td>
+                        <td></td>
+                    </tr>*@
+
+                <!-- <malpka> if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                {
+                    <tr>
+                        <td colspan="3">
+                            <div class="upload">
+                                <input type="file" name="file" />
+                            </div>
+                        </td>
+                    </tr>
+                }-->
+                <tr>
+
+                    <td style="text-align: left">
+                        @if (ViewBag.EditMode)
+                        {
+                            if (Model.Budynek.Ukryty)
+                            {
+                                <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                    Przywróć
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId  })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                    Usuń
+                                </a>
+                            }
+                        }
+                    </td>
+
+
+                    <td style="text-align: right;">
+                        <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>

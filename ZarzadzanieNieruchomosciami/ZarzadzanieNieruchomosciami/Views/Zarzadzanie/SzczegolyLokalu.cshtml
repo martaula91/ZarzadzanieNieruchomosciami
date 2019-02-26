@@ -6,32 +6,41 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
 
 
-    <table id="lokale">
-        <tr class="header">
-            <td>Numer Lokalu:</td>
-            <td>Adres:</td>
-            <td>Powierzchnia Lokalu:</td>
-            <td>Pietro:</td>
-            <td>Liczba Izb:</td>
-            <td>PowPiwnicy:</td>
-        </tr>
+<table id="lokale">
+    <tr class="header">
+        <td>Numer Lokalu:</td>
+        <td>Adres:</td>
+        <td>Powierzchnia Lokalu:</td>
+        <td>Pietro:</td>
+        <td>Liczba Izb:</td>
+        <td>PowPiwnicy:</td>
+        <td>Informacje o bloku:</td>
+    </tr>
 
-        <tr class="local">
-            <td>@Model.Lokal.NumerLokalu</td>
-            <td>@Model.Lokal.Adres</td>
-            <td>@Model.Lokal.PowierzchniaLokalu</td>
-            <td>@string.Format("{0:0.##}", Model.Lokal.Pietro)<span>Pietro</span></td>
-            <td>@Model.Lokal.LiczbaIzb</td>
-            <td>@Model.Lokal.PowPiwnicy</td>
+    <tr class="local">
+        <td>@Model.Lokal.NumerLokalu</td>
+        <td>@Model.Lokal.Adres m. @Model.Lokal.NumerLokalu</td>
+        <td>@Model.Lokal.PowierzchniaLokalu</td>
+        <td>@string.Format("{0:0.##}", Model.Lokal.Pietro)<span>Pietro</span></td>
+        <td>@Model.Lokal.LiczbaIzb</td>
+        <td>@Model.Lokal.PowPiwnicy</td>
+        <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyBloku", "Zarzadzanie", new { id = @Model.Lokal.BlokMieszkalnyID })">@Model.Lokal.Adres <br /> >>kliknij<< </a></td>
+    </tr>
 
-        </tr>
+</table>
 
-    </table>
-
-    <!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-               {
-                   <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
-               }-->
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}
 

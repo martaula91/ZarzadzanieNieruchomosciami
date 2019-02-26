@@ -12,7 +12,7 @@ namespace ZarzadzanieNieruchomosciami.Models
         //[Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         // This Id is equal to the Id in the AspNetUser table and it's manually set.
         //public override int Id { get; set; }
-       public int UzytkownikId { get; set; }
+        //public int UzytkownikId { get; set; }
         public int KategoriaId { get; set; }
         public int LokalId { get; set; }
 
@@ -33,10 +33,10 @@ namespace ZarzadzanieNieruchomosciami.Models
 
         //public virtual Kategoria Kategoria { get; set; }
 
-            /// <summary>
-            /// podejscie 2
-            /// </summary>
-       // public List<Wlasnosc> PozycjeWlasnosci { get; set; }
+        /// <summary>
+        /// podejscie 2
+        /// </summary>
+        // public List<Wlasnosc> PozycjeWlasnosci { get; set; }
     }
 
 

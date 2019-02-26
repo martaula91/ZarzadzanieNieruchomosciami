@@ -13,29 +13,31 @@
     </a>
 </div>
 
-
-
 <div id="SekcjaListaKategori">
 
     <ul class="KursyTrzyKolumny MalaListaKategorii">
+
         @foreach (var lokal in Model)
             {
             <li>
                 <article>
 
 
-                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalId})">
+                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalID })">
                         <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
                         <h1>
-                            @lokal.LokalId - @lokal.Adres
+                            @lokal.LokalID - @lokal.Adres
                         </h1>
                     </a>
                 </article>
             </li>
         }
+
+
     </ul>
 </div>
 
-
-
-
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
+}

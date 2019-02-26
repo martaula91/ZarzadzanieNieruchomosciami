@@ -9,9 +9,10 @@ namespace ZarzadzanieNieruchomosciami.Models
     public class LokalMieszkalny
     {
         [Key]
-               public int LokalID { get; set; }
+        public int LokalID { get; set; }
         public int BlokMieszkalnyID { get; set; }
-        
+        //public string UserID { get; set; }
+        //public virtual ApplicationUser User { get; set; }
 
         public string Adres { get; set; }
         //  [Required(ErrorMessage = "Wprowadz numer lokalu")]
@@ -26,15 +27,17 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int Pietro { get; set; }
         public bool Ukryty { get; set; }
 
-        //public Balkon Balkon { get; set; }
-
-
+        //DO ROZLICZEN
+        public int LiczbaLokatorow { get; set; }
+        public double LiczbaWodyZimnej { get; set; }
+        public double LiczbaWodyCieplej { get; set; }
 
         public virtual BlokMieszkalny BlokMieszkalny { get; set; }
-
-
         public virtual ICollection<StanLicznikow> StanLicznikow { get; set; }
-    
+        public virtual ICollection<Ksiegowosc> Ksiegowosc { get; set; }
+        public virtual ICollection<Rozliczenie> Rozliczenie { get; set; }
+
+        //public Balkon Balkon { get; set; }
     }
 
     public enum Balkon

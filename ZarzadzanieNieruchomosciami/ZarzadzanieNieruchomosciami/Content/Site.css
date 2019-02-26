@@ -425,7 +425,7 @@ table#lokale {
 }
 
 #lokale .header {
-    background-color: #0066cc
+    background-color: #0066cc;
     font-weight: bold;
 }
 
@@ -433,8 +433,75 @@ table#lokale {
     background-color: #f3f3f3;
 }
 
-/*TEST SZCZEGOLY MOJE LOKALE*/
+/*ROZNE ZAKLADKI PO PRAWEJ*/
+#zawartoscPrawejStrony {
+    width: 768px;
+    margin-top: 20px;
+    overflow: hidden;
+}
 
+#naglowekInformacyjny {
+    width: 768px;
+    margin-top: 20px;
+    overflow: hidden;
+    float: left;
+}
+
+
+
+
+
+
+/*INFORMACJE*/
+#SekcjaInformacji {
+    width: 768px;
+    margin-top: 20px;
+}
+
+ul.SekcjaInformacji {
+    overflow: hidden;
+    list-style-type: none;
+    font-size: 18px;
+}
+
+    ul.SekcjaInformacji li {
+        float: left;
+        position: relative;
+        /*opacity: 0.2;*/
+    }
+
+    ul.PojedynczaInformacja li article {
+        height: 100%;
+}
+
+
+ul.PojedynczaInformacja li a h1 {
+    background-color: rgba(255, 255, 255, 0.2);
+    vertical-align: central;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    font-weight: normal;
+    /* More intensive album title */
+    /* font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI'; */
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+ul.PojedynczaInformacja li a:hover h1 {
+    background-color: rgba(255, 255, 255, 0.85);
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+       
+    
 
 
 
@@ -1058,7 +1125,7 @@ div.upload input {
     #login-table .text-danger {
         text-decoration: none;
     }
-    
+
     #login-table select {
         border: 1px solid gray;
         width: 262px;

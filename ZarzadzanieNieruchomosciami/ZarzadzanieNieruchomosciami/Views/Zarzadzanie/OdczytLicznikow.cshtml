@@ -1,0 +1,129 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditLicznikViewModel
+
+@{
+    ViewBag.Title = "DodajOdczytLicznikow";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+@* https://www.forum.wroc.pl/odczyt-licznikow/ *@
+
+<h2 style="margin-bottom: 30px" ALIGN="CENTER">LICZNIKI - Protokół odczytu</h2>
+
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+
+    <div class="contact-header-box">
+        <p>Aby przekazać odczyty stanu liczników skorzystaj z poniższego formularza lub pobierz i wypełnij <br />formularz ze strony <a href="https://www.forum.wroc.pl/dokumenty">Dokumenty</a> i przekaż nam go osobiście, pocztą standardową lub elektroniczną.</p><br />
+
+        <p>
+            <b>UWAGA:</b> Z systemu skorzystac mogą tylko ci, którzy przedłożyli wczesniej <b>
+                <br />
+                1) oświadczenie dot. danych<br />
+                2) osobowych - kontaktowych<br />
+            </b>Wzór oświadczenia dostępny jest pod adresem: <a href="https://www.forum.wroc.pl/dokumenty">Pobierz wzór oświadczenia.</a>
+        </p>
+    </div>
+
+    @using (@Html.BeginForm("OdczytLicznikow", "Zarzadzanie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.StanLicznikow.StanLicznikowID)
+        //Html.HiddenFor(o => o.Lokal.DataDodania)
+        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
+
+        <div style="text-align: center;">
+            <table id="albumedit-address-table">
+                <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.WodaZimna, "Woda Zimna:")</td>
+                    <td>@Html.TextBoxFor(o => o.StanLicznikow.WodaZimna)</td>
+                    <td>@Html.ValidationMessageFor(o => o.StanLicznikow.WodaZimna)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.WodaCiepla, "Woda Ciepla:")</td>
+                    <td>@Html.TextBoxFor(o => o.StanLicznikow.WodaCiepla)</td>
+                    <td>@Html.ValidationMessageFor(o => o.StanLicznikow.WodaCiepla)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.EnergiaElektryczna, "Energia Elektryczna:")</td>
+                    <td>@Html.TextBoxFor(o => o.StanLicznikow.EnergiaElektryczna)</td>
+                    <td>@Html.ValidationMessageFor(o => o.StanLicznikow.EnergiaElektryczna)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.Gaz, "Gaz:")</td>
+                    <td>@Html.TextBoxFor(o => o.StanLicznikow.Gaz)</td>
+                    <td>@Html.ValidationMessageFor(o => o.StanLicznikow.Gaz)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.StanNaDzien, "Stan Na Dzien:")</td>
+                    <td>@Html.TextBoxFor(o => o.StanLicznikow.StanNaDzien)</td>
+                    <td>@Html.ValidationMessageFor(o => o.StanLicznikow.StanNaDzien)</td>
+                </tr>
+
+
+                <tr>
+
+                    <td>@Html.LabelFor(o => o.Lokal, "Lokal Mieszkalny:")</td>
+                    <td>@Html.DisplayFor(o => o.Lokal)</td>
+                    @*@Html.DropDownListFor(m => m.LokalMieszkalny, new SelectList(Model.LokalMieszkalny, "Id", "Name"))*@
+                </tr>
+
+
+                <tr>
+
+                    @*<td style="text-align: left">
+                            @if (ViewBag.EditMode)
+                            {
+                                if (Model.Budynek.Ukryty)
+                                {
+                                    <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Przywróć
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("PokazBudynek", "Manage", new { BlokMieszkalnyId = Model.Budynek.BlokMieszkalnyId  })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Usuń
+                                    </a>
+                                }
+                            }
+                        </td>*@
+
+
+                    <td style="text-align: right;">
+                        <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+
+    <p class="small-zgoda">Na podany adres e-mail automatycznie prześlemy potwierdzenie dostarczenia protokołu<br /> wraz z kopią jego treści.</p><br />
+    <h4>Oświadczam/-my/, że:</h4>
+    <p><span class="wpcf7-form-control-wrap zgoda1"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="zgoda1" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span>w/w deklarację składam/-my zgodnie z istniejącym stanem faktycznym, zapewniając,<br /> że jest ono zgodne z prawdą.</span></label></span></span></span></p>
+    <div class="submit-button">
+        <br />
+        <p><input type="submit" value="Wyślij" class="wpcf7-form-control wpcf7-submit" /></p>
+    </div>
+    <p><span class="star">*</span> Pola obowiązkowe.</p>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+

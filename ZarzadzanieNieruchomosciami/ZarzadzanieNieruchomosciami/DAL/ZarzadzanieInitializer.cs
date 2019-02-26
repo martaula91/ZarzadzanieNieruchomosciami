@@ -10,20 +10,18 @@ using ZarzadzanieNieruchomosciami.Migrations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 
-//using ZarzadzanieNieruchomosciami.Migrations;
 
-//using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace ZarzadzanieNieruchomosciami.DAL
 {
-    public class ZarzadzanieInitializer : MigrateDatabaseToLatestVersion<ZarzadzanieContext, Migrations.Configuration>
+    public class ZarzadzanieInitializer : MigrateDatabaseToLatestVersion<ZarzadzanieContext, Migrations.Configuration>  //: MigrateDatabaseToLatestVersion<ZarzadzanieContext, Migrations.Configuration>
     {
         private static object dateNow;
 
         public static void SeedZarzadzanieData(ZarzadzanieContext context)
         {
-            DateTime dateNow = DateTime.Now; 
+            DateTime dateNow = DateTime.Now;
 
             var kategoria = new List<Dzial>
             {
@@ -59,9 +57,21 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var lokale = new List<LokalMieszkalny>
             {
-               new LokalMieszkalny { LokalID = 1, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1},
-               new LokalMieszkalny { LokalID = 2, BlokMieszkalnyID=2, Adres= "Cicha 2", NumerLokalu=5,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4},
-               new LokalMieszkalny { LokalID = 3, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=9,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2},
+               new LokalMieszkalny { LokalID = 1, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 2, BlokMieszkalnyID=1, Adres= "Lipowa 12", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 3, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+
+                new LokalMieszkalny { LokalID = 4, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 5, BlokMieszkalnyID=2, Adres= "Cicha 2", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 6, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+
+               new LokalMieszkalny { LokalID = 7, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 8, BlokMieszkalnyID=3, Adres= "Klonowa 8", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 9, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+
+               new LokalMieszkalny { LokalID = 10, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 11, BlokMieszkalnyID=4, Adres= "Tuwima 10", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               new LokalMieszkalny { LokalID = 12, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
             };
 
             lokale.ForEach(k => context.LokaleMieszkalne.AddOrUpdate(k));
@@ -69,8 +79,15 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var liczniki = new List<StanLicznikow>
             {
-               new StanLicznikow { StanLicznikowID = 1, LokalMieszkalnyID = 1, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
-               new StanLicznikow { StanLicznikowID = 2, LokalMieszkalnyID = 2, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
+               new StanLicznikow { StanLicznikowID = 1, LokalMieszkalnyID = 1, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 1, 10, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 2, LokalMieszkalnyID = 1, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 2, 7, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 3, LokalMieszkalnyID = 1, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 3, 9, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 4, LokalMieszkalnyID = 1, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 4, 12, 7, 0, 0)},
+
+               new StanLicznikow { StanLicznikowID = 5, LokalMieszkalnyID = 2, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 1, 10, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 6, LokalMieszkalnyID = 2, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 2, 7, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 7, LokalMieszkalnyID = 2, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 3, 9, 7, 0, 0)},
+               new StanLicznikow { StanLicznikowID = 8, LokalMieszkalnyID = 2, WodaZimna = 0 , WodaCiepla = 0 , EnergiaElektryczna = 0 , Gaz=0, StanNaDzien = new DateTime(2019, 4, 12, 7, 0, 0)},
 
             };
 
@@ -79,11 +96,12 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var dokumenty = new List<Dokument>
             {
-             new Dokument { DokumentID = 1,  BudynekID=1, Adres= "Lipowa 12", NazwaDokumentu = "Zarzadzenie nr 1/2018", TypDokumentu = "Zarzadzenie", AutorDokumentu = "Wspólnota bloku", NazwaPlikuDokumentu = "Z1/2018qwe", OpisDokumentu = "Dotyczące utrzymania porządku", DataDokumentu= new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
-             new Dokument { DokumentID = 2, BudynekID=1, Adres= "Lipowa 12", NazwaDokumentu = "Postanowienie nr 1/2018", TypDokumentu = "Postanowienie", AutorDokumentu = "firma zarzadzajaca", NazwaPlikuDokumentu = "Z5/2018qwe", OpisDokumentu = "Dotyczące budowy placu zabaw", DataDokumentu= new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
-             new Dokument { DokumentID = 3,  BudynekID=1, Adres= "Lipowa 12", NazwaDokumentu = "Decyzja nr 1/2018", TypDokumentu = "Decyzja", AutorDokumentu = "Wspólnota bloku",  NazwaPlikuDokumentu = "Z8/2018qwe", OpisDokumentu = "W związku z wymianą drzwi wejsciwowych", DataDokumentu= new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
-             new Dokument { DokumentID = 4,  BudynekID=1, Adres= "Lipowa 12", NazwaDokumentu = "Postanowienie nr 1/2018", TypDokumentu = "Postanowienie", AutorDokumentu = "Zarzad",  NazwaPlikuDokumentu = "Z9/2018qwe", OpisDokumentu = "Zmiana firmy sprzatajacej", DataDokumentu= new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
-             new Dokument { DokumentID = 5,  BudynekID=1, Adres= "Lipowa 12", NazwaDokumentu = "Zarzadzenie nr 1/2018", TypDokumentu = "Zarzadzenie", AutorDokumentu = "firma zarzadzajaca",  NazwaPlikuDokumentu = "Z2/2018qwe", OpisDokumentu = "Naprawa dachu", DataDokumentu= new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)},
+             new Dokument { DokumentID = 1,  BlokMieszkalnyId=1, Adres= "Lipowa 12", NazwaDokumentu = "Zarzadzenie nr 1/2019", TypDokumentu = "Zarzadzenie", AutorDokumentu = "Wspólnota bloku", NazwaPlikuDokumentu = "Z12018qwe.pdf", OpisDokumentu = "Dotyczące utrzymania porządku", DataDokumentu= new DateTime(2019, 1, 11, 7, 0, 0)},
+             new Dokument { DokumentID = 2, BlokMieszkalnyId=1, Adres= "Lipowa 12", NazwaDokumentu = "Postanowienie nr 1/2019", TypDokumentu = "Postanowienie", AutorDokumentu = "firma zarzadzajaca", NazwaPlikuDokumentu = "Z12018qwe.pdf", OpisDokumentu = "Dotyczące budowy placu zabaw", DataDokumentu= new DateTime(2019, 1, 11, 7, 0, 0)},
+
+             new Dokument { DokumentID = 3,  BlokMieszkalnyId=2, Adres= "Cicha 2", NazwaDokumentu = "Decyzja nr 1/2019", TypDokumentu = "Decyzja", AutorDokumentu = "Wspólnota bloku",  NazwaPlikuDokumentu = "Z12018qwe.pdf", OpisDokumentu = "W związku z wymianą drzwi wejsciwowych", DataDokumentu= new DateTime(2019, 1, 11, 7, 0, 0)},
+             new Dokument { DokumentID = 4,  BlokMieszkalnyId=2, Adres= "Cicha 2", NazwaDokumentu = "Postanowienie nr 1/2019", TypDokumentu = "Postanowienie", AutorDokumentu = "Zarzad",  NazwaPlikuDokumentu = "Z12018qwe.pdf", OpisDokumentu = "Zmiana firmy sprzatajacej", DataDokumentu= new DateTime(2019, 1, 11, 7, 0, 0)},
+             new Dokument { DokumentID = 5,  BlokMieszkalnyId=2, Adres= "Cicha 2", NazwaDokumentu = "Zarzadzenie nr 1/2019", TypDokumentu = "Zarzadzenie", AutorDokumentu = "firma zarzadzajaca",  NazwaPlikuDokumentu = "Z12018qwe.pdf", OpisDokumentu = "Naprawa dachu", DataDokumentu= new DateTime(2019, 1, 11, 7, 0, 0)},
             }; //DataDodania = 11-03-2018,
 
             dokumenty.ForEach(k => context.Dokumenty.AddOrUpdate(k));
@@ -91,26 +109,51 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var rozlicz = new List<Rozliczenie>
             {
-             new Rozliczenie {RozliczenieId= 1, CentralneOgrzewanie= 1,StawkaCentralneOgrzewanie= 1,    ZWiSCLicznik= 1,StawkaZWiSC= 1, CWLicznik= 1,StawkaCW= 1, EnergiaElekCzescWspolna= 1,StawkaEnergiaElekCzescWspolna= 1,WywozSmieci= 1,StawkaWywozSmieci= 1,KosztyAdministrowania= 1,StawkaKosztyAdministrowania= 1,KosztyObslugiBankUbezp= 1,StawkaKosztyObslugiBankUbezp= 1,FunduszRemontowy= 1,StawkaFunduszRemontowy= 1,StanObecny= 212,OgolemDoZaplaty= 376},
-            
+            new Rozliczenie {RozliczenieId= 1, StawkaID=1, LokalID= 1, Nazwa="styczeń-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 1, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 2, StawkaID=1, LokalID= 1, Nazwa="luty-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 2, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 3, StawkaID=1, LokalID= 1, Nazwa="marzec-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 3, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 4, StawkaID=1, LokalID= 1, Nazwa="kwiecień-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 4, 1, 7, 0, 0)},
+
+            new Rozliczenie {RozliczenieId= 5, StawkaID=1, LokalID= 2, Nazwa="styczeń-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 1, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 6, StawkaID=1, LokalID= 2, Nazwa="luty-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 2, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 7, StawkaID=1, LokalID= 2, Nazwa="marzec-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 3, 1, 7, 0, 0)},
+            new Rozliczenie {RozliczenieId= 8, StawkaID=1, LokalID= 2, Nazwa="kwiecień-2019", CentralneOgrzewanie= 110.97,   ZWiSCLicznik= 52.43, CWLicznik= 59.50, EnergiaElekCzescWspolna= 2.22, WywozSmieci= 9.00, KosztyAdministrowania= 41.06,KosztyObslugiBankUbezp= 5.55,FunduszRemontowy= 96.17,StanObecny= 212,OgolemDoZaplaty= 376, StanNaDzien = new DateTime(2019, 4, 1, 7, 0, 0)},
             };
 
             rozlicz.ForEach(k => context.Rozliczenia.AddOrUpdate(k));
             context.SaveChanges();
 
-
-  //????????????????????dziala czy          
-  /*
-            var wlasnosc = new List<Wlasnosc>
+            var stawka = new List<Stawka>
             {
-             new Wlasnosc {WlasnoscId = 1, UserId="2e1cfb82-8c73-44d9-a4d4-4b5ce42a7a88", Komentarz = "lorem ipsum"},
+           new Stawka {StawkaID= 1, Okres = "styczeń 2019", DataDodania = new DateTime(2019, 1, 11, 7, 0, 0),StawkaCentralneOgrzewanie= 3.00,   StawkaZWiSC= 7.49, StawkaCW= 17.00, StawkaEnergiaElekCzescWspolna= 0.06,StawkaWywozSmieci= 9.00,StawkaKosztyAdministrowania= 1.11,StawkaKosztyObslugiBankUbezp= 0.15,StawkaFunduszRemontowy= 2.60},
 
             };
 
-            wlasnosc.ForEach(k => context.Wlasnosci.AddOrUpdate(k));
+            stawka.ForEach(k => context.Stawka.AddOrUpdate(k));
             context.SaveChanges();
 
-*/
+            var informacja = new List<Informacja> //https://www.drazkiewicz.com/wiadomosci
+            {
+             new Informacja { InformacjaID = 1,  Tytul="Zakończono przeglądy techniczne 2018", Tresc ="Informujemy, że wszystkie zarządzane przez nas nieruchomości, przeszły obowiązkowe przeglądy techniczne. O wynikach przeglądów będziemy informować zarządy wspólnot oraz właścicieli na zebraniach. Dziękujemy inspektorom wykonującym przeglądy, oraz zarządom które uczestniczyły w przeglądach.",  DataDodania = new DateTime(2019, 1, 11, 7, 0, 0)}, //DataDodania =  new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 18, 37, 0)
+             new Informacja { InformacjaID = 2,  Tytul="Zbiórka elektrośmieci", Tresc ="Informujemy że w okresie od 3 października do 30 marca 2019 roku na ternie Białegostoku będzie przeprowadzona zbiórka elektrośmieci (np. zużyte pralki, lodówki, komputer, telefony komórkowe).",  DataDodania = new DateTime(2019, 1, 11, 7, 0, 0)},
+             new Informacja { InformacjaID = 3,  Tytul="Płatności za pomocą kodów QR", Tresc ="Informujemy, że od roku 2019, na dokumentach rozliczeniowych (np rozliczenie roku 2018) które dostają właściciele mieszkań we wspólnotach mieszkaniowych, wprowadziliśmy kody QR, które pozwalają na szybką płatność przez zeskanowanie aplikacja mobilna banku w którym macie Państwo rachunek bankowy.",  DataDodania = new DateTime(2019, 1, 11, 7, 0, 0)},
+
+            };
+
+            //informacja.ForEach(k => context.Informacje.AddOrUpdate(k));
+            //context.SaveChanges();
+
+            var awaria = new List<Awaria>
+            {
+           new Awaria {AwariaID= 1, BlokMieszkalnyId= 1, Opis = "Skrzypia drzwi w klatce III", DataDodania = new DateTime(2019, 1, 11, 20, 55, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_drzwi_demofonu},
+           new Awaria {AwariaID= 2, BlokMieszkalnyId= 1, Opis = "Niedomykanie okna na  klatce miedzy I a II piętrem", DataDodania = new DateTime(2019, 1, 16, 17, 46, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_drzwi_demofonu},
+           new Awaria {AwariaID= 3, BlokMieszkalnyId= 1, Opis = "Pani sprzatajaca nie myje okien", DataDodania = new DateTime(2019, 2, 3, 9, 0, 0), Status=Status.Nowe, Typ=Typ.uwagi_opinie},
+           new Awaria {AwariaID= 4, BlokMieszkalnyId= 2, Opis = "Graffiti na wejsciowej scianie bloku", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_elewacji_dachu},
+            };
+
+            awaria.ForEach(k => context.Awaria.AddOrUpdate(k));
+            context.SaveChanges();
+
 
             var pozycjeWlasnosci = new List<PozycjaWlasnosci>
             {
@@ -149,11 +192,11 @@ namespace ZarzadzanieNieruchomosciami.DAL
             }
 
             // dodanie uzytkownika do roli Admin jesli juz nie jest w roli
-            var rolesForUser = userManager.GetRoles(user.Id);
-            if (!rolesForUser.Contains(role.Name))
-            {
-                var result = userManager.AddToRole(user.Id, role.Name);
-            }
+            //var rolesForUser = userManager.GetRoles(user.Id);
+            //if (!rolesForUser.Contains(role.Name))
+            //{
+            //    var result = userManager.AddToRole(user.Id, role.Name);
+            //}
         }
     }
 }

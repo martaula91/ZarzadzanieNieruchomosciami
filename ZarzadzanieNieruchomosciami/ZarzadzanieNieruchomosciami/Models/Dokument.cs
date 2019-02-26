@@ -10,7 +10,7 @@ namespace ZarzadzanieNieruchomosciami.Models
     {
         [Key]
         public int DokumentID { get; set; }
-        public int BudynekID { get; set; }
+        public int BlokMieszkalnyId { get; set; }
 
         public string Adres { get; set; }
         public string NazwaDokumentu { get; set; }
@@ -18,11 +18,12 @@ namespace ZarzadzanieNieruchomosciami.Models
         [StringLength(100)]
         public string TypDokumentu { get; set; } // zarzadzenie, informacja etc
         public string AutorDokumentu { get; set; } //Zarzad, firma zarzadzajaca, wspolnota, prywatny
-       // public DateTime DataDodania { get; set; }
-        // [StringLength(100)]
+                                                   // public DateTime DataDodania { get; set; }
+                                                   // [StringLength(100)]
         public string NazwaPlikuDokumentu { get; set; }
         public string OpisDokumentu { get; set; }
         public DateTime DataDokumentu { get; set; }
+        public bool Ukryty { get; set; }
 
         public virtual BlokMieszkalny BlokMieszkalny { get; set; }
 
