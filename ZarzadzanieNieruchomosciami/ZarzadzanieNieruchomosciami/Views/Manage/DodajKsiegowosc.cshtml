@@ -1,0 +1,84 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditKsiegowoscViewModel
+
+@{
+    ViewBag.Title = "DodajKsiegowosc";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<hr />
+<h2 class="manageHeader">Nota ksiegowa</h2>
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+    @using (@Html.BeginForm("DodajKsiegowosc", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.Ksiegowosc.KsiegowoscID)
+        @Html.HiddenFor(o => o.Ksiegowosc.DataDodania)
+        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
+
+        <div style="text-align: center;">
+            <table id="albumedit-address-table">
+                <tr>
+                    <td>@Html.LabelFor(o => o.Ksiegowosc.Nazwa, "Nazwa:")</td>
+                    <td>@Html.TextBoxFor(o => o.Ksiegowosc.Nazwa)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Ksiegowosc.Nazwa)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Ksiegowosc.OpisDokumentu, "Opis Dokumentu:")</td>
+                    <td> @Html.EnumDropDownListFor(o => o.Ksiegowosc.OpisDokumentu, new { @class = "OpisDokumentu" })</td>
+                   
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Ksiegowosc.Wartosc, "Wartosc:")</td>
+                    <td>@Html.TextBoxFor(o => o.Ksiegowosc.Wartosc)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Ksiegowosc.Wartosc)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.LokalMieszkalny, "LokalMieszkalny:")</td>
+                    <td>@Html.DropDownListFor(m => m.Ksiegowosc.LokalMieszkalnyID, new SelectList(Model.LokalMieszkalny, "LokalID", "NumerLokalu", "Adres", Model.LokalMieszkalny.First().LokalID))</td>
+                   
+                    <td></td>
+                </tr>
+
+               
+                <tr>
+
+                    @*<td style="text-align: left">
+                        @if (ViewBag.EditMode)
+                        {
+                            if (Model.Lokal.Ukryty)
+                            {
+                                <a href="@Url.Action("PokazLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                    Przywróć
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("UkryjLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                    Usuń
+                                </a>
+                            }
+                        }
+                    </td>*@
+
+
+                    <td style="text-align: right;">
+                        <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+

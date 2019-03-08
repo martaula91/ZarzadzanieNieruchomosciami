@@ -529,17 +529,123 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return RedirectToAction("DodajInformacje", new { potwierdzenie = true });
         }
 
+        /////////////////////////Dodaj Ksiegowosc
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajKsiegowosc(int? ksiegowoscId, bool? potwierdzenie)
+        {
+            Ksiegowosc ksiegowosc;
 
+            if (ksiegowoscId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                ksiegowosc = db.Ksiegowosc.Find(ksiegowoscId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                ksiegowosc = new Ksiegowosc();
+            }
 
+            var result = new EditKsiegowoscViewModel();
+            result.LokalMieszkalny = db.LokaleMieszkalne.ToList();
+            //result.DaneUsera = db.DaneUsera.ToList();
+            result.Ksiegowosc = ksiegowosc;
+            result.Potwierdzenie = potwierdzenie;
 
+            return View(result);
+        }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajKsiegowosc(EditKsiegowoscViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Ksiegowosc.KsiegowoscID > 0)
+            {
+                // modyfikacja 
+                db.Entry(model.Ksiegowosc).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DodajKsiegowosc", new { potwierdzenie = true });
+            }
+            else
+            {
+                // dodanie nowego
+                if (ModelState.IsValid)
+                {
+                    db.Entry(model.Ksiegowosc).State = EntityState.Added;
+                    db.SaveChanges();
 
+                    return RedirectToAction("DodajKsiegowosc", new { potwierdzenie = true });
+                }
+                else
+                {
+                    var lokal = db.LokaleMieszkalne.ToList();
+                    model.LokalMieszkalny = lokal;
+                    return View(model);
+                }
 
+            }
 
+        }
 
+        /////////////////////////Dodaj Glosowanie
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajGlosowanie(int? glosowanieId, bool? potwierdzenie)
+        {
+            Glosowanie glosowanie;
 
+            if (glosowanieId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                glosowanie = db.Glosowanie.Find(glosowanieId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                glosowanie = new Glosowanie();
+            }
+
+            var result = new EditGlosowanieViewModel();
+            result.BlokiMieszkalne = db.BlokiMieszkalne.ToList();
+            //result.DaneUsera = db.DaneUsera.ToList();
+            result.Glosowanie = glosowanie;
+            result.Potwierdzenie = potwierdzenie;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajGlosowanie(EditGlosowanieViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Glosowanie.GlosowanieId > 0)
+            {
+                // modyfikacja 
+                db.Entry(model.Glosowanie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DodajGlosowanie", new { potwierdzenie = true });
+            }
+            else
+            {
+                // dodanie nowego
+                if (ModelState.IsValid)
+                {
+                    db.Entry(model.Glosowanie).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    return RedirectToAction("DodajGlosowanie", new { potwierdzenie = true });
+                }
+                else
+                {
+                    var kategorie = db.BlokiMieszkalne.ToList();
+                    model.BlokiMieszkalne = kategorie;
+                    return View(model);
+                }
+
+            }
+
+        }
 
 
 

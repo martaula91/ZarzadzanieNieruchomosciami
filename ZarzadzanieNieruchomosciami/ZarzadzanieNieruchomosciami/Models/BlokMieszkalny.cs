@@ -24,6 +24,7 @@ namespace ZarzadzanieNieruchomosciami.Models
         public virtual ICollection<LokalMieszkalny> Lokal { get; set; }
         public virtual ICollection<Awaria> Awaria { get; set; }
         public virtual ICollection<Dokument> Dokument { get; set; }
+        public virtual ICollection<Glosowanie> Glosowanie { get; set; }
 
 
     }

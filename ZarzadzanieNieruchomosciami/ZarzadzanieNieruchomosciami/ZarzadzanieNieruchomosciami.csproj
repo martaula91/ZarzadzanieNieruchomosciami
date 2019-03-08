@@ -317,17 +317,23 @@
     <Compile Include="Migrations\201902260019058_test.Designer.cs">
       <DependentUpon>201902260019058_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902272330518_dodajGlosowaniePytania.cs" />
+    <Compile Include="Migrations\201902272330518_dodajGlosowaniePytania.Designer.cs">
+      <DependentUpon>201902272330518_dodajGlosowaniePytania.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUser.cs" />
     <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Glosowanie.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Dzial.cs" />
     <Compile Include="Models\Informacja.cs" />
     <Compile Include="Models\Ksiegowosc.cs" />
     <Compile Include="Models\LokalMieszkalny.cs" />
     <Compile Include="Models\PozycjaWlasnosci.cs" />
+    <Compile Include="Models\Pytanie.cs" />
     <Compile Include="Models\Rozliczenie.cs" />
     <Compile Include="Models\StanLicznikow.cs" />
     <Compile Include="Models\Stawka.cs" />
@@ -338,7 +344,9 @@
     <Compile Include="ViewModels\EditAwariaViewModel.cs" />
     <Compile Include="ViewModels\EditBudynekViewModel.cs" />
     <Compile Include="ViewModels\EditDokumentViewModel.cs" />
+    <Compile Include="ViewModels\EditGlosowanieViewModel.cs" />
     <Compile Include="ViewModels\EditInformacjaViewModel.cs" />
+    <Compile Include="ViewModels\EditKsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
@@ -404,6 +412,12 @@
     <Content Include="Views\Zarzadzanie\LokalOsoba.cshtml" />
     <Content Include="Views\Zarzadzanie\OdczytLicznikow.cshtml" />
     <Content Include="Views\Zarzadzanie\Telefony.cshtml" />
+    <Content Include="Views\Zarzadzanie\Ksiegowosc.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyKsiegowosci.cshtml" />
+    <Content Include="Views\Manage\DodajKsiegowosc.cshtml" />
+    <Content Include="Views\Zarzadzanie\Glosowanie.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyGlosowania.cshtml" />
+    <Content Include="Views\Manage\DodajGlosowanie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -456,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902260019058_test.resx">
       <DependentUpon>201902260019058_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902272330518_dodajGlosowaniePytania.resx">
+      <DependentUpon>201902272330518_dodajGlosowaniePytania.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

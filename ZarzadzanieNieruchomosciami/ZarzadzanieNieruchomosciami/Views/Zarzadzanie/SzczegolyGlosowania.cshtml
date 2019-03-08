@@ -1,0 +1,56 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.Glosowanie
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyGlosowania";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>NumerUchwaly:</td>
+        <td>Nazwa:</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.NumerUchwaly</td>
+        <td>@Model.Nazwa</td>
+
+     </tr>
+
+</table>
+
+
+<table id="lokale">
+    <tr class="header">PYTANIA</tr>
+    @foreach (var pytanie in Model.Pytanie)
+            {
+        <tr class="local">
+            <td>@pytanie.TrescPytania</td>
+            @*<td>@Model.Pytanie.TrescPytania</td>*@
+            @*<td>@Model.Odpowiedz</td>*@
+            
+
+        </tr>
+    }
+</table>
+
+
+
+
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Ksiegowosc>
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "Ksiegowosc";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+
+
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>Nazwa:</td>
+        <td>OpisDokumentu:</td>
+        <td>DataDodania:</td>
+        <td>Szczegóły:</td>
+
+    </tr>
+@foreach (var wplata in Model)
+            {
+        <tr class="local">
+            <td>@wplata.Nazwa</td>
+            <td>@wplata.OpisDokumentu</td>
+            <td>@wplata.DataDodania</td>
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyKsiegowosci", "Zarzadzanie", new { id = wplata.KsiegowoscID })"> >>kliknij<< </a></td>
+
+
+        </tr>
+    }
+</table>
+
+
+
+
+
+
+
+
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajKsiegowosc", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
+}

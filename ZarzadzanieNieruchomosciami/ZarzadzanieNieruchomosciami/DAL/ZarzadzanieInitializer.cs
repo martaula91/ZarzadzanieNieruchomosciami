@@ -155,6 +155,39 @@ namespace ZarzadzanieNieruchomosciami.DAL
             context.SaveChanges();
 
 
+            var ksiegowosc = new List<Ksiegowosc>
+            {
+           new Ksiegowosc { KsiegowoscID = 1,  LokalMieszkalnyID=1, Nazwa= "Styczen-2019", OpisDokumentu=OpisDokumentu.Naliczenie, DataDodania= new DateTime(2019, 1, 11, 7, 0, 0), Wartosc = 125.25 },
+           new Ksiegowosc { KsiegowoscID = 2,  LokalMieszkalnyID=1, Nazwa= "Styczen-2019", OpisDokumentu=OpisDokumentu.Wplata, DataDodania= new DateTime(2019, 1, 11, 7, 0, 0), Wartosc = 125.25 },
+           new Ksiegowosc { KsiegowoscID = 3,  LokalMieszkalnyID=2, Nazwa= "Styczen-2019", OpisDokumentu=OpisDokumentu.Naliczenie, DataDodania= new DateTime(2019, 1, 11, 7, 0, 0), Wartosc = 125.25 },
+           new Ksiegowosc { KsiegowoscID = 4,  LokalMieszkalnyID=2, Nazwa= "Styczen-2019", OpisDokumentu=OpisDokumentu.Naliczenie, DataDodania= new DateTime(2019, 1, 11, 7, 0, 0), Wartosc = 125.25 },
+            };
+
+            ksiegowosc.ForEach(k => context.Ksiegowosc.AddOrUpdate(k));
+            context.SaveChanges();
+
+
+            var glosowanie = new List<Glosowanie>
+            {
+          new Glosowanie { GlosowanieId=1, BlokMieszkalnyId = 1, NumerUchwaly="XYZ1", Nazwa= "spotkanie wspolnoty styczen-2019"},
+          new Glosowanie { GlosowanieId=2, BlokMieszkalnyId = 1, NumerUchwaly="XXX1", Nazwa= "spotkanie wspolnoty luty-2019"},
+          new Glosowanie { GlosowanieId=3, BlokMieszkalnyId = 1, NumerUchwaly="XZZ1", Nazwa= "spotkanie wspolnoty marzec-2019"},
+            };
+
+            glosowanie.ForEach(k => context.Glosowanie.AddOrUpdate(k));
+            context.SaveChanges();
+            
+            var pytanie = new List<Pytanie>
+            {
+           new Pytanie { PytanieId = 1,  GlosowanieId=1, TrescPytania= "Czy ma być remontowany plac zabaw?" }, // Odpowiedz=Odpowiedz.Tak
+           new Pytanie { PytanieId = 2,  GlosowanieId=1, TrescPytania= "Wymiana stolarki okiennej?" },
+           new Pytanie { PytanieId = 3,  GlosowanieId=1, TrescPytania= "Czy kredyt na termomodernizacje?" },
+            };
+
+            pytanie.ForEach(k => context.Pytanie.AddOrUpdate(k));
+            context.SaveChanges();
+
+
             var pozycjeWlasnosci = new List<PozycjaWlasnosci>
             {
              new PozycjaWlasnosci {PozycjaWlasnosciId = 1, WlasnoscID= 1, LokalId= 1, LiczbaWlascicieli= 1, Komentarz = "Lokal wlasnosciowy, ubezpieczony"},

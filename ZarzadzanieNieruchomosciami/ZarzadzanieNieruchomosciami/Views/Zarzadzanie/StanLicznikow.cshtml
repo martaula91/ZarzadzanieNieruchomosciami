@@ -15,26 +15,34 @@
 
 
 
-<div id="SekcjaListaKategori">
+<br><br><br><br>
+<table id="lokale">
+    <tr class="header">
+        <td> </td>
+        <td>Data:</td>
+        <td>Szczegóły:</td>
 
-    <ul class="KursyTrzyKolumny MalaListaKategorii">
-        @foreach (var licznik in Model)
+    </tr>
+   @foreach (var licznik in Model)
             {
-            <li>
-                <article>
+        <tr class="local">
+            <td>Stan na dzień: </td>
+            <td>@licznik.StanNaDzien</td>
+          @*  <td>@licznik.LokalMieszkalnyID</td>*@
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowID })"> >>kliknij<< </a></td>
 
 
-                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowID})">
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
-                        <h1>
-                            @licznik.StanLicznikowID
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        }
-    </ul>
-</div>
+        </tr>
+    }
+</table>
+
+
+
+
+
+
+
+
 
 
 

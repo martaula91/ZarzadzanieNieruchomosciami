@@ -13,30 +13,35 @@
     </a>
 </div>
 
+<table id="lokale">
+    <tr class="header">
+        <td>NazwaDokumentu:</td>
+        <td>Adres budynku:</td>
+        <td>Typ Dokumentu:</td>
+        <td>Autor Dokumentu:</td>
+        <td>Opis Dokumentu:</td>
+        <td>Szczegóły:</td>
 
-
-<div id="SekcjaListaKategori">
-
-    <ul class="KursyTrzyKolumny MalaListaKategorii">
-        @foreach (var dokument in Model)
+    </tr>
+@foreach (var dokument in Model)
             {
-            <li>
-                <article>
+    <tr class="local">
+        <td>@dokument.NazwaDokumentu</td>
+        <td>@dokument.Adres</td>
+        <td>@dokument.TypDokumentu</td>
+        <td>@dokument.AutorDokumentu</td>
+        <td>@dokument.OpisDokumentu</td>
+        <@*td><span><a href="@Url.DokWlasneSciezka(dokument.NazwaPlikuDokumentu)">do pobrania</a></span></td>*@
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyDokumentu", "Zarzadzanie", new { id = dokument.DokumentID })"> >>kliknij<< </a></td>
 
 
-                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyDokumentu", "Zarzadzanie", new { id = dokument.DokumentID })">
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
-                        <h1>
-                            @dokument.NazwaDokumentu - @dokument.Adres
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        }
-    </ul>
-</div>
-
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <a href="@Url.Action("DodajDokument", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Dokument</a>
+    </tr>
 }
+</table>
+
+
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a href="@Url.Action("DodajDokument", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Dokument</a>
+    }

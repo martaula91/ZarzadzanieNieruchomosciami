@@ -1,0 +1,37 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.Ksiegowosc
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyKsiegowosci";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>Data dodania:</td>
+        <td>Nazwa:</td>
+        <td>Opis dokumentu:</td>
+        <td>Wartosc:</td>
+      
+
+    </tr>
+
+    <tr class="local">
+        <td>@Model.DataDodania</td>
+        <td>@Model.Nazwa</td>
+        <td>@Model.OpisDokumentu</td>
+        <td>@Model.Wartosc</td>
+        
+
+
+    </tr>
+
+</table>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajKsiegowosc", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}

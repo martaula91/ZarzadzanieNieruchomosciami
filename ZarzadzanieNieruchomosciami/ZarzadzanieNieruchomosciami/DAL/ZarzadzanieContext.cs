@@ -39,6 +39,8 @@ namespace ZarzadzanieNieruchomosciami.DAL
         public virtual DbSet<Stawka> Stawka { get; set; }
         public virtual DbSet<Rozliczenie> Rozliczenia { get; set; }
         public virtual DbSet<Informacja> Informacje { get; set; }
+        public virtual DbSet<Glosowanie> Glosowanie { get; set; }
+        public virtual DbSet<Pytanie> Pytanie { get; set; }
 
         public DbSet<PozycjaWlasnosci> PozycjeWlasnosci { get; set; }
         public DbSet<Awaria> Awaria { get; set; }

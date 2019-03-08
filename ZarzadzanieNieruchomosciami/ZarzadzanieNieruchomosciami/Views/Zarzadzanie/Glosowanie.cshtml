@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Glosowanie>
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "GlosowaniaWszystkie";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+<table id="lokale">
+    <tr class="header">
+        <td>NumerUchwaly:</td>
+        <td>Nazwa:</td>
+        <td>Szczegóły:</td>
+        <td>Zagłosuj</td>
+        <td>Wyniki</td>
+
+    </tr>
+@foreach (var glosowanie in Model)
+            {
+        <tr class="local">
+            <td>@glosowanie.NumerUchwaly</td>
+            <td>@glosowanie.Nazwa</td>
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyGlosowania", "Zarzadzanie", new { id = glosowanie.GlosowanieId })"> >>kliknij<< </a></td>
+            <td>Zagłosuj</td>
+            <td>Wyniki</td>
+
+        </tr>
+    }
+</table>
+
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajGlosowanie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
+}

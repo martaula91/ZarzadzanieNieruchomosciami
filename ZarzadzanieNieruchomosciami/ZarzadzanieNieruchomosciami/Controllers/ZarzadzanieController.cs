@@ -114,6 +114,37 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
 
+        // SZCZEGOLY KSIEGOWOSCI
+        public ActionResult SzczegolyKsiegowosci(int id)
+        {
+            var wplyw = db.Ksiegowosc.Find(id);
+            var name = User.Identity.Name;
+            
+            //var vm = new LokalViewModels()
+            //{
+            //    Lokal = lokal,
+            //    BlokiMieszkalne = db.BlokiMieszkalne.ToList(),
+            //};
+
+            return View(wplyw); //vm
+        }
+
+        // SZCZEGOLY glosowania
+        public ActionResult SzczegolyGlosowania(int id)
+        {
+            var glos = db.Glosowanie.Find(id);
+            var name = User.Identity.Name;
+
+            //var vm = new LokalViewModels()
+            //{
+            //    Lokal = lokal,
+            //    BlokiMieszkalne = db.BlokiMieszkalne.ToList(),
+            //};
+
+            return View(glos);
+        }
+
+
 
         /// <summary>
         /// LISTA ZGLOSZEN
@@ -376,7 +407,19 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             {
                 return View(nazwa);
             }
+            if (nazwa == "Ksiegowosc")
+            {
+                var wplaty = db.Ksiegowosc.ToList();
+                return View(nazwa, wplaty);
+            }
+            if (nazwa == "Glosowanie")
+            {
 
+                var glos = db.Glosowanie.ToList();
+                return View(nazwa, glos);
+
+            }
+            
 
             return View(nazwa);
 

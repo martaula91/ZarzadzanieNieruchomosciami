@@ -14,28 +14,24 @@
 </div>
 
 
+<table id="lokale">
+    <tr class="header">
+        <td>Nazwa:</td>
+        <td>Data:</td>
+        <td>Kwota:</td>
+        <td>Szczegóły:</td>
 
-<div id="SekcjaListaKategori">
-
-    <ul class="KursyTrzyKolumny MalaListaKategorii">
-        @foreach (var rozlicz in Model)
+    </tr>
+@foreach (var rozlicz in Model)
             {
-            <li>
-                <article>
+        <tr class="local">
+            <td>@rozlicz.Nazwa</td>
+            <td>@rozlicz.StanNaDzien</td>
+            <td>@rozlicz.OgolemDoZaplaty</td>
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyRozliczen", "Zarzadzanie", new { id = rozlicz.RozliczenieId })"> >>kliknij<< </a></td>
 
 
-                    <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyRozliczen", "Zarzadzanie", new { id = rozlicz.RozliczenieId})">
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
-                        <h1>
-                            @rozlicz.RozliczenieId
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        }
-    </ul>
-</div>
-
-
-
+        </tr>
+    }
+</table>
 
