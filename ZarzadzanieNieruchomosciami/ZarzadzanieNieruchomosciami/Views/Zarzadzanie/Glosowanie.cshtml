@@ -13,30 +13,63 @@
     </a>
 </div>
 
-<table id="lokale">
-    <tr class="header">
-        <td>NumerUchwaly:</td>
-        <td>Nazwa:</td>
-        <td>Szczegóły:</td>
-        <td>Zagłosuj</td>
-        <td>Wyniki</td>
+<br />
+<div class="header-news" align="center">
+    <h1><span class="yellow" >Głosowania</span> - Uchwały</h1>
+</div><br /><br />
 
-    </tr>
-@foreach (var glosowanie in Model)
-            {
-        <tr class="local">
-            <td>@glosowanie.NumerUchwaly</td>
-            <td>@glosowanie.Nazwa</td>
-         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyGlosowania", "Zarzadzanie", new { id = glosowanie.GlosowanieId })"> >>kliknij<< </a></td>
+<div class="content single">
+    <div class="contact-header-box">
+        <p>
+            Zapraszamy do skorzystana z systemu głosowania nad uchwałami dla klientow firmy MART Nieruchomości <br /><br />
+        </p>
+        <p>Skorzystaj z poniższego formularza lub pobierz i wypełnij formularz ze strony  <b> <a href="https://www.forum.wroc.pl/dokumenty">Dokumenty</a> </b> i przekaż nam je <br />
+        osobiście, pocztą lub w formie skanu pocztą elektroniczną.</p><br /><br />
+        <p>
+            <b>UWAGA:</b> Z systemu skorzystać mogą tylko ci, którzy przedłożyli wczesniej oświadczenie dot. danych <br />
+            osobowych - kontaktowych. Wzór oświadczenia dostępny jest pod adresem: <b><a href="https://www.forum.wroc.pl/dokumenty">Pobierz wzór oświadczenia.</a> </b>   <br /><br /><br />
+        </p>
+        
+    </div>
+</div>
+
+    <table id="lokale">
+        <tr class="header">
+            <td>NumerUchwaly:</td>
+            <td>Nazwa:</td>
+            <td>Szczegóły:</td>
             <td>Zagłosuj</td>
             <td>Wyniki</td>
 
         </tr>
+        @foreach (var glosowanie in Model)
+            {
+            <tr class="local">
+                <td>@glosowanie.NumerUchwaly</td>
+                <td>@glosowanie.Nazwa</td>
+                <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyGlosowania", "Zarzadzanie", new { id = glosowanie.GlosowanieId })"> >>kliknij<< </a></td>
+                
+                <td><a href="@Url.Action("OddajGlos", "Zarzadzanie")" style="margin-top: 20px; font-weight: bold; display: block;">Zaglosuj</a></td>
+                @*<td>Zagłosuj</td>*@
+                <td>Wyniki</td>
+
+            </tr>
+        }
+    </table>
+<br /><br />
+<h4>Oświadczam/-my/, że:</h4>
+<p>
+    <span class="wpcf7-form-control-wrap zgoda1"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="zgoda1" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span> w/w decyzję składam/-my zgodnie z posiadanym prawem do udziału w głosowaniu;</span></label></span></span></span><br /><br />
+    <span class="wpcf7-form-control-wrap zgoda2"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="zgoda2" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span> wyrażam/-y/ zgodę za uznanie mojego/naszych głosu/ów, przekazanego przez arkusz w formie <br /> elektronicznej za równoznacznego z oświadczeniem złożonym pisemnie.</span></label></span></span></span>
+</p>
+<div class="submit-button">
+    <p><input type="submit" value="Wyślij" class="wpcf7-form-control wpcf7-submit" /></p>
+</div>
+
+
+
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a href="@Url.Action("DodajGlosowanie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
     }
-</table>
-
-
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <a href="@Url.Action("DodajGlosowanie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
-}

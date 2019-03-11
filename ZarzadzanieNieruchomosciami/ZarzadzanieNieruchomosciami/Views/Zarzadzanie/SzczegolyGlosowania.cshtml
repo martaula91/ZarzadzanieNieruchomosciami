@@ -26,31 +26,57 @@
 
      </tr>
 
-</table>
+</table><br /><br /><br />
 
 
-<table id="lokale">
-    <tr class="header">PYTANIA</tr>
-    @foreach (var pytanie in Model.Pytanie)
+<div class="content single">
+    <p>
+        PYTANIA
+    </p>
+    <p>
+        @if (@Model.Pytanie1 != null)
             {
-        <tr class="local">
-            <td>@pytanie.TrescPytania</td>
-            @*<td>@Model.Pytanie.TrescPytania</td>*@
-            @*<td>@Model.Odpowiedz</td>*@
-            
+            @Model.Pytanie1} <br />
+        @if (@Model.Pytanie2 != null)
+            {
+            @Model.Pytanie2}<br />
+        @if (@Model.Pytanie3 != null)
+            {
+            @Model.Pytanie3}<br />
+        @if (@Model.Pytanie4 != null)
+            {
+            @Model.Pytanie4}<br />
+        @if (@Model.Pytanie5 != null)
+            {
+            @Model.Pytanie5}<br />
 
-        </tr>
+    </p>
+</div><br />
+
+
+    @*              ZMIANA TWORZENIA PYTAN
+
+        <table id="lokale">
+        <tr class="header">PYTANIA</tr>
+        @foreach (var pytanie in Model.Pytanie)
+            {
+            <tr class="local">
+                <td>@pytanie.TrescPytania</td>
+
+
+
+            </tr>
+        }
+    </table>*@
+
+
+
+
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+            Edytuj
+        </a>
     }
-</table>
-
-
-
-
-
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
-        Edytuj
-    </a>
-}
 

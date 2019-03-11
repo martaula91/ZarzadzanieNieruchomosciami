@@ -169,14 +169,25 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var glosowanie = new List<Glosowanie>
             {
-          new Glosowanie { GlosowanieId=1, BlokMieszkalnyId = 1, NumerUchwaly="XYZ1", Nazwa= "spotkanie wspolnoty styczen-2019"},
-          new Glosowanie { GlosowanieId=2, BlokMieszkalnyId = 1, NumerUchwaly="XXX1", Nazwa= "spotkanie wspolnoty luty-2019"},
-          new Glosowanie { GlosowanieId=3, BlokMieszkalnyId = 1, NumerUchwaly="XZZ1", Nazwa= "spotkanie wspolnoty marzec-2019"},
+          new Glosowanie { GlosowanieId=1, BlokMieszkalnyId = 1, NumerUchwaly="XYZ1", Nazwa= "spotkanie wspolnoty styczen-2019", DataUtworzeniaGlosowania = new DateTime(2019, 1, 11, 7, 0, 0), DataKoncaGlosowania = new DateTime(2019, 3, 11, 7, 0, 0), Pytanie1 = "Czy ma być remontowany plac zabaw?", Pytanie2="Wymiana stolarki okiennej?", Pytanie3="Czy kredyt na termomodernizacje?" },
+          new Glosowanie { GlosowanieId=2, BlokMieszkalnyId = 1, NumerUchwaly="XXX1", Nazwa= "spotkanie wspolnoty luty-2019", DataUtworzeniaGlosowania = new DateTime(2019, 1, 11, 7, 0, 0), DataKoncaGlosowania = new DateTime(2019, 3, 11, 7, 0, 0)},
+          new Glosowanie { GlosowanieId=3, BlokMieszkalnyId = 1, NumerUchwaly="XZZ1", Nazwa= "spotkanie wspolnoty marzec-2019", DataUtworzeniaGlosowania = new DateTime(2019, 1, 11, 7, 0, 0), DataKoncaGlosowania = new DateTime(2019, 3, 11, 7, 0, 0)},
             };
 
             glosowanie.ForEach(k => context.Glosowanie.AddOrUpdate(k));
             context.SaveChanges();
-            
+
+
+            var glos = new List<Glos>
+            {
+           new Glos { GlosId = 1,  GlosowanieId=1, DataOddaniaGlosu= new DateTime(2019, 1, 11, 7, 0, 0) , Odpowiedz1=Odpowiedz.Tak, Odpowiedz2=Odpowiedz.Tak, Odpowiedz3=Odpowiedz.Nie },
+           new Glos { GlosId = 2,  GlosowanieId=1, DataOddaniaGlosu= new DateTime(2019, 1, 11, 7, 0, 0) , Odpowiedz1=Odpowiedz.Tak, Odpowiedz2=Odpowiedz.Tak, Odpowiedz3=Odpowiedz.Nie },
+            };
+
+            glos.ForEach(k => context.Glos.AddOrUpdate(k));
+            context.SaveChanges();
+
+
             var pytanie = new List<Pytanie>
             {
            new Pytanie { PytanieId = 1,  GlosowanieId=1, TrescPytania= "Czy ma być remontowany plac zabaw?" }, // Odpowiedz=Odpowiedz.Tak

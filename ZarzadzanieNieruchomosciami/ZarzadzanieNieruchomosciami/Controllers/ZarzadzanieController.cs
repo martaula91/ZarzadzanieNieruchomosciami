@@ -234,6 +234,65 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
+
+        ///////////////////////// ODDAJ GLOS
+
+
+        public ActionResult OddajGlos(int? glosId, bool? potwierdzenie)
+        {
+            Glos glos;
+
+            if (glosId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                glos = db.Glos.Find(glosId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                glos = new Glos();
+            }
+
+            var result = new OddajGlosViewModel();
+           // result.Glosowanie = glosowanie;
+            result.Glos = glos;
+            result.Potwierdzenie = potwierdzenie;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult OddajGlos(OddajGlosViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Glos.GlosId > 0)
+            {
+                // modyfikacja awari
+                db.Entry(model.Glos).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("OddajGlos", new { potwierdzenie = true });
+            }
+            else
+            {
+                // dodanie nowego
+                if (ModelState.IsValid)
+                {
+                    model.Glos.DataOddaniaGlosu = DateTime.Now;
+                    db.Entry(model.Glos).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    return RedirectToAction("OddajGlos", new { potwierdzenie = true });
+                }
+                else
+                {
+                    //var kategorie = db.Glos.ToList();
+                    //model.Glos = kategorie;
+                    return View(model);
+                    
+                }
+            }
+
+        }
+
         ///////////////////////// DODAJ ODCZYT LICZNIKOW
 
 
@@ -319,6 +378,9 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////////
 
+   
+            
+            /// ZMIANA STANU AWARII
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public Status ZmianaStanuAwari(Awaria awaria)

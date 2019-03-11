@@ -15,13 +15,13 @@ namespace ZarzadzanieNieruchomosciami.Models
 
         public string TrescPytania { get; set; }
         //public string Odpowiedz { get; set; }
-        public Odpowiedz Odpowiedz { get; set; }
+        public Odp Odpowiedz { get; set; }
 
         public virtual Glosowanie Glosowanie { get; set; }
 
 
     }
-    public enum Odpowiedz
+    public enum Odp
     {
         Tak,
         Nie,

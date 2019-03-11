@@ -41,6 +41,7 @@ namespace ZarzadzanieNieruchomosciami.DAL
         public virtual DbSet<Informacja> Informacje { get; set; }
         public virtual DbSet<Glosowanie> Glosowanie { get; set; }
         public virtual DbSet<Pytanie> Pytanie { get; set; }
+        public virtual DbSet<Glos> Glos { get; set; }
 
         public DbSet<PozycjaWlasnosci> PozycjeWlasnosci { get; set; }
         public DbSet<Awaria> Awaria { get; set; }

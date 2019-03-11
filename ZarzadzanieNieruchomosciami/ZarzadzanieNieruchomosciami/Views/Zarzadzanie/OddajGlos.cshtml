@@ -1,0 +1,97 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.OddajGlosViewModel
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "OddajGlos";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>NumerUchwaly:</td>
+        <td>Nazwa:</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.Glos.Glosowanie.NumerUchwaly</td>
+        <td>@Model.Glos.Glosowanie.Nazwa</td>
+
+    </tr>
+
+</table><br /><br /><br />
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>Pytanie:</td>
+        <td>Głos:</td>
+        <td></td>
+    </tr>
+    @if (@Model.Glos.Glosowanie.Pytanie1 != null)
+            {
+        <tr class="local">
+            <td>@Model.Glos.Glosowanie.Pytanie1</td>
+
+
+            <td>@Html.LabelFor(o => o.Glos.Odpowiedz1, "Odpowiedz:")</td>
+            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz1, new { @class = "Odpowiedz" })</td>
+
+        </tr>
+            }
+    @if (@Model.Glos.Glosowanie.Pytanie2 != null)
+            {
+        <tr class="local">
+            <td>@Model.Glos.Glosowanie.Pytanie2</td>
+             <td>@Html.LabelFor(o => o.Glos.Odpowiedz2, "Odpowiedz:")</td>
+            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz2, new { @class = "Odpowiedz" })</td>
+
+        </tr>
+    }
+    @if (@Model.Glos.Glosowanie.Pytanie3 != null)
+            {
+        <tr class="local">
+            <td>@Model.Glos.Glosowanie.Pytanie3</td>
+
+
+            <td>@Html.LabelFor(o => o.Glos.Odpowiedz3, "Odpowiedz:")</td>
+            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz3, new { @class = "Odpowiedz" })</td>
+
+        </tr>
+    }
+    @if (@Model.Glos.Glosowanie.Pytanie4 != null)
+            {
+        <tr class="local">
+            <td>@Model.Glos.Glosowanie.Pytanie4</td>
+
+
+            <td>@Html.LabelFor(o => o.Glos.Odpowiedz4, "Odpowiedz:")</td>
+            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz4, new { @class = "Odpowiedz" })</td>
+
+        </tr>
+    }
+
+    
+
+</table><br /><br /><br />
+
+
+<input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+
+
+
+
+@*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}*@
+

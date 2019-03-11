@@ -321,11 +321,16 @@
     <Compile Include="Migrations\201902272330518_dodajGlosowaniePytania.Designer.cs">
       <DependentUpon>201902272330518_dodajGlosowaniePytania.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903102259108_utworzenieModeluGlosu.cs" />
+    <Compile Include="Migrations\201903102259108_utworzenieModeluGlosu.Designer.cs">
+      <DependentUpon>201903102259108_utworzenieModeluGlosu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUser.cs" />
     <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Glos.cs" />
     <Compile Include="Models\Glosowanie.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Dzial.cs" />
@@ -351,6 +356,7 @@
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\OddajGlosViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="ViewModels\WypisanieLokaliZBlokuViewModel.cs" />
   </ItemGroup>
@@ -418,6 +424,7 @@
     <Content Include="Views\Zarzadzanie\Glosowanie.cshtml" />
     <Content Include="Views\Zarzadzanie\SzczegolyGlosowania.cshtml" />
     <Content Include="Views\Manage\DodajGlosowanie.cshtml" />
+    <Content Include="Views\Zarzadzanie\OddajGlos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -473,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902272330518_dodajGlosowaniePytania.resx">
       <DependentUpon>201902272330518_dodajGlosowaniePytania.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903102259108_utworzenieModeluGlosu.resx">
+      <DependentUpon>201903102259108_utworzenieModeluGlosu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
