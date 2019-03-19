@@ -10,7 +10,7 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
     {
         //public Glosowanie Glosowanie { get; set; }
         public Glos Glos { get; set; }
-        //public IEnumerable<BlokMieszkalny> BlokiMieszkalne { get; set; }
+        public IEnumerable<Glosowanie> Glosowanie { get; set; }
         public bool? Potwierdzenie { get; set; }
     }
 }

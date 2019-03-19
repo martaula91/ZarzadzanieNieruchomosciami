@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Statystyka";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+<br /><br /><br />
+<table id="lokale">
+    <tr class="header">
+        <td>Ogólna liczba zgłoszeń:</td>
+        <td>Awarie nowe:</td>
+        <td>W trakcie usuwania:</td>
+        <td>Awarie usunięte:</td>
+        <td>Awarie odrzucone:</td>
+        <td>Opinie: </td>
+
+    </tr>
+
+    <tr class="local">
+        <td>100</td>
+        <td>20</td>
+        <td>30</td>
+        <td>25</td>
+        <td>15</td>
+        <td>10</td>
+
+    </tr>
+
+</table>
+
+<br /><br /><br />
+<table id="lokale">
+    <tr class="header">
+        <td> </td>
+        <td>Awarie mediow:</td>
+        <td>Uszkodzenia w czesci wspólnej:</td>
+        <td>Otoczenie budynku:</td>
+        <td>Inne:</td>
+        <td>Opinie: </td>
+
+    </tr>
+
+    <tr class="local">
+        <td>BUDYNEK 1 Adres</td>
+        <td>6</td>
+        <td>2</td>
+        <td>1</td>
+        <td>0</td>
+        <td>4</td>
+
+    </tr>
+
+    <tr class="local">
+        <td>BUDYNEK 2 Adres</td>
+        <td>2</td>
+        <td>3</td>
+        <td>0</td>
+        <td>2</td>
+        <td>0</td>
+
+    </tr>
+
+</table>

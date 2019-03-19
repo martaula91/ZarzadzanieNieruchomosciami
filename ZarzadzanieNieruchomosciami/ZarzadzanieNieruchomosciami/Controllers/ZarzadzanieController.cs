@@ -146,11 +146,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
 
 
-        /// <summary>
-        /// LISTA ZGLOSZEN
-        /// </summary>
-        /// <returns></returns>
-// LISTA ZGLOSZEN
+
+        // LISTA ZGLOSZEN
         public ActionResult ListaZgloszen()
         {
             var name = User.Identity.Name;
@@ -254,7 +251,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             }
 
             var result = new OddajGlosViewModel();
-           // result.Glosowanie = glosowanie;
+            result.Glosowanie = db.Glosowanie.ToList();
             result.Glos = glos;
             result.Potwierdzenie = potwierdzenie;
 
@@ -481,13 +478,29 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 return View(nazwa, glos);
 
             }
-            
+
+            if (nazwa == "Statystyka")
+            {
+                return View(nazwa);
+            }
+
+            if (nazwa == "Windykacja")
+            {
+                return View(nazwa);
+            }
 
             return View(nazwa);
 
         }
 
 
+        /////////////////////////////
+        public ActionResult BudynkiPodpowiedzi(string term)
+        {
+            var budynek = db.BlokiMieszkalne.Where(a => !a.Ukryty && a.Adres.ToLower().Contains(term.ToLower()))
+                        .Take(5).Select(a => new { label = a.Adres });
 
+            return Json(budynek, JsonRequestBehavior.AllowGet);
+        }
     }
 }

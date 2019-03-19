@@ -27,6 +27,8 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int Pietro { get; set; }
         public bool Ukryty { get; set; }
 
+        public double Saldo { get; set; }
+
         //DO ROZLICZEN
         public int LiczbaLokatorow { get; set; }
         public double LiczbaWodyZimnej { get; set; }

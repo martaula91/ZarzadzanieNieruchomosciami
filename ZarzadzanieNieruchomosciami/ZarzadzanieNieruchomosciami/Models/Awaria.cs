@@ -38,13 +38,10 @@ namespace ZarzadzanieNieruchomosciami.Models
 
     public enum Typ
     {
-        awarie_elekryczne,
-        awarie_wod_kan_gaz,
-        awarie_ogrzewania_co,
-        uszkodzenia_elewacji_dachu,
-        uszkodzenia_drzwi_demofonu,
-        inne_awarie_uszkodzenia,
+        awarie_mediow,
+        uszkodzenia_budynku,
+        otoczenie_budynku,
+        inne,
         uwagi_opinie
-
     }
 }
