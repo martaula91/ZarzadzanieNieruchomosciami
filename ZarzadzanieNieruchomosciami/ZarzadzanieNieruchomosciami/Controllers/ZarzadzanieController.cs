@@ -415,10 +415,23 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             if (nazwa == "Lokal")
             {
+                var lokal = new List<LokalMieszkalny>();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        lokal = (from u in db.Users
+                                 join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                 where u.UserName == User.Identity.Name
+                                 select l).ToList();
+                    }
+                    else
+                    {
+                        lokal = db.LokaleMieszkalne.ToList();
+                    }
+                }
 
-                var lokal = db.LokaleMieszkalne.ToList();
                 return View(nazwa, lokal);
-
             }
 
             if (nazwa == "Budynek")
@@ -431,7 +444,24 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             if (nazwa == "Dokumenty")
             {
-                var dok = db.Dokumenty.ToList();
+                var dok = new List<Dokument>();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        dok = (from u in db.Users
+                               join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                               join b in db.BlokiMieszkalne on l.BlokMieszkalnyID equals b.BlokMieszkalnyId
+                               join d in db.Dokumenty on b.BlokMieszkalnyId equals d.BlokMieszkalnyId
+                               where u.UserName == User.Identity.Name
+                               select d).ToList();
+                    }
+                    else
+                    {
+                        dok = db.Dokumenty.ToList();
+                    }
+                }
+
                 return View(nazwa, dok);
             }
             if (nazwa == "Biblioteka")
@@ -442,7 +472,23 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             if (nazwa == "Rozliczenia")
             {
-                var roz = db.Rozliczenia.ToList();
+                var roz = new List<Rozliczenie>();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        roz = (from u in db.Users
+                               join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                               join r in db.Rozliczenia on l.LokalID equals r.LokalID
+                               where u.UserName == User.Identity.Name
+                               select r).ToList();
+                    }
+                    else
+                    {
+                        roz = db.Rozliczenia.ToList();
+                    }
+                }
+
                 return View(nazwa, roz);
             }
             if (nazwa == "StanLicznikow")
@@ -473,10 +519,25 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             }
             if (nazwa == "Glosowanie")
             {
+                var glos = new List<Glosowanie>();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        glos = (from u in db.Users
+                                join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                join b in db.BlokiMieszkalne on l.BlokMieszkalnyID equals b.BlokMieszkalnyId
+                                join g in db.Glosowanie on b.BlokMieszkalnyId equals g.BlokMieszkalnyId
+                                where u.UserName == User.Identity.Name
+                                select g).ToList();
+                    }
+                    else
+                    {
+                        glos = db.Glosowanie.ToList();
+                    }
+                }
 
-                var glos = db.Glosowanie.ToList();
                 return View(nazwa, glos);
-
             }
 
             if (nazwa == "Statystyka")
