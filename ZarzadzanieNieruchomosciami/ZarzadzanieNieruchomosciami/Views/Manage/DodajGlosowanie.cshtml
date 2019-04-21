@@ -48,68 +48,11 @@
                 </tr>
 
                 <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie1, "Pytanie1:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie1)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie1)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie2, "Pytanie2:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie2)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie2)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie3, "Pytanie3:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie3)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie3)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie4, "Pytanie4:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie4)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie4)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie5, "Pytanie5:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie5)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie5)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie6, "Pytanie6:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie6)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie6)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie7, "Pytanie7:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie7)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie7)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie8, "Pytanie8:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie8)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie8)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie9, "Pytanie9:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie9)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie9)</td>
-                </tr>
-
-                <tr>
-                    <td>@Html.LabelFor(o => o.Glosowanie.Pytanie10, "Pytanie10:")</td>
-                    <td>@Html.TextBoxFor(o => o.Glosowanie.Pytanie10)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Glosowanie.Pytanie10)</td>
-                </tr>
-                <tr>
 
 
 
                     <td style="text-align: right;">
+                        <input id="add-question" type="button" value="Dodaj pytanie" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
                         <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
                     </td>
                     <td></td>
@@ -119,3 +62,29 @@
     }
 </div>
 
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#add-question").click(function () {
+                var questionsCount = $('.table-question-row').length
+                var questionNumber = questionsCount + 1;
+                $('#albumedit-address-table tr:last').prev().after('<tr class="table-question-row"><td class="question">Pytanie ' + questionNumber + ':</td><td><input class="question-id" type="hidden" name="Pytania[' + questionsCount + '].PytanieId" value="0" /><input class="question-content" type="text" name="Pytania[' + questionsCount + '].TrescPytania" value="" /></td><td style="color: black" class="remove-table-question-row">Usuń</td></tr>');
+            });
+
+            $('body').on('click', '.remove-table-question-row', function () {
+                $(this).parent().remove();
+                var counter = 0;
+                $('.table-question-row').each(function () {
+                    $(this).find(".question-id").attr('name', 'Pytania[' + counter + '].PytanieId');
+                    $(this).find(".question-content").attr('name', 'Pytania[' + counter + '].TrescPytania');
+                    var number = counter + 1;
+                    $(this).find(".question").html("Pytanie " + number);
+                    counter++;
+                });
+            });
+        });
+    </script>
+}

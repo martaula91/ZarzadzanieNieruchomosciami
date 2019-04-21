@@ -1,0 +1,49 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.WynikGlosowaniaViewModel
+
+@{
+    ViewBag.Title = "WynikiGlosowania";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>NumerUchwaly:</td>
+        <td>Nazwa:</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.NumerUchwaly</td>
+        <td>@Model.Nazwa</td>
+
+    </tr>
+
+</table><br /><br /><br />
+
+
+<div class="content single">
+    <p>
+        PYTANIA
+    </p>
+    <p>
+        @if (Model.Pytania != null && Model.Pytania.Any())
+        {
+            foreach (var pytanie in Model.Pytania)
+            {
+                <strong>@pytanie.TrescPytania</strong> <br />
+                foreach(var odp in pytanie.Odpowiedzi)
+                {
+                    @odp.Key @: - @odp.Value <br />
+                }
+            }
+        }
+
+    </p>
+</div><br />

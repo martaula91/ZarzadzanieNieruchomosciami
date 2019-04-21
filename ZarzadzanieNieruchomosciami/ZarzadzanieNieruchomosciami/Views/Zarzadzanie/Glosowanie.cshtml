@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Glosowanie>
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.GlosowanieViewModel
 @using ZarzadzanieNieruchomosciami.Infrastructure
 
 @{
@@ -42,16 +42,30 @@
             <td>Wyniki</td>
 
         </tr>
-        @foreach (var glosowanie in Model)
+        @foreach (var glosowanie in Model.Glosowania)
             {
             <tr class="local">
                 <td>@glosowanie.NumerUchwaly</td>
                 <td>@glosowanie.Nazwa</td>
                 <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyGlosowania", "Zarzadzanie", new { id = glosowanie.GlosowanieId })"> >>kliknij<< </a></td>
                 
-                <td><a href="@Url.Action("OddajGlos", "Zarzadzanie")" style="margin-top: 20px; font-weight: bold; display: block;">Zaglosuj</a></td>
-                @*<td>Zagłosuj</td>*@
-                <td>Wyniki</td>
+                @if (glosowanie.CzyMozeUserMozeGlosowac)
+                {
+                    <td><a href="@Url.Action("OddajGlos", "Zarzadzanie", new { glosowanieId = glosowanie.GlosowanieId })" style="margin-top: 20px; font-weight: bold; display: block;">Zaglosuj</a></td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                
+                @if (glosowanie.CzyZakonczone)
+                {
+                    <td><a href="@Url.Action("WynikiGlosowania", "Zarzadzanie", new { glosowanieId = glosowanie.GlosowanieId })" style="margin-top: 20px; font-weight: bold; display: block;">Wyniki</a></td>
+                }
+                else
+                {
+                    <td></td>
+                }
 
             </tr>
         }

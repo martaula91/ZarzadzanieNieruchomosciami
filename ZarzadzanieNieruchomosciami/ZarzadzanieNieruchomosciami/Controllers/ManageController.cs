@@ -631,7 +631,22 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 // dodanie nowego
                 if (ModelState.IsValid)
                 {
+                    model.Glosowanie.DataUtworzeniaGlosowania = DateTime.Now;
+                    model.Glosowanie.DataKoncaGlosowania = DateTime.Now.AddMonths(1);
                     db.Entry(model.Glosowanie).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    foreach (var p in model.Pytania)
+                    {
+                        var pytanie = new Pytanie()
+                        {
+                            GlosowanieId = model.Glosowanie.GlosowanieId,
+                            TrescPytania = p.TrescPytania
+                        };
+
+                        db.Pytanie.Add(pytanie);
+                    }
+
                     db.SaveChanges();
 
                     return RedirectToAction("DodajGlosowanie", new { potwierdzenie = true });

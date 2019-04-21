@@ -1,16 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using ZarzadzanieNieruchomosciami.Models;
+using ZarzadzanieNieruchomosciami.Models.Enums;
 
 namespace ZarzadzanieNieruchomosciami.ViewModels
 {
     public class OddajGlosViewModel
     {
-        //public Glosowanie Glosowanie { get; set; }
-        public Glos Glos { get; set; }
-        public IEnumerable<Glosowanie> Glosowanie { get; set; }
-        public bool? Potwierdzenie { get; set; }
+        public OddajGlosViewModel()
+        {
+            Pytania = new List<PytanieViewModel>();
+        }
+
+        public string NumerUchwaly { get; set; }
+        public string Nazwa { get; set; }
+        public List<PytanieViewModel> Pytania { get; set; }
     }
+
+    public class PytanieViewModel
+    {
+        public int PytanieId { get; set; }
+        public string TrescPytania { get; set; }
+        public EnumOdpowiedz Odpowiedz { get; set; }
+    }
+
 }

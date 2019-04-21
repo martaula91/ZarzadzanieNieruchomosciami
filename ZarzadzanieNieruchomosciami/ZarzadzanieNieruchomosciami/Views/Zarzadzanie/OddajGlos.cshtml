@@ -13,85 +13,60 @@
     </a>
 </div>
 
-
-<table id="lokale">
-    <tr class="header">
-        <td>NumerUchwaly:</td>
-        <td>Nazwa:</td>
-    </tr>
-
-    <tr class="local">
-        <td>@Model.Glos.Glosowanie.NumerUchwaly</td>
-        <td>@Model.Glos.Glosowanie.Nazwa</td>
-
-    </tr>
-
-</table><br /><br /><br />
-
-
-<table id="lokale">
-    <tr class="header">
-        <td>Pytanie:</td>
-        <td>Głos:</td>
-        <td></td>
-    </tr>
-    @if (@Model.Glos.Glosowanie.Pytanie1 != null)
-            {
-        <tr class="local">
-            <td>@Model.Glos.Glosowanie.Pytanie1</td>
-
-
-            <td>@Html.LabelFor(o => o.Glos.Odpowiedz1, "Odpowiedz:")</td>
-            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz1, new { @class = "Odpowiedz" })</td>
-
-        </tr>
-            }
-    @if (@Model.Glos.Glosowanie.Pytanie2 != null)
-            {
-        <tr class="local">
-            <td>@Model.Glos.Glosowanie.Pytanie2</td>
-             <td>@Html.LabelFor(o => o.Glos.Odpowiedz2, "Odpowiedz:")</td>
-            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz2, new { @class = "Odpowiedz" })</td>
-
-        </tr>
-    }
-    @if (@Model.Glos.Glosowanie.Pytanie3 != null)
-            {
-        <tr class="local">
-            <td>@Model.Glos.Glosowanie.Pytanie3</td>
-
-
-            <td>@Html.LabelFor(o => o.Glos.Odpowiedz3, "Odpowiedz:")</td>
-            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz3, new { @class = "Odpowiedz" })</td>
-
-        </tr>
-    }
-    @if (@Model.Glos.Glosowanie.Pytanie4 != null)
-            {
-        <tr class="local">
-            <td>@Model.Glos.Glosowanie.Pytanie4</td>
-
-
-            <td>@Html.LabelFor(o => o.Glos.Odpowiedz4, "Odpowiedz:")</td>
-            <td> @Html.EnumDropDownListFor(o => o.Glos.Odpowiedz4, new { @class = "Odpowiedz" })</td>
-
-        </tr>
-    }
-
-    
-
-</table><br /><br /><br />
-
-
-<input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
-
-
-
-
-@*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@using (Html.BeginForm("OddajGlos", "Zarzadzanie", FormMethod.Post))
 {
-    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
-        Edytuj
-    </a>
-}*@
+    <table id="lokale">
+        <tr class="header">
+            <td>NumerUchwaly:</td>
+            <td>Nazwa:</td>
+        </tr>
 
+        <tr class="local">
+            <td>@Model.NumerUchwaly</td>
+            <td>@Model.Nazwa</td>
+
+        </tr>
+
+    </table><br /><br /><br />
+    @Html.HiddenFor(model => model.NumerUchwaly)
+    @Html.HiddenFor(model => model.Nazwa)
+
+    <table id="lokale">
+        <tr class="header">
+            <td>Pytanie:</td>
+            <td>Głos:</td>
+            <td></td>
+        </tr>
+        @if (Model.Pytania.Any())
+        {
+            for (int i = 0; i < Model.Pytania.Count; i++)
+            {
+                @Html.HiddenFor(model => Model.Pytania[i].PytanieId)
+                @Html.HiddenFor(model => Model.Pytania[i].TrescPytania)
+                <tr class="local">
+                    <td>@Model.Pytania[i].TrescPytania</td>
+
+
+                    <td>@Html.LabelFor(o => Model.Pytania[i].Odpowiedz, "Odpowiedz:")</td>
+                    <td> @Html.EnumDropDownListFor(o => Model.Pytania[i].Odpowiedz, new { @class = "Odpowiedz" })</td>
+
+                </tr>
+            }
+        }
+        
+    </table><br /><br /><br />
+
+
+    <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+
+
+
+
+    @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+                Edytuj
+            </a>
+        }*@
+
+}

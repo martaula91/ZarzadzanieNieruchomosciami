@@ -34,21 +34,13 @@
         PYTANIA
     </p>
     <p>
-        @if (@Model.Pytanie1 != null)
-            {
-            @Model.Pytanie1} <br />
-        @if (@Model.Pytanie2 != null)
-            {
-            @Model.Pytanie2}<br />
-        @if (@Model.Pytanie3 != null)
-            {
-            @Model.Pytanie3}<br />
-        @if (@Model.Pytanie4 != null)
-            {
-            @Model.Pytanie4}<br />
-        @if (@Model.Pytanie5 != null)
-            {
-            @Model.Pytanie5}<br />
+       @if (Model.Pytania != null && Model.Pytania.Any())
+       {
+           foreach (var pytanie in Model.Pytania)
+           {
+               @pytanie.TrescPytania <br />
+           }
+       }
 
     </p>
 </div><br />

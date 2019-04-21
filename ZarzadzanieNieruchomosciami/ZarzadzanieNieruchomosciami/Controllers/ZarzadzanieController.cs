@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.IO;
+using ZarzadzanieNieruchomosciami.Models.Enums;
 
 namespace ZarzadzanieNieruchomosciami.Controllers
 {
@@ -235,59 +236,42 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         ///////////////////////// ODDAJ GLOS
 
 
-        public ActionResult OddajGlos(int? glosId, bool? potwierdzenie)
+        public ActionResult OddajGlos(int glosowanieId)
         {
-            Glos glos;
-
-            if (glosId.HasValue)
+            var glosowanie = db.Glosowanie.Find(glosowanieId);
+            var pytania = db.Pytanie.Where(p => p.GlosowanieId == glosowanieId).Select(p => new PytanieViewModel()
             {
-                ViewBag.EditMode = true;
-                glos = db.Glos.Find(glosId);
-            }
-            else
-            {
-                ViewBag.EditMode = false;
-                glos = new Glos();
-            }
+                PytanieId = p.PytanieId,
+                TrescPytania = p.TrescPytania, 
+            }).ToList();
 
-            var result = new OddajGlosViewModel();
-            result.Glosowanie = db.Glosowanie.ToList();
-            result.Glos = glos;
-            result.Potwierdzenie = potwierdzenie;
+            var model = new OddajGlosViewModel();
+            model.NumerUchwaly = glosowanie.NumerUchwaly;
+            model.Nazwa = glosowanie.Nazwa;
+            model.Pytania = pytania;
 
-            return View(result);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult OddajGlos(OddajGlosViewModel model, HttpPostedFileBase file)
+        public ActionResult OddajGlos(OddajGlosViewModel model)
         {
-            if (model.Glos.GlosId > 0)
+            foreach (var pytanie in model.Pytania)
             {
-                // modyfikacja awari
-                db.Entry(model.Glos).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("OddajGlos", new { potwierdzenie = true });
-            }
-            else
-            {
-                // dodanie nowego
-                if (ModelState.IsValid)
+                var glos = new Glos()
                 {
-                    model.Glos.DataOddaniaGlosu = DateTime.Now;
-                    db.Entry(model.Glos).State = EntityState.Added;
-                    db.SaveChanges();
+                    PytanieId = pytanie.PytanieId,
+                    UserId = User.Identity.GetUserId(),
+                    Odpowiedz = pytanie.Odpowiedz,                    
+                    DataOddaniaGlosu = DateTime.Now,
+                };
 
-                    return RedirectToAction("OddajGlos", new { potwierdzenie = true });
-                }
-                else
-                {
-                    //var kategorie = db.Glos.ToList();
-                    //model.Glos = kategorie;
-                    return View(model);
-                    
-                }
+                db.Glos.Add(glos);
             }
 
+            db.SaveChanges();
+
+            return RedirectToAction("StronyKategori", new { nazwa = "Glosowanie" });
         }
 
         ///////////////////////// DODAJ ODCZYT LICZNIKOW
@@ -537,7 +521,32 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                     }
                 }
 
-                return View(nazwa, glos);
+                var glosowania = new List<GlosowanieExtendedModel>();
+                var userId = User.Identity.GetUserId();
+                foreach (var g in glos)
+                {
+                    var pytaniaIds = g.Pytania.Select(p => p.PytanieId).ToList();
+                    var glosUser = db.Glos.Where(x => pytaniaIds.Contains(x.PytanieId) && x.UserId == userId).ToList();
+
+                    var glosowanieDoDodania = new GlosowanieExtendedModel()
+                    {
+                        GlosowanieId = g.GlosowanieId,
+                        BlokMieszkalnyId = g.BlokMieszkalnyId,
+                        NumerUchwaly = g.NumerUchwaly,
+                        Nazwa = g.Nazwa,
+                        DataUtworzeniaGlosowania = g.DataUtworzeniaGlosowania,
+                        DataKoncaGlosowania = g.DataKoncaGlosowania,
+                        CzyMozeUserMozeGlosowac = g.DataKoncaGlosowania > DateTime.Now && !glosUser.Any(),
+                        CzyZakonczone = g.DataKoncaGlosowania < DateTime.Now,
+                    };
+
+                    glosowania.Add(glosowanieDoDodania);
+                }
+
+                var model = new GlosowanieViewModel();
+                model.Glosowania = glosowania;
+
+                return View(nazwa, model);
             }
 
             if (nazwa == "Statystyka")
@@ -554,6 +563,34 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
+        public ActionResult WynikiGlosowania(int glosowanieId)
+        {
+            var glosowanie = db.Glosowanie.Find(glosowanieId);
+            var pytaniaIds = glosowanie.Pytania.Select(p => p.PytanieId).ToList();
+            var glosy = db.Glos.Where(x => pytaniaIds.Contains(x.PytanieId)).ToList();
+
+            var pytania = new List<PytanieWynikiViewModel>();
+
+            foreach(var p in glosowanie.Pytania)
+            {
+                var pytanie = new PytanieWynikiViewModel();
+                pytanie.PytanieId = p.PytanieId;
+                pytanie.TrescPytania = p.TrescPytania;
+                var odpowiedzi = Enum.GetValues(typeof(EnumOdpowiedz)).Cast<EnumOdpowiedz>().ToList();
+                foreach(var odp in odpowiedzi)
+                {
+                    pytanie.Odpowiedzi.Add(odp.ToString(), glosy.Count(x => x.PytanieId == p.PytanieId && x.Odpowiedz == odp));
+                }
+                pytania.Add(pytanie);
+            }
+
+            var model = new WynikGlosowaniaViewModel();
+            model.NumerUchwaly = glosowanie.NumerUchwaly;
+            model.Nazwa = glosowanie.Nazwa;
+            model.Pytania = pytania;
+
+            return View(model);
+        }
 
         /////////////////////////////
         public ActionResult BudynkiPodpowiedzi(string term)

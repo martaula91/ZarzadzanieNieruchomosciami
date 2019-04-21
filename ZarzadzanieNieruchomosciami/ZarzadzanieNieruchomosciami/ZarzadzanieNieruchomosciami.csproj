@@ -354,11 +354,16 @@
     <Compile Include="Migrations\201903192342413_poleSaldoNoweTypyAwari.Designer.cs">
       <DependentUpon>201903192342413_poleSaldoNoweTypyAwari.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904140933473_zmianyGlosowanie.cs" />
+    <Compile Include="Migrations\201904140933473_zmianyGlosowanie.Designer.cs">
+      <DependentUpon>201904140933473_zmianyGlosowanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
     <Compile Include="Models\DaneUser.cs" />
     <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Enums\EnumOdpowiedz.cs" />
     <Compile Include="Models\Glos.cs" />
     <Compile Include="Models\Glosowanie.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -383,10 +388,12 @@
     <Compile Include="ViewModels\EditKsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
+    <Compile Include="ViewModels\GlosowanieViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\OddajGlosViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="ViewModels\WynikGlosowaniaViewModel.cs" />
     <Compile Include="ViewModels\WypisanieLokaliZBlokuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -455,6 +462,7 @@
     <Content Include="Views\Zarzadzanie\OddajGlos.cshtml" />
     <Content Include="Views\Zarzadzanie\Windykacja.cshtml" />
     <Content Include="Views\Zarzadzanie\Statystyka.cshtml" />
+    <Content Include="Views\Zarzadzanie\WynikiGlosowania.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -516,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903192342413_poleSaldoNoweTypyAwari.resx">
       <DependentUpon>201903192342413_poleSaldoNoweTypyAwari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904140933473_zmianyGlosowanie.resx">
+      <DependentUpon>201904140933473_zmianyGlosowanie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
