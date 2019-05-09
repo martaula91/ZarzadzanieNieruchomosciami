@@ -389,6 +389,7 @@
     <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
     <Compile Include="ViewModels\GlosowanieViewModel.cs" />
+    <Compile Include="ViewModels\KsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\OddajGlosViewModel.cs" />

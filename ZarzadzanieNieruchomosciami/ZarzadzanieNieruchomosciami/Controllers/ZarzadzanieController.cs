@@ -498,8 +498,35 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             }
             if (nazwa == "Ksiegowosc")
             {
-                var wplaty = db.Ksiegowosc.ToList();
-                return View(nazwa, wplaty);
+                var model = new KsiegowoscViewModel();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        var wplaty = (from u in db.Users
+                                      join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                      join k in db.Ksiegowosc on l.LokalID equals k.LokalMieszkalnyID
+                                      where u.UserName == User.Identity.Name
+                                      select k).ToList();
+
+                        var saldo = (from u in db.Users
+                                     join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                     select l.Saldo).FirstOrDefault();
+
+                        model.IsInUserRole = true;
+                        model.Documents = wplaty;
+                        model.Saldo = saldo;
+                    }
+                    else if (User.IsInRole("Admin"))
+                    {
+                        var wplaty = db.Ksiegowosc.ToList();
+
+                        model.IsInUserRole = false;
+                        model.Documents = wplaty;
+                    }
+                }
+                
+                return View(nazwa, model);
             }
             if (nazwa == "Glosowanie")
             {

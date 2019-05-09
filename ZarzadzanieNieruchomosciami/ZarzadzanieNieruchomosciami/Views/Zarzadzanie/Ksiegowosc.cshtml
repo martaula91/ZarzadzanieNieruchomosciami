@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Ksiegowosc>
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.KsiegowoscViewModel
 @using ZarzadzanieNieruchomosciami.Infrastructure
 
 @{
@@ -14,9 +14,12 @@
 </div>
 
 
-
-
-
+@if(Model.IsInUserRole)
+{
+    <br/>
+    <h3>Twoj aktualny stan konta to: @Model.Saldo.ToString("N2") zł</h3>
+    <br/>
+}
 
 <table id="lokale">
     <tr class="header">
@@ -26,7 +29,7 @@
         <td>Szczegóły:</td>
 
     </tr>
-@foreach (var wplata in Model)
+@foreach (var wplata in Model.Documents)
             {
         <tr class="local">
             <td>@wplata.Nazwa</td>

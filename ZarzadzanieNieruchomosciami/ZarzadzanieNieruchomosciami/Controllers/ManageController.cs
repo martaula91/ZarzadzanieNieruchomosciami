@@ -572,6 +572,16 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 // dodanie nowego
                 if (ModelState.IsValid)
                 {
+                    var lokalMieszkalny = db.LokaleMieszkalne.FirstOrDefault(l => l.LokalID == model.Ksiegowosc.LokalMieszkalnyID);
+                    if (model.Ksiegowosc.OpisDokumentu == OpisDokumentu.Naliczenie || model.Ksiegowosc.OpisDokumentu == OpisDokumentu.Odsetki)
+                    {
+                        lokalMieszkalny.Saldo -= model.Ksiegowosc.Wartosc;
+                    }
+                    else if (model.Ksiegowosc.OpisDokumentu == OpisDokumentu.Wplata)
+                    {
+                        lokalMieszkalny.Saldo += model.Ksiegowosc.Wartosc;
+                    }
+                    model.Ksiegowosc.DataDodania = DateTime.Now;
                     db.Entry(model.Ksiegowosc).State = EntityState.Added;
                     db.SaveChanges();
 
