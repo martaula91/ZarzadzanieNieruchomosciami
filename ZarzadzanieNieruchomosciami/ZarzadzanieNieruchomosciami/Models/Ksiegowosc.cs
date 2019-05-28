@@ -20,6 +20,7 @@ namespace ZarzadzanieNieruchomosciami.Models
 
         public virtual LokalMieszkalny LokalMieszkalny { get; set; }
 
+       
     }
     public enum OpisDokumentu
     {

@@ -21,7 +21,7 @@
 <div class="content single">
     <div class="contact-header-box">
         <p>
-            Zapraszamy do skorzystana z systemu głosowania nad uchwałami dla klientow firmy MART Nieruchomości <br /><br />
+            Zapraszamy do skorzystana z systemu głosowania nad uchwałami dla klientow firmy SMART Nieruchomości <br /><br />
         </p>
         <p>Skorzystaj z poniższego formularza lub pobierz i wypełnij formularz ze strony  <b> <a href="https://www.forum.wroc.pl/dokumenty">Dokumenty</a> </b> i przekaż nam je <br />
         osobiście, pocztą lub w formie skanu pocztą elektroniczną.</p><br /><br />
@@ -35,9 +35,10 @@
 
     <table id="lokale">
         <tr class="header">
-            <td>NumerUchwaly:</td>
-            <td>Nazwa:</td>
-            <td>Szczegóły:</td>
+            <td>Numer uchwaly</td>
+            <td>Nazwa</td>
+            <td>Szczegóły</td>
+            <td style="width: 20%">Data końca</td>
             <td>Zagłosuj</td>
             <td>Wyniki</td>
 
@@ -48,29 +49,34 @@
                 <td>@glosowanie.NumerUchwaly</td>
                 <td>@glosowanie.Nazwa</td>
                 <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyGlosowania", "Zarzadzanie", new { id = glosowanie.GlosowanieId })"> >>kliknij<< </a></td>
-                
-                @if (glosowanie.CzyMozeUserMozeGlosowac)
+                <td >@glosowanie.DataKoncaGlosowania.ToString().Substring(0, 10)</td>
+
+
+                @if (glosowanie.CzyMozeUserMozeGlosowac && !(User.IsInRole("Employee") ) )
                 {
                     <td><a href="@Url.Action("OddajGlos", "Zarzadzanie", new { glosowanieId = glosowanie.GlosowanieId })" style="margin-top: 20px; font-weight: bold; display: block;">Zaglosuj</a></td>
                 }
                 else
                 {
-                    <td></td>
+                    <td>X</td>
                 }
-                
+
+
                 @if (glosowanie.CzyZakonczone)
                 {
                     <td><a href="@Url.Action("WynikiGlosowania", "Zarzadzanie", new { glosowanieId = glosowanie.GlosowanieId })" style="margin-top: 20px; font-weight: bold; display: block;">Wyniki</a></td>
                 }
                 else
                 {
-                    <td></td>
+                    <td>trwa glosowanie</td>
                 }
 
             </tr>
         }
     </table>
-<br /><br />
+
+
+@*<br /><br />
 <h4>Oświadczam/-my/, że:</h4>
 <p>
     <span class="wpcf7-form-control-wrap zgoda1"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="zgoda1" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span> w/w decyzję składam/-my zgodnie z posiadanym prawem do udziału w głosowaniu;</span></label></span></span></span><br /><br />
@@ -78,12 +84,12 @@
 </p>
 <div class="submit-button">
     <p><input type="submit" value="Wyślij" class="wpcf7-form-control wpcf7-submit" /></p>
-</div>
+</div>*@
 
 
 
 
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
     {
         <a href="@Url.Action("DodajGlosowanie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
     }

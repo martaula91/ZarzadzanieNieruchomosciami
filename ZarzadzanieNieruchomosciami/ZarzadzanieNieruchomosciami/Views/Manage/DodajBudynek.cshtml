@@ -16,7 +16,7 @@
     }
     <!--"multipart/form-data"  możliwosc przeslania pliku -->
 
-    @using (@Html.BeginForm("DodajLokal", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (@Html.BeginForm("DodajBudynek", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
 
@@ -30,32 +30,32 @@
         <div style="text-align: center;">
             <table id="albumedit-address-table">
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.Ulica, "nazwa ulicy:")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.Ulica, "Nazwa ulicy")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.Ulica)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.Ulica)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.NumerBlokuMieszkalnego, "Numer Bloku Mieszkalnego:")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.NumerBlokuMieszkalnego, "Numer budynku")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.NumerBlokuMieszkalnego)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.NumerBlokuMieszkalnego)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.PowierzchniaUzytkowa, "Powierzchnia Uzytkowa")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.PowierzchniaUzytkowa, "Powierzchnia użytkowa")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.PowierzchniaUzytkowa)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.PowierzchniaUzytkowa)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.LiczbaLokali, "Liczba Lokali")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.LiczbaLokali, "Liczba lokali")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.LiczbaLokali)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.LiczbaLokali)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.NrEwidDzialki, "NrEwidDzialki:")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.NrEwidDzialki, "Nr ewidencyjny sdialki")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.NrEwidDzialki)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.NrEwidDzialki)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Budynek.PowDzialki, "PowDzialki w m2:")</td>
+                    <td>@Html.LabelFor(o => o.Budynek.PowDzialki, "Pow. dzialki ")</td>
                     <td>@Html.TextBoxFor(o => o.Budynek.PowDzialki)</td>
                     <td>@Html.ValidationMessageFor(o => o.Budynek.PowDzialki)</td>
                 </tr>
@@ -77,6 +77,35 @@
                         </td>
                     </tr>
                 }-->
+
+
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.PrzeznaczenieDzialki, "Przeznaczenie dzialki:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.PrzeznaczenieDzialki)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.PrzeznaczenieDzialki)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.PowTerenuZielonego, "Pow terenu zielonego:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.PowTerenuZielonego)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.PowTerenuZielonego)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.IloscPieter, "Ilosc pięter:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.IloscPieter)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.IloscPieter)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(o => o.Budynek.TechnologiaWykonania, "Technologia wykonania:")</td>
+                    <td>@Html.TextBoxFor(o => o.Budynek.TechnologiaWykonania)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Budynek.TechnologiaWykonania)</td>
+                </tr>	
+
+
+
+
+
                 <tr>
 
                     <td style="text-align: left">

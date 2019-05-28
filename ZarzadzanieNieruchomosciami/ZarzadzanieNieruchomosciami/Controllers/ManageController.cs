@@ -214,7 +214,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////////
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajLokal(int? lokalId, bool? potwierdzenie)
         {
             LokalMieszkalny lokal;
@@ -240,7 +240,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajLokal(EditLokalViewModel model, HttpPostedFileBase file)
         {
             if (model.Lokal.LokalID > 0)
@@ -271,7 +271,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult UkryjLokal(int lokalId)
         {
             var lokal = db.LokaleMieszkalne.Find(lokalId);
@@ -281,7 +281,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return RedirectToAction("DodajLokal", new { potwierdzenie = true });
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult PokazLokal(int lokalId)
         {
             var lokal = db.LokaleMieszkalne.Find(lokalId);
@@ -293,7 +293,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         ///////////////////////// DODAJ BUDYNEK
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajBudynek(int? blokMieszkalnyId, bool? potwierdzenie)
         {
             BlokMieszkalny budynek;
@@ -319,7 +319,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajBudynek(EditBudynekViewModel model, HttpPostedFileBase file)
         {
             if (model.Budynek.BlokMieszkalnyId > 0)
@@ -350,7 +350,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult UkryjBudynek(int budynekID)
         {
             var budynek = db.BlokiMieszkalne.Find(budynekID);
@@ -372,7 +372,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         ///////////////////////// DODAJ DOKUMENT
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajDokument(int? dokumentId, bool? potwierdzenie)
         {
             Dokument dokument;
@@ -398,7 +398,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajDokument(EditDokumentViewModel model, HttpPostedFileBase file)
         {
             if (model.Dokument.DokumentID > 0)
@@ -430,7 +430,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult UkryjDokument(int dokumentID)
         {
             var dokument = db.Dokumenty.Find(dokumentID);
@@ -440,7 +440,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return RedirectToAction("DodajDokument", new { potwierdzenie = true });
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult PokazDokument(int dokumentID)
         {
             var dokument = db.Dokumenty.Find(dokumentID);
@@ -452,7 +452,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////DODAJ INFORMACJE
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajInformacje(int? informacjaID, bool? potwierdzenie)
         {
             Informacja info;
@@ -478,7 +478,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajInformacje(EditInformacjaViewModel model, HttpPostedFileBase file)
         {
             if (model.Informacja.InformacjaID > 0)
@@ -509,7 +509,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult UkryjInformacje(int informacjaID)
         {
             var info = db.Informacje.Find(informacjaID);
@@ -519,7 +519,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return RedirectToAction("DodajInformacje", new { potwierdzenie = true });
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult PokazInformacje(int informacjaID)
         {
             var info = db.Informacje.Find(informacjaID);
@@ -531,7 +531,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////////Dodaj Ksiegowosc
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajKsiegowosc(int? ksiegowoscId, bool? potwierdzenie)
         {
             Ksiegowosc ksiegowosc;
@@ -557,7 +557,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajKsiegowosc(EditKsiegowoscViewModel model, HttpPostedFileBase file)
         {
             if (model.Ksiegowosc.KsiegowoscID > 0)
@@ -598,9 +598,71 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
+
+        /////////////////////////Dodaj Rozliczenie
+
+        [Authorize(Roles = "Employee")]
+        public ActionResult DodajRozliczenie(int? rozliczenieId, bool? potwierdzenie)
+        {
+            Rozliczenie rozliczenie;
+
+            if (rozliczenieId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                rozliczenie = db.Rozliczenia.Find(rozliczenieId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                rozliczenie = new Rozliczenie();
+            }
+
+            var result = new EditRozliczenieViewModel();
+            result.LokalMieszkalny = db.LokaleMieszkalne.ToList();
+            result.Stawka = db.Stawka.ToList();
+            //result.DaneUsera = db.DaneUsera.ToList();
+            result.Rozliczenie = rozliczenie;
+            result.Potwierdzenie = potwierdzenie;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Employee")]
+        public ActionResult DodajRozliczenie(EditRozliczenieViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Rozliczenie.RozliczenieId > 0)
+            {
+                // modyfikacja 
+                db.Entry(model.Rozliczenie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DodajRozliczenie", new { potwierdzenie = true });
+            }
+            else
+            {
+                // dodanie nowego
+                if (ModelState.IsValid)
+                {
+                    model.Rozliczenie.StanNaDzien = DateTime.Now;
+                    db.Entry(model.Rozliczenie).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    return RedirectToAction("DodajRozliczenie", new { potwierdzenie = true });
+                }
+                else
+                {
+                    //var kategorie = db.BlokiMieszkalne.ToList();
+                    //model.BlokiMieszkalne = kategorie;
+                    return View(model);
+                }
+
+            }
+
+        }
+
         /////////////////////////Dodaj Glosowanie
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajGlosowanie(int? glosowanieId, bool? potwierdzenie)
         {
             Glosowanie glosowanie;
@@ -626,7 +688,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public ActionResult DodajGlosowanie(EditGlosowanieViewModel model, HttpPostedFileBase file)
         {
             if (model.Glosowanie.GlosowanieId > 0)

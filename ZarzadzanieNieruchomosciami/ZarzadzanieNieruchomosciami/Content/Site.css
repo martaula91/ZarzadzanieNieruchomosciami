@@ -100,7 +100,7 @@ input, select {
 /* Main page styles */
 
 body {
-    width: 1000px;
+    width: 1100px;
     margin: auto;
     font-family: 'Segoe UI';
 }
@@ -241,7 +241,7 @@ ul#menu li {
 
 
 nav.KategorieVertical {
-    width: 202px;
+    width: 222px;
     font-size: 18px;
     font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI';
     border-right: 1px solid #E5E5E5;
@@ -407,26 +407,29 @@ nav.KategorieVertical {
 
     /*TEST SZCZEGOLY MOJE LOKALE*/
 #SekcjaSzczegołyLokalu {
-    width: 768px;
+    width: 768px;       
     float: left;
     margin-top: 20px;
 }
 
 table#lokale {
     border-collapse: collapse;
-    width: 500px;
+    width: 700px; /*500*/
 }
 
 #lokale td {
     border-width: 1px;
     border-style: solid;
-    border-color: #000000;
+    border-color: white;
     padding: 5px;
+
 }
 
 #lokale .header {
-    background-color: #0066cc;
+    background-color: #C0C0C0;
     font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #lokale .local {

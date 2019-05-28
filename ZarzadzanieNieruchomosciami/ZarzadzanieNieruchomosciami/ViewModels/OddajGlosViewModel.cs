@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ZarzadzanieNieruchomosciami.Models;
 using ZarzadzanieNieruchomosciami.Models.Enums;
 
@@ -13,6 +14,7 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
 
         public string NumerUchwaly { get; set; }
         public string Nazwa { get; set; }
+       
         public List<PytanieViewModel> Pytania { get; set; }
     }
 

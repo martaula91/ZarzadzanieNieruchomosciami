@@ -120,7 +120,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var wplyw = db.Ksiegowosc.Find(id);
             var name = User.Identity.Name;
-
+            
             //var vm = new LokalViewModels()
             //{
             //    Lokal = lokal,
@@ -157,18 +157,21 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             bool isAdmin = User.IsInRole("Admin");
             ViewBag.UserIsAdmin = isAdmin;
 
+            bool isEmployee = User.IsInRole("Employee");
+            ViewBag.UserIsEmployee = isEmployee;
+
             IEnumerable<Awaria> zgloszeniaUzytkownika;
 
-            // Dla administratora zwracamy wszystkie zamowienia
-            if (isAdmin)
+            // Dla administratora zwracamy wszystko
+            if (isAdmin || isEmployee)
             {
                 zgloszeniaUzytkownika = db.Awaria.OrderByDescending(o => o.DataDodania).ToArray();
-            }                                      //Include("PozycjeZamowienia").
+            }                                    
             else
             {
                 var userId = User.Identity.GetUserId();
                 zgloszeniaUzytkownika = db.Awaria.Where(o => o.UserId == userId).OrderByDescending(o => o.DataDodania).ToArray();
-            }                                                                   //Include("PozycjeZamowienia").
+            }                                                                  
 
             return View(zgloszeniaUzytkownika);
         }
@@ -217,6 +220,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 if (ModelState.IsValid)
                 {
                     model.Awaria.DataDodania = DateTime.Now;
+                    model.Awaria.UserId = User.Identity.GetUserId();
                     db.Entry(model.Awaria).State = EntityState.Added;
                     db.SaveChanges();
 
@@ -242,13 +246,14 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             var pytania = db.Pytanie.Where(p => p.GlosowanieId == glosowanieId).Select(p => new PytanieViewModel()
             {
                 PytanieId = p.PytanieId,
-                TrescPytania = p.TrescPytania,
+                TrescPytania = p.TrescPytania, 
             }).ToList();
 
             var model = new OddajGlosViewModel();
             model.NumerUchwaly = glosowanie.NumerUchwaly;
             model.Nazwa = glosowanie.Nazwa;
             model.Pytania = pytania;
+
 
             return View(model);
         }
@@ -262,7 +267,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 {
                     PytanieId = pytanie.PytanieId,
                     UserId = User.Identity.GetUserId(),
-                    Odpowiedz = pytanie.Odpowiedz,
+                    Odpowiedz = pytanie.Odpowiedz,                    
                     DataOddaniaGlosu = DateTime.Now,
                 };
 
@@ -316,16 +321,21 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 // dodanie nowego
                 if (ModelState.IsValid)
                 {
+                    model.StanLicznikow.LokalMieszkalnyID = (from u in db.Users
+                                                             join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                                             where u.UserName == User.Identity.Name
+                                                             select l.LokalID).FirstOrDefault();
+
                     //model.StanLicznikow.StanNaDzien = DateTime.Now;
-                    db.Entry(model.Lokal).State = EntityState.Added;
+                    db.Entry(model.StanLicznikow).State = EntityState.Added;
                     db.SaveChanges();
 
                     return RedirectToAction("OdczytLicznikow", new { potwierdzenie = true });
                 }
                 else
                 {
-                    var kategorie = db.LokaleMieszkalne.ToList();
-                    model.Lokal = kategorie;
+                   // var kategorie = db.LokaleMieszkalne.ToList();
+                   /// model.Lokal = kategorie;
                     return View(model);
                 }
             }
@@ -359,11 +369,11 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////////
 
-
-
-        /// ZMIANA STANU AWARII
+   
+            
+            /// ZMIANA STANU AWARII
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Employee")]
         public Status ZmianaStanuAwari(Awaria awaria)
         {
             Awaria awariaDoModyfikacji = db.Awaria.Find(awaria.AwariaID);
@@ -380,7 +390,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         ///////////////////////// 
         [ChildActionOnly]
-        [OutputCache(Duration = 60000)]
+      //  [OutputCache(Duration = 60000)]
         public ActionResult KategorieMenu()
         {
             // var kategorie = db.Kategorie.ToList();
@@ -395,6 +405,9 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             bool isAdmin = User.IsInRole("Admin");
             ViewBag.UserIsAdmin = isAdmin;
+
+            bool isEmployee = User.IsInRole("Employee");
+            ViewBag.UserIsEmployee = isEmployee;
             //KONIEC
 
             if (nazwa == "Lokal")
@@ -477,7 +490,23 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             }
             if (nazwa == "StanLicznikow")
             {
-                var stan = db.StanyLicznikow.ToList();
+                var stan = new List<StanLicznikow>();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("User"))
+                    {
+                        stan = (from u in db.Users
+                                join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                join r in db.StanyLicznikow on l.LokalID equals r.LokalMieszkalnyID
+                                where u.UserName == User.Identity.Name
+                                select r).ToList();
+                    }
+                    else
+                    {
+                        stan = db.StanyLicznikow.ToList();
+                    }
+                }
+                //var stan = db.StanyLicznikow.ToList();
                 return View(nazwa, stan);
             }
             if (nazwa == "Telefony")
@@ -517,7 +546,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                         model.Documents = wplaty;
                         model.Saldo = saldo;
                     }
-                    else if (User.IsInRole("Admin"))
+                    else if (User.IsInRole("Admin") || User.IsInRole("Employee"))
                     {
                         var wplaty = db.Ksiegowosc.ToList();
 
@@ -525,7 +554,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                         model.Documents = wplaty;
                     }
                 }
-
+                
                 return View(nazwa, model);
             }
             if (nazwa == "Glosowanie")
@@ -628,13 +657,13 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             var pytania = new List<PytanieWynikiViewModel>();
 
-            foreach (var p in glosowanie.Pytania)
+            foreach(var p in glosowanie.Pytania)
             {
                 var pytanie = new PytanieWynikiViewModel();
                 pytanie.PytanieId = p.PytanieId;
                 pytanie.TrescPytania = p.TrescPytania;
                 var odpowiedzi = Enum.GetValues(typeof(EnumOdpowiedz)).Cast<EnumOdpowiedz>().ToList();
-                foreach (var odp in odpowiedzi)
+                foreach(var odp in odpowiedzi)
                 {
                     pytanie.Odpowiedzi.Add(odp.ToString(), glosy.Count(x => x.PytanieId == p.PytanieId && x.Odpowiedz == odp));
                 }
@@ -657,5 +686,82 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             return Json(budynek, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult RozliczenieLokalu(int id)
+        {
+            var roz = new List<Rozliczenie>();
+
+                         roz = (from l in db.LokaleMieszkalne 
+                                join r in db.Rozliczenia on l.LokalID equals r.LokalID
+                                where r.LokalID == id
+                                select r).ToList();
+
+            return View("Rozliczenia", roz);
+        }
+
+        public ActionResult KsiegowoscLokalu(int id)
+        {
+            var model = new KsiegowoscViewModel();
+
+            var wplaty = (from l in db.LokaleMieszkalne
+                          join k in db.Ksiegowosc on l.LokalID equals k.LokalMieszkalnyID
+                          where k.LokalMieszkalnyID == id
+                          select k).ToList();
+
+            model.Documents = wplaty;
+            model.IsInUserRole = false;
+
+            return View("Ksiegowosc", model);
+       }
+
+        public ActionResult LicznikiLokalu(int id)
+        {
+            var stan = new List<StanLicznikow>();
+
+            stan = (from l in db.LokaleMieszkalne
+                   join s in db.StanyLicznikow on l.LokalID equals s.LokalMieszkalnyID
+                    where s.LokalMieszkalnyID == id
+                   select s).ToList();
+
+            return View("StanLicznikow", stan);
+        }
+
+        public ActionResult DokumentyBudynku(int id)
+        {
+            var dok = new List<Dokument>();
+
+            dok = (from b in db.BlokiMieszkalne
+                   join d in db.Dokumenty on b.BlokMieszkalnyId equals d.BlokMieszkalnyId
+                   where d.BlokMieszkalnyId == id
+                   select d).ToList();
+
+            return View("Dokumenty", dok);
+        }
+
+        public ActionResult Wlasciciel(int id)
+        {
+            var name = User.Identity.Name;
+            //var osoba = db.Users.Find(id);
+
+            var osoba = (from u in db.Users
+                         join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                         where u.DaneUser.LokalId == id
+                         select u).SingleOrDefault();
+
+            return View("SzczegolyOsoby", osoba);
+        }
+
+        public ActionResult GlosowaniaBudynku(int id)
+        {
+            var glosy = new List<Glosowanie>();
+
+            glosy = (from b in db.BlokiMieszkalne 
+                     join g in db.Glosowanie on b.BlokMieszkalnyId equals g.BlokMieszkalnyId
+                     where g.BlokMieszkalnyId == id
+                     select g).ToList();
+
+            return View("Glosowanie", glosy);
+        }
+
     }
 }

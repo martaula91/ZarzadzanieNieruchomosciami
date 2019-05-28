@@ -17,19 +17,22 @@
 {
     <table id="lokale">
         <tr class="header">
-            <td>NumerUchwaly:</td>
-            <td>Nazwa:</td>
+            <td>NumerUchwaly</td>
+            <td>Nazwa</td>
+            <td>Data konca glosowania</td>
         </tr>
 
         <tr class="local">
             <td>@Model.NumerUchwaly</td>
             <td>@Model.Nazwa</td>
+            
 
         </tr>
 
     </table><br /><br /><br />
     @Html.HiddenFor(model => model.NumerUchwaly)
     @Html.HiddenFor(model => model.Nazwa)
+
 
     <table id="lokale">
         <tr class="header">

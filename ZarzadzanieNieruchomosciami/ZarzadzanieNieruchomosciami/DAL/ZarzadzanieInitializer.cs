@@ -42,10 +42,10 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var bloki = new List<BlokMieszkalny>
             {
-                new BlokMieszkalny { BlokMieszkalnyId = 1, Ulica = "Lipowa", NumerBlokuMieszkalnego = 12, Adres= "Lipowa 12", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123,  },
-                new BlokMieszkalny { BlokMieszkalnyId = 2, Ulica = "Cicha", NumerBlokuMieszkalnego = 2, Adres= "Cicha 2",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, },
-                new BlokMieszkalny { BlokMieszkalnyId = 3, Ulica = "Klonowa", NumerBlokuMieszkalnego = 8, Adres= "Klonowa 8",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123,  },
-                new BlokMieszkalny { BlokMieszkalnyId = 4, Ulica = "Tuwima", NumerBlokuMieszkalnego = 10, Adres= "Tuwima 10", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 12,  }
+                new BlokMieszkalny { BlokMieszkalnyId = 1, Ulica = "Lipowa", NumerBlokuMieszkalnego = 12, Adres= "Lipowa 12", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                new BlokMieszkalny { BlokMieszkalnyId = 2, Ulica = "Cicha", NumerBlokuMieszkalnego = 2, Adres= "Cicha 2",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                new BlokMieszkalny { BlokMieszkalnyId = 3, Ulica = "Klonowa", NumerBlokuMieszkalnego = 8, Adres= "Klonowa 8",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                new BlokMieszkalny { BlokMieszkalnyId = 4, Ulica = "Tuwima", NumerBlokuMieszkalnego = 10, Adres= "Tuwima 10", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 12,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0)  }
 
             };
 
@@ -149,24 +149,24 @@ namespace ZarzadzanieNieruchomosciami.DAL
            new Awaria {AwariaID= 2, BlokMieszkalnyId= 1, Opis = "Niedomykanie okna na  klatce miedzy I a II piętrem", DataDodania = new DateTime(2019, 1, 16, 17, 46, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
            new Awaria {AwariaID= 3, BlokMieszkalnyId= 1, Opis = "Pani sprzatajaca nie myje okien", DataDodania = new DateTime(2019, 2, 3, 9, 0, 0), Status=Status.Nowe, Typ=Typ.uwagi_opinie},
            new Awaria {AwariaID= 4, BlokMieszkalnyId= 1, Opis = "Graffiti na wejsciowej scianie bloku", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
-           new Awaria {AwariaID= 5, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
-           new Awaria {AwariaID= 6, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
-           new Awaria {AwariaID= 7, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
-           new Awaria {AwariaID= 8, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
-           new Awaria {AwariaID= 9, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
-           new Awaria {AwariaID= 10, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
-           new Awaria {AwariaID= 11, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
+           //new Awaria {AwariaID= 5, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
+           //new Awaria {AwariaID= 6, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
+           //new Awaria {AwariaID= 7, BlokMieszkalnyId= 4, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
+           //new Awaria {AwariaID= 8, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
+           //new Awaria {AwariaID= 9, BlokMieszkalnyId= 4, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
+           //new Awaria {AwariaID= 10, BlokMieszkalnyId= 3, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
+           //new Awaria {AwariaID= 11, BlokMieszkalnyId= 1, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
 
-            new Awaria {AwariaID= 12, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
-            new Awaria {AwariaID= 13, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
-            new Awaria {AwariaID= 14, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
-            new Awaria {AwariaID= 15, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
-            new Awaria {AwariaID= 16, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
-            new Awaria {AwariaID= 17, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
-            new Awaria {AwariaID= 18, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
-            new Awaria {AwariaID= 19, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
-            new Awaria {AwariaID= 20, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
-            new Awaria {AwariaID= 21, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uwagi_opinie},
+           // new Awaria {AwariaID= 12, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
+           // new Awaria {AwariaID= 13, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.awarie_mediow},
+           // new Awaria {AwariaID= 14, BlokMieszkalnyId= 3, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
+           // new Awaria {AwariaID= 15, BlokMieszkalnyId= 3, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uszkodzenia_budynku},
+           // new Awaria {AwariaID= 16, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
+           // new Awaria {AwariaID= 17, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
+           // new Awaria {AwariaID= 18, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
+           // new Awaria {AwariaID= 19, BlokMieszkalnyId= 4, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.otoczenie_budynku},
+           // new Awaria {AwariaID= 20, BlokMieszkalnyId= 2, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.inne},
+           // new Awaria {AwariaID= 21, BlokMieszkalnyId= 4, Opis = "test", DataDodania = new DateTime(2019, 2, 21, 12, 10, 0), Status=Status.Nowe, Typ=Typ.uwagi_opinie},
             };
 
             awaria.ForEach(k => context.Awaria.AddOrUpdate(k));

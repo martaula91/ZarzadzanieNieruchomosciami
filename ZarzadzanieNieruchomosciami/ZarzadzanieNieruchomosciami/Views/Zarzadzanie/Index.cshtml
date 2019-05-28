@@ -23,7 +23,7 @@
                     <a class="kursSzczeg">
 
                         <h1>
-                            @informacja.Tytul - @informacja.DataDodania
+                            @informacja.Tytul - @informacja.DataDodania.ToString().Substring(0, 10)
                         </h1>
                         @informacja.Tresc
                     </a>
@@ -34,7 +34,7 @@
     </ul>
 </div>
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
     <a href="@Url.Action("DodajInformacje", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
 }

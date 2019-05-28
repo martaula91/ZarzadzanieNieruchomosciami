@@ -12,6 +12,8 @@
     </a>
 </div>
 <br /><br /><br />
+<center><h1> Statystyka </h1></center>
+<br />
 <table id="lokale">
     <tr class="header">
         <td>Ogólna liczba zgłoszeń:</td>
@@ -22,7 +24,7 @@
         <td>Opinie: </td>
 
     </tr>
-    
+
     <tr class="local">
         <td>@Model.Awarie.Sum(a => a.Liczba)</td>
         <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Nowe).Select(a => a.Liczba).FirstOrDefault()</td>

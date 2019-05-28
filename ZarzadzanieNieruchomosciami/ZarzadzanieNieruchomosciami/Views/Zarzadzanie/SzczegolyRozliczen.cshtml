@@ -96,7 +96,9 @@ PKO BP 58 1010 1333 0000 1202 1096 5582<br />
 
 @*Saldo na dzien 31.12.2018r. zawiera w sobie rozliczenie wody<br />*@
 
-<!--if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-           {
-               <a href="Url.Action("DodajKurs", "Manage", new { kursId = Model.KursId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
-           }-->
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
+    <a href="@Url.Action("DodajRozliczenie", "Manage", new { rozliczenieId = @Model.RozliczenieId })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}

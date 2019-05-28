@@ -26,7 +26,7 @@
                         <td>
                             <strong>Stan: </strong><br />
 
-                            @if (ViewBag.UserIsAdmin)
+                            @if (ViewBag.UserIsAdmin || ViewBag.UserIsEmployee)
                             {
                                 using (Html.BeginForm("ZmianaStanuAwari", "Zarzadzanie"))
                                 {

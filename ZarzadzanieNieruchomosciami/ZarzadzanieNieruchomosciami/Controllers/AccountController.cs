@@ -111,7 +111,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         public ActionResult Register()
         {
             var model = new RegisterViewModel();
-            model.AvailableRoles = context.Roles.ToList();  //model.AvailableRoles = context.Roles.Where(u => !u.Name.Contains("Admin")).ToList();
+            model.AvailableRoles = context.Roles.Where(u => !u.Name.Contains("Admin")).ToList();
             var reservedApartmentsIds = context.Users.Select(u => u.DaneUser.LokalId).Distinct().ToList();
             model.AvailableApartments = context.LokaleMieszkalne.Where(l => !reservedApartmentsIds.Contains(l.LokalID)).Select(l => new AvailableApartment() { Id = l.LokalID, Name = string.Concat(l.Adres, " m.", l.NumerLokalu) }).ToList();
 
@@ -124,18 +124,10 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             if (ModelState.IsValid)
             {
-                // LokalMieszkalny lokal; //hhhhhhhhhhhhhhhh
-
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DaneUser = new DaneUser() }; //, LokalMieszkalny = new LokalMieszkalny() 
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DaneUser = new DaneUser() };
                 if (model.SelectedRoleName == "User")
                 {
                     user.DaneUser.LokalId = model.SelectedApartmentId;
-                    //user.LokalMieszkalny.
-                    //lokal = db.LokaleMieszkalne.Find(model.SelectedApartmentId);
-                    //var userId = User.Identity.GetUserId();
-                    //lokal.UserID = userId;
-
-
                 }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

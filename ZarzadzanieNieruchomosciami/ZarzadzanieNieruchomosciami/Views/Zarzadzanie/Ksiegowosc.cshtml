@@ -34,7 +34,7 @@
         <tr class="local">
             <td>@wplata.Nazwa</td>
             <td>@wplata.OpisDokumentu</td>
-            <td>@wplata.DataDodania</td>
+            <td>@wplata.DataDodania.ToString().Substring(0, 10)</td>
          <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyKsiegowosci", "Zarzadzanie", new { id = wplata.KsiegowoscID })"> >>kliknij<< </a></td>
 
 
@@ -50,7 +50,7 @@
 
 
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
     <a href="@Url.Action("DodajKsiegowosc", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
 }

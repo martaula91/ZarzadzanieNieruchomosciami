@@ -40,22 +40,26 @@
                     <td>@Html.ValidationMessageFor(o => o.Dokument.NazwaDokumentu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Dokument.TypDokumentu, "TypDokumentu")</td>
+                    <td>@Html.LabelFor(o => o.Dokument.TypDokumentu, "Typ dokumentu:")</td>
                     <td>@Html.TextBoxFor(o => o.Dokument.TypDokumentu)</td>
                     <td>@Html.ValidationMessageFor(o => o.Dokument.TypDokumentu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Dokument.AutorDokumentu, "AutorDokumentu")</td>
+                    <td>@Html.LabelFor(o => o.Dokument.AutorDokumentu, "Autor:")</td>
                     <td>@Html.TextBoxFor(o => o.Dokument.AutorDokumentu)</td>
                     <td>@Html.ValidationMessageFor(o => o.Dokument.AutorDokumentu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Dokument.OpisDokumentu, "OpisDokumentu:")</td>
-                    <td>@Html.TextBoxFor(o => o.Dokument.OpisDokumentu)</td>
+                    <td>@Html.LabelFor(o => o.Dokument.OpisDokumentu, "Opis:")</td>
+                    @*<td>@Html.TextBoxFor(o => o.Dokument.OpisDokumentu)</td>*@
+
+                    <td>@Html.TextAreaFor(o => o.Dokument.OpisDokumentu, new { style = " height: 200px;" })</td>
+                   
+
                     <td>@Html.ValidationMessageFor(o => o.Dokument.OpisDokumentu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Dokument.DataDokumentu, "DataDokumentu:")</td>
+                    <td>@Html.LabelFor(o => o.Dokument.DataDokumentu, "Data:")</td>
                     <td>@Html.TextBoxFor(o => o.Dokument.DataDokumentu)</td>
                     <td>@Html.ValidationMessageFor(o => o.Dokument.DataDokumentu)</td>
                 </tr>

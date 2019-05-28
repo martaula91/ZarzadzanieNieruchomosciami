@@ -70,12 +70,12 @@
                 </tr>
 
 
-                <tr>
+                @*<tr>
 
                     <td>@Html.LabelFor(o => o.Lokal, "Lokal Mieszkalny:")</td>
                     <td>@Html.DisplayFor(o => o.Lokal)</td>
-                    @*@Html.DropDownListFor(m => m.LokalMieszkalny, new SelectList(Model.LokalMieszkalny, "Id", "Name"))*@
-                </tr>
+                    @Html.DropDownListFor(m => m.LokalMieszkalny, new SelectList(Model.LokalMieszkalny, "Id", "Name"))
+                </tr>*@
 
 
                 <tr>
@@ -108,14 +108,14 @@
         </div>
     }
 
-    <p class="small-zgoda">Na podany adres e-mail automatycznie prześlemy potwierdzenie dostarczenia protokołu<br /> wraz z kopią jego treści.</p><br />
+    @*<p class="small-zgoda">Na podany adres e-mail automatycznie prześlemy potwierdzenie dostarczenia protokołu<br /> wraz z kopią jego treści.</p><br />
     <h4>Oświadczam/-my/, że:</h4>
     <p><span class="wpcf7-form-control-wrap zgoda1"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="zgoda1" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span>w/w deklarację składam/-my zgodnie z istniejącym stanem faktycznym, zapewniając,<br /> że jest ono zgodne z prawdą.</span></label></span></span></span></p>
     <div class="submit-button">
         <br />
         <p><input type="submit" value="Wyślij" class="wpcf7-form-control wpcf7-submit" /></p>
     </div>
-    <p><span class="star">*</span> Pola obowiązkowe.</p>
+    <p><span class="star">*</span> Pola obowiązkowe.</p>*@
 
 </div>
 

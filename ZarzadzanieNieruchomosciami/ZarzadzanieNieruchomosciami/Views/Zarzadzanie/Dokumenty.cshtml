@@ -15,24 +15,29 @@
 
 <table id="lokale">
     <tr class="header">
-        <td>NazwaDokumentu:</td>
-        <td>Adres budynku:</td>
-        <td>Typ Dokumentu:</td>
-        <td>Autor Dokumentu:</td>
-        <td>Opis Dokumentu:</td>
-        <td>Szczegóły:</td>
+        <td>Nazwa dokumentu</td>
+        <td style="width: 25%">Data           </td>
+        <td>Adres budynku</td>
+        @*<td>Typ dokumentu:</td>
+        <td>Autor:</td>
+        <td>Opis:</td>*@
+        <td>Szczegóły</td>
 
     </tr>
 @foreach (var dokument in Model)
             {
     <tr class="local">
         <td>@dokument.NazwaDokumentu</td>
+        <td>@dokument.DataDokumentu.ToString().Substring(0, 10)</td>
         <td>@dokument.Adres</td>
-        <td>@dokument.TypDokumentu</td>
+        @*<td>@dokument.TypDokumentu</td>
         <td>@dokument.AutorDokumentu</td>
-        <td>@dokument.OpisDokumentu</td>
+        <td>@dokument.OpisDokumentu</td>*@
         <@*td><span><a href="@Url.DokWlasneSciezka(dokument.NazwaPlikuDokumentu)">do pobrania</a></span></td>*@
-         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyDokumentu", "Zarzadzanie", new { id = dokument.DokumentID })"> >>kliknij<< </a></td>
+
+         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyDokumentu", "Zarzadzanie", 
+                                                new { id = dokument.DokumentID })"> >>kliknij<< </a></td>
+       
 
 
     </tr>
@@ -41,7 +46,7 @@
 
 
 
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
     {
         <a href="@Url.Action("DodajDokument", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Dokument</a>
     }

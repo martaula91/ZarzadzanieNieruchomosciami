@@ -16,18 +16,18 @@
 
 <table id="lokale">
     <tr class="header">
-        <td>Numer Lokalu:</td>
-        <td>Adres:</td>
-        <td>Powierzchnia Lokalu:</td>
-        <td>Pietro:</td>
-        <td>Liczba Izb:</td>
-        <td>PowPiwnicy:</td>
-        <td>Informacje o bloku:</td>
+        <td>Numer Lokalu</td>
+        <td>Adres</td>
+        <td>Powierzchnia Lokalu</td>
+        <td>Piętro</td>
+        <td>Liczba Izb</td>
+        <td>PowPiwnicy</td>
+        <td>Informacje o bloku</td>
     </tr>
 
     <tr class="local">
         <td>@Model.Lokal.NumerLokalu</td>
-        <td>@Model.Lokal.Adres m. @Model.Lokal.NumerLokalu</td>
+        <td>@Model.Lokal.Adres </td> @*m. @Model.Lokal.NumerLokalu*@
         <td>@Model.Lokal.PowierzchniaLokalu</td>
         <td>@string.Format("{0:0.##}", Model.Lokal.Pietro)<span>Pietro</span></td>
         <td>@Model.Lokal.LiczbaIzb</td>
@@ -37,10 +37,29 @@
 
 </table>
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
-    <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+    <a href="@Url.Action("DodajLokal", "Manage", new { lokalId = @Model.Lokal.LokalID })" style="margin-top: 20px; font-weight: bold; display: block;">
         Edytuj
     </a>
+
+
+    <a href="@Url.Action("RozliczenieLokalu", "Zarzadzanie", new { id = @Model.Lokal.LokalID })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Rozliczenia
+    </a>
+
+    <a href="@Url.Action("KsiegowoscLokalu", "Zarzadzanie", new { id = @Model.Lokal.LokalID })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Ksiegowosc
+    </a>
+
+    <a href="@Url.Action("LicznikiLokalu", "Zarzadzanie", new { id = @Model.Lokal.LokalID })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Liczniki
+    </a>
+
+    <a href="@Url.Action("Wlasciciel", "Zarzadzanie", new { id = @Model.Lokal.LokalID })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Wlasciciel
+    </a>
+
+
 }
 

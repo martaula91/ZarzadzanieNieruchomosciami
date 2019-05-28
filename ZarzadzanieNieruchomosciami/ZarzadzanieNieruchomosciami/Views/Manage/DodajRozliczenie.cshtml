@@ -1,0 +1,137 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditRozliczenieViewModel
+
+@{
+    ViewBag.Title = "DodajRozliczenie";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<hr />
+<h2 class="manageHeader">Nowe rozliczenie</h2>
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+    @using (@Html.BeginForm("DodajRozliczenie", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.Rozliczenie.RozliczenieId)
+        @Html.HiddenFor(o => o.Rozliczenie.StanNaDzien)
+        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
+
+        <div style="text-align: center;">
+            <table id="albumedit-address-table">
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.Nazwa, "Nazwa:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.Nazwa)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.Nazwa)</td>
+                </tr>
+               
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.CentralneOgrzewanie, "Centralne ogrzewanie:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.CentralneOgrzewanie)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.CentralneOgrzewanie)</td>
+                </tr>
+               <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.ZWiSCLicznik, "ZWiSCLicznik:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.ZWiSCLicznik)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.ZWiSCLicznik)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.CWLicznik, "CWLicznik:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.CWLicznik)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.CWLicznik)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.EnergiaElekCzescWspolna, "EnergiaElekCzescWspolna:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.EnergiaElekCzescWspolna)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.EnergiaElekCzescWspolna)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.WywozSmieci, "WywozSmieci:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.WywozSmieci)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.WywozSmieci)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.KosztyAdministrowania, "KosztyAdministrowania:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.KosztyAdministrowania)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.KosztyAdministrowania)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.KosztyObslugiBankUbezp, "KosztyObslugiBankUbezp:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.KosztyObslugiBankUbezp)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.KosztyObslugiBankUbezp)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.FunduszRemontowy, "FunduszRemontowy:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.FunduszRemontowy)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.FunduszRemontowy)</td>
+                </tr>
+
+
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.StanObecny, "StanObecny:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.StanObecny)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.StanObecny)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Rozliczenie.OgolemDoZaplaty, "OgolemDoZaplaty:")</td>
+                    <td>@Html.TextBoxFor(o => o.Rozliczenie.OgolemDoZaplaty)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Rozliczenie.OgolemDoZaplaty)</td>
+                </tr>
+                <tr>
+
+           
+                    <td>@Html.LabelFor(o => o.Stawka, "Stawka:")</td>
+                    <td>@Html.DropDownListFor(m => m.Rozliczenie.StawkaID, new SelectList(Model.Stawka, "StawkaID", "Okres",  Model.Stawka.First().StawkaID))</td>
+
+                    <td></td>
+                </tr>
+
+
+                <tr>
+                    <td>@Html.LabelFor(o => o.LokalMieszkalny, "LokalMieszkalny:")</td>
+                    <td>@Html.DropDownListFor(m => m.Rozliczenie.LokalID, new SelectList(Model.LokalMieszkalny, "LokalID", "NumerLokalu", "Adres", Model.LokalMieszkalny.First().LokalID))</td>
+
+                    <td></td>
+                </tr>
+
+
+                <tr>
+
+                    @*<td style="text-align: left">
+                            @if (ViewBag.EditMode)
+                            {
+                                if (Model.Lokal.Ukryty)
+                                {
+                                    <a href="@Url.Action("PokazLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Przywróć
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("UkryjLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Usuń
+                                    </a>
+                                }
+                            }
+                        </td>*@
+
+
+                    <td style="text-align: right;">
+                        <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+

@@ -9,31 +9,32 @@
 
 <table id="lokale">
     <tr class="header">
-        <td>NazwaDokumentu:</td>
-        <td>Adres budynku:</td>
-        <td>Typ Dokumentu:</td>
-        <td>Autor Dokumentu:</td>
-        <td>Opis Dokumentu:</td>
-        <td>Pobierz:</td>
+        <td>Nazwa dokumentu</td>
+        <td style="width: 15%">Data</td>
+        <td>Typ dokumentu</td>
+        <td>Autor</td>
+        <td>Opis</td>
+        <td>Wersja pdf</td>
 
     </tr>
 
     <tr class="local">
         <td>@Model.NazwaDokumentu</td>
-        <td>@Model.Adres</td>
+        <td>@Model.DataDokumentu.ToString().Substring(0, 10)</td>
         <td>@Model.TypDokumentu</td>
         <td>@Model.AutorDokumentu</td>
         <td>@Model.OpisDokumentu</td>
-        <td><span><a href="@Url.DokWlasneSciezka(Model.NazwaPlikuDokumentu)">do pobrania</a></span></td>
+        
+        <td><span><a href="@Url.DokWlasneSciezka(Model.NazwaPlikuDokumentu)"> >>pobierz<< </a></span></td>
 
 
     </tr>
 
 </table>
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
-    <a href="@Url.Action("DodajDokument", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+    <a href="@Url.Action("DodajDokument", "Manage", new { dokumentId = @Model.DokumentID })" style="margin-top: 20px; font-weight: bold; display: block;">
         Edytuj
     </a>
 }

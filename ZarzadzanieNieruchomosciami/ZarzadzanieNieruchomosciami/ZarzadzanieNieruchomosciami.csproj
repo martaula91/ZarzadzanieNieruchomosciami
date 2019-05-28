@@ -358,6 +358,10 @@
     <Compile Include="Migrations\201904140933473_zmianyGlosowanie.Designer.cs">
       <DependentUpon>201904140933473_zmianyGlosowanie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905152225106_zmianny.cs" />
+    <Compile Include="Migrations\201905152225106_zmianny.Designer.cs">
+      <DependentUpon>201905152225106_zmianny.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
@@ -388,6 +392,7 @@
     <Compile Include="ViewModels\EditKsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
+    <Compile Include="ViewModels\EditRozliczenieViewModel.cs" />
     <Compile Include="ViewModels\GlosowanieViewModel.cs" />
     <Compile Include="ViewModels\KsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
@@ -466,6 +471,8 @@
     <Content Include="Views\Zarzadzanie\Windykacja.cshtml" />
     <Content Include="Views\Zarzadzanie\Statystyka.cshtml" />
     <Content Include="Views\Zarzadzanie\WynikiGlosowania.cshtml" />
+    <Content Include="Views\Manage\DodajRozliczenie.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyOsoby.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -530,6 +537,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904140933473_zmianyGlosowanie.resx">
       <DependentUpon>201904140933473_zmianyGlosowanie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905152225106_zmianny.resx">
+      <DependentUpon>201905152225106_zmianny.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

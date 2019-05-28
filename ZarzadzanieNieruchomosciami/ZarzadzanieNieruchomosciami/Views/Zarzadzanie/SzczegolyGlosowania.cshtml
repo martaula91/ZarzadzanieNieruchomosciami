@@ -16,8 +16,8 @@
 
 <table id="lokale">
     <tr class="header">
-        <td>NumerUchwaly:</td>
-        <td>Nazwa:</td>
+        <td>NumerUchwaly</td>
+        <td>Nazwa</td>
     </tr>
 
     <tr class="local">
@@ -28,10 +28,12 @@
 
 </table><br /><br /><br />
 
-
+Data utworzenia glosowania: @Model.DataUtworzeniaGlosowania.ToString().Substring(0, 10)<br />
+Data zakończenia glosowania: @Model.DataKoncaGlosowania.ToString().Substring(0, 10)<br />
+<br /><br />
 <div class="content single">
     <p>
-        PYTANIA
+       <b> PYTANIA</b>
     </p>
     <p>
        @if (Model.Pytania != null && Model.Pytania.Any())
@@ -65,9 +67,9 @@
 
 
 
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
     {
-        <a href="@Url.Action("DodajLokal", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
+        <a href="@Url.Action("DodajGlosowanie", "Manage", new { glosowanieId = @Model.GlosowanieId })" style="margin-top: 20px; font-weight: bold; display: block;">
             Edytuj
         </a>
     }

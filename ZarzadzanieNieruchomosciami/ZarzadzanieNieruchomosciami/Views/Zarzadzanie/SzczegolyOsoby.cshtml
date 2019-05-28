@@ -1,0 +1,32 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.ApplicationUser
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "SzczegolyOsoby";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="Breadcrumb">
+    <img src="../Content/Images/dommaly.png" />
+    <a href="link">
+        @Html.MvcSiteMap().SiteMapPath()
+    </a>
+</div>
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>Imie</td>
+        <td>Nazwisko</td>
+        <td>Adres</td>
+
+    </tr>
+
+    <tr class="local">
+        <td>@Model.DaneUser.Imie</td>
+        <td>@Model.DaneUser.Nazwisko </td> 
+        <td>@Model.DaneUser.Adres</td>
+       
+    </tr>
+
+</table>

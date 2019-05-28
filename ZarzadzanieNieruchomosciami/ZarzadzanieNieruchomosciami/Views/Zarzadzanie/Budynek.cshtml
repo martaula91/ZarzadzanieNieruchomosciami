@@ -41,7 +41,7 @@
     </ul>
 </div>
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
     <a href="@Url.Action("DodajBudynek", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Budynek</a>
 }

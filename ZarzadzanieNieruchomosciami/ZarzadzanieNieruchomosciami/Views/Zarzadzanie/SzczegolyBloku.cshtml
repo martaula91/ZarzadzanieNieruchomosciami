@@ -6,47 +6,176 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
+
+
+<center><h1> DANE BUDYNKU</h1></center>
+<br />
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
+    <a href="@Url.Action("DodajBudynek", "Manage", new { blokMieszkalnyId = @Model.BlokiMieszkalne.BlokMieszkalnyId })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+    <a href="@Url.Action("DokumentyBudynku", "Zarzadzanie", new { id = @Model.BlokiMieszkalne.BlokMieszkalnyId })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Dokumenty
+    </a>
+    <a href="@Url.Action("GlosowaniaBudynku", "Zarzadzanie", new { id = @Model.BlokiMieszkalne.BlokMieszkalnyId })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Głosowania
+    </a>
+}
+<br /><br /><br />
 <table id="lokale">
     <tr class="header">
-        <td>Ulica:</td>
-        <td>Numer Bloku Mieszkalnego:</td>
-        <td>Powierzchnia Uzytkowa:</td>
-        <td>LiczbaLokali:</td>
-        <td>Nr Ewidencyjny Dzialki:</td>
-        <td>Powierzchnia Dzialki:</td>
+        <td>Ulica</td>
+        <td>Numer Bloku Mieszkalnego</td>
+        <td>Liczba lokali</td>
+        <td>Ilość pięter</td>
+
+
+        <td>Ilość klatek</td>
+        <td>Ilość RokBudowy</td>
+
     </tr>
+
 
     <tr class="local">
         <td>@Model.BlokiMieszkalne.Ulica</td>
         <td>@Model.BlokiMieszkalne.NumerBlokuMieszkalnego</td>
-        <td>@Model.BlokiMieszkalne.PowierzchniaUzytkowa</td>
+        
         <td>@Model.BlokiMieszkalne.LiczbaLokali</td>
-        <td>@Model.BlokiMieszkalne.NrEwidDzialki</td>
-        <td>@Model.BlokiMieszkalne.PowDzialki</td>
+        <td>@Model.BlokiMieszkalne.IloscPieter</td>
+
+        <td>@Model.BlokiMieszkalne.IloscKlatek</td>
+        <td>@Model.BlokiMieszkalne.RokBudowy</td>
+
     </tr>
 
 </table>
 <br /><br /><br />
 
-<table id="lokale">
-    <tr class="header">LOKALE</tr>
-    @foreach (var lokal in Model.Lokal)
-            {
-        <tr class="local">
-            <td>
-                <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = @lokal.LokalID })">@lokal.LokalID </a>
-            </td>
+<h1> Dane szczegółowe</h1>
+@**** inf szczegółowe*@
 
-        </tr>
-    }
+<table id="lokale">
+    <tr class="header">
+        <td>Technologia wykonania</td>
+        <td>Powierzchnia użytkowa</td>
+        <td>Kubatura</td>
+        <td>Pow podpiwniczenia</td>
+    </tr>
+
+    <tr class="local">
+        <td>@Model.BlokiMieszkalne.TechnologiaWykonania</td>
+        <td>@Model.BlokiMieszkalne.PowierzchniaUzytkowa</td>
+        <td>@Model.BlokiMieszkalne.Kubatura</td>
+        <td>@Model.BlokiMieszkalne.PowPodpiwniczenia</td>
+    </tr>
 </table>
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+@**informacje o działce*@
+<br /><br /><br />
+
+<h1> Informacje o działce</h1>
+
+<table id="lokale">
+    <tr class="header">
+        <td>Nr ewidencyjny dzialki</td>
+        <td>Powierzchnia</td>
+        <td>Przeznaczenie</td>
+        <td>Pow. terenu zielonego</td>
+        <td>Ilość ławek:</td>
+        <td>Obiekty małej architektury</td>
+        <td>Śmietnik</td>
+
+    </tr>
+
+    <tr class="local">
+        <td>@Model.BlokiMieszkalne.NrEwidDzialki</td>
+        <td>@Model.BlokiMieszkalne.PowDzialki</td>
+        <td>@Model.BlokiMieszkalne.PrzeznaczenieDzialki</td>
+        <td>@Model.BlokiMieszkalne.PowTerenuZielonego</td>
+        <td>@Model.BlokiMieszkalne.IloscLawek:</td>
+        <td>@Model.BlokiMieszkalne.ObMalejArchitektury</td>
+        <td>@Model.BlokiMieszkalne.Smietnik</td>
+    </tr>
+</table>
+<br /><br /><br />
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
-    <a href="@Url.Action("DodajBudynek", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">
-        Edytuj
-    </a>
+    @*WIDOK LOKALI*@
+
+<h1> Lokale</h1>
+    <table id="lokale" bgcolor="white">
+        @*<tr class="header">LOKALE</tr>*@
+        @foreach (var lokal in Model.Lokal)
+        {
+            <tr > @*//class="local"*@
+                <td>
+                    <a href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = @lokal.LokalID })">@lokal.LokalID </a> @*class="kursSzczegolyLink"*@
+                </td>
+
+            </tr>
+        }
+    </table>
+
 }
+
+
+<br /><br /><br />
+
+
+
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+    {
+
+
+
+<table id="lokale">
+    <tr class="header"><td colspan="2">Ważne </td></tr>
+            <tr class="local">
+                <td>Protokol odbioru obiektu  </td>
+                <td>@Model.BlokiMieszkalne.ProtokolOdbioruObiektu </td>
+            </tr>
+            <tr class="local">
+                <td> Pozwolenie na uzytkowanie obiektu </td>
+                <td>@Model.BlokiMieszkalne.PozwolenieNaUzytkowanieObiektu </td>
+            </tr>
+             <tr class="local">
+                 <td>Data założenia ksiegi obiektu budowlanego  </td>
+                <td>@Model.BlokiMieszkalne.DataZalozeniaKsiegiOB.ToString().Substring(0, 10) </td>
+            </tr>
+    <tr class="local">
+        <td>Swiadectwo charakterystyki energetycznej</td>
+        <td>@Model.BlokiMieszkalne.SwiadectwoCharakterystykiEnergetycznej</td>
+    </tr>
+            <tr class="local">
+                <td>Protokol przejecia obiektu  </td>
+                <td>@Model.BlokiMieszkalne.ProtokolPrzejeciaObiektu </td>
+            </tr>
+            
+            <tr class="local">
+                <td>Dokumenty przekazane zarządcy</td>
+                <td>@Model.BlokiMieszkalne.DokumentyPrzekazaneZarządcy</td>
+            </tr>
+
+            <tr class="local">
+                <td>Data ostatniego protokołu kontroli stanu technicznego</td>
+                <td>@Model.BlokiMieszkalne.DataOstProtokołuKontroli.ToString().Substring(0, 10)</td>
+            </tr>
+            <tr class="local">
+                <td>Ocena stanu po kontroli</td>
+                <td>@Model.BlokiMieszkalne.OcenaStanuPoKontroli</td>
+            </tr>
+            <tr class="local">
+                <td>Data kontroli systemu ogrzewania</td>
+                <td>@Model.BlokiMieszkalne.DataKontroliSysOgrzewania.ToString().Substring(0, 10)</td>
+            </tr>
+            
+</table>
+
+    }
+
+
 
 
 

@@ -23,7 +23,7 @@
             Przyspieszy to naszą reakcję, a awaria zostanie usunięta zgodnie z Państwa oczekiwaniami.<br />
         </p>
         <p>
-            Na podany mail lub telefon otrzymają Państwo wiadomość o przebiegu napraw koordynowanych <br />przez administratora nieruchomości.<br /><br />
+            W zakładce "Twoje zgłoszenia" znajdą Państwo wiadomość o przebiegu napraw koordynowanych <br />przez administratora nieruchomości.<br /><br />
         </p>
 
         <p class="emergency">
@@ -48,7 +48,10 @@
             <table id="albumedit-address-table">
                 <tr>
                     <td>@Html.LabelFor(o => o.Awaria.Opis, "Opis i szczegóły zgłoszenia:")</td>
-                    <td>@Html.TextBoxFor(o => o.Awaria.Opis)</td>
+                    
+                    <td>@Html.TextAreaFor(o => o.Awaria.Opis, new { style = " height: 200px;" })</td>
+                    @*<td>@Html.TextBoxFor(o => o.Awaria.Opis)</td>*@
+                   
                     <td>@Html.ValidationMessageFor(o => o.Awaria.Opis)</td>
                 </tr>
 
@@ -59,7 +62,7 @@
                     <td>@Html.DisplayFor(o => o.Awaria.Status)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Awaria.Typ, "typ zgłoszenia:")</td>
+                    <td>@Html.LabelFor(o => o.Awaria.Typ, "Typ zgłoszenia:")</td>
                     <td> @Html.EnumDropDownListFor(o => o.Awaria.Typ, new { @class = "Typ" })</td>
                 </tr>
                 <tr>
@@ -99,10 +102,10 @@
         </div>
     }
 
-    <p class="small-zgoda">Na podany adres e-mail automatycznie prześlemy potwierdzenie dostarczenia zgłoszenia<br /> wraz z kopią jego treści.</p>
+    
     <p class="small-zgoda">
         W chwili udzielenia pomocy służby techniczne nie pobierają opłat, ale wypełniają stosowne <br />
-        protokoły kwalifikujące stronie Właściciela, w części wspólnej nieruchomości-płatnikiem<br /> jest Wspólnota Mieszkaniowa)
+        protokoły kwalifikujące stronie Właściciela, w części wspólnej nieruchomości-płatnikiem<br /> jest Wspólnota Mieszkaniowa
     </p><br />
     <p><span class="wpcf7-form-control-wrap Zgoda-platnosci"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="Zgoda-platnosci" value="1" aria-invalid="false" checked="checked" /><span class="wpcf7-list-item-label"><span class="star">*</span> Zrozumiałam/em i akceptuję sposób kwalifikacji płatnika, przyjmując jednocześnie do <br />informacji o możliwości wystąpienia opłaty do uregulowania.</span></label></span></span></span></p>
 

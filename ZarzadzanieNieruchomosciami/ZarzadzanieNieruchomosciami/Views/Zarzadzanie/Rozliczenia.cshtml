@@ -26,7 +26,7 @@
             {
         <tr class="local">
             <td>@rozlicz.Nazwa</td>
-            <td>@rozlicz.StanNaDzien</td>
+            <td>@rozlicz.StanNaDzien.ToString().Substring(0, 10)</td>
             <td>@rozlicz.OgolemDoZaplaty</td>
          <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyRozliczen", "Zarzadzanie", new { id = rozlicz.RozliczenieId })"> >>kliknij<< </a></td>
 
@@ -34,4 +34,9 @@
         </tr>
     }
 </table>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
+    <a href="@Url.Action("DodajRozliczenie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
+}
 

@@ -15,10 +15,11 @@
 
 
 
-<br><br><br><br>
+<br><br>
+<b>Stan na dzień:</b> <br><br>
 <table id="lokale">
     <tr class="header">
-        <td> </td>
+
         <td>Data:</td>
         <td>Szczegóły:</td>
 
@@ -26,10 +27,10 @@
    @foreach (var licznik in Model)
             {
         <tr class="local">
-            <td>Stan na dzień: </td>
-            <td>@licznik.StanNaDzien</td>
+
+            <td><center>@licznik.StanNaDzien.ToString().Substring(0, 10)</center></td>
           @*  <td>@licznik.LokalMieszkalnyID</td>*@
-         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowID })"> >>kliknij<< </a></td>
+         <td><center> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowID })"> >>kliknij<< </a></center></td>
 
 
         </tr>
