@@ -120,7 +120,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var wplyw = db.Ksiegowosc.Find(id);
             var name = User.Identity.Name;
-            
+
             //var vm = new LokalViewModels()
             //{
             //    Lokal = lokal,
@@ -242,7 +242,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             var pytania = db.Pytanie.Where(p => p.GlosowanieId == glosowanieId).Select(p => new PytanieViewModel()
             {
                 PytanieId = p.PytanieId,
-                TrescPytania = p.TrescPytania, 
+                TrescPytania = p.TrescPytania,
             }).ToList();
 
             var model = new OddajGlosViewModel();
@@ -262,7 +262,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 {
                     PytanieId = pytanie.PytanieId,
                     UserId = User.Identity.GetUserId(),
-                    Odpowiedz = pytanie.Odpowiedz,                    
+                    Odpowiedz = pytanie.Odpowiedz,
                     DataOddaniaGlosu = DateTime.Now,
                 };
 
@@ -359,9 +359,9 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         /////////////////////////
 
-   
-            
-            /// ZMIANA STANU AWARII
+
+
+        /// ZMIANA STANU AWARII
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public Status ZmianaStanuAwari(Awaria awaria)
@@ -525,7 +525,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                         model.Documents = wplaty;
                     }
                 }
-                
+
                 return View(nazwa, model);
             }
             if (nazwa == "Glosowanie")
@@ -578,12 +578,42 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             if (nazwa == "Statystyka")
             {
-                return View(nazwa);
+                var model = new StatystykaViewModel();
+                model.Awarie = (from a in db.Awaria
+                                group a by a.Status into g
+                                select new AwariaGroupedModel()
+                                {
+                                    Status = g.Key,
+                                    Liczba = g.Count(),
+                                }).ToList();
+                model.AwarieLokal = (from a in db.Awaria
+                                     join b in db.BlokiMieszkalne on a.BlokMieszkalnyId equals b.BlokMieszkalnyId
+                                     group new { a, b } by b.Adres into g
+                                     select new AwariaLokalGroupedModel()
+                                     {
+                                         Lokal = g.Key,
+                                         Typ = g.Select(x => x.a.Typ).ToList()
+                                     }).ToList();
+
+                return View(nazwa, model);
             }
 
             if (nazwa == "Windykacja")
             {
-                return View(nazwa);
+                var model = new WindykacjaViewModel();
+                model.WindykacjaItems = (from u in db.Users
+                                         join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
+                                         where l.Saldo < 0
+                                         select new WindykacjaItem
+                                         {
+                                             LocalAddress = l.Adres + " m. " + l.NumerLokalu,
+                                             FullName = u.DaneUser.Imie + " " + u.DaneUser.Nazwisko,
+                                             Address = u.DaneUser.Adres,
+                                             Phone = u.DaneUser.Telefon,
+                                             Saldo = l.Saldo
+                                         }).ToList();
+
+                return View(nazwa, model);
             }
 
             return View(nazwa);
@@ -598,13 +628,13 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             var pytania = new List<PytanieWynikiViewModel>();
 
-            foreach(var p in glosowanie.Pytania)
+            foreach (var p in glosowanie.Pytania)
             {
                 var pytanie = new PytanieWynikiViewModel();
                 pytanie.PytanieId = p.PytanieId;
                 pytanie.TrescPytania = p.TrescPytania;
                 var odpowiedzi = Enum.GetValues(typeof(EnumOdpowiedz)).Cast<EnumOdpowiedz>().ToList();
-                foreach(var odp in odpowiedzi)
+                foreach (var odp in odpowiedzi)
                 {
                     pytanie.Odpowiedzi.Add(odp.ToString(), glosy.Count(x => x.PytanieId == p.PytanieId && x.Odpowiedz == odp));
                 }

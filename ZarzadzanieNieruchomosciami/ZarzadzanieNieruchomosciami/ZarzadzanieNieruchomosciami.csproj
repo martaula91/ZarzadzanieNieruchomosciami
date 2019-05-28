@@ -394,6 +394,8 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\OddajGlosViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="ViewModels\StatystykaViewModel.cs" />
+    <Compile Include="ViewModels\WindykacjaViewModel.cs" />
     <Compile Include="ViewModels\WynikGlosowaniaViewModel.cs" />
     <Compile Include="ViewModels\WypisanieLokaliZBlokuViewModel.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.StatystykaViewModel
+
 @{
     ViewBag.Title = "Statystyka";
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
@@ -21,14 +22,14 @@
         <td>Opinie: </td>
 
     </tr>
-
+    
     <tr class="local">
-        <td>100</td>
-        <td>20</td>
-        <td>30</td>
-        <td>25</td>
-        <td>15</td>
-        <td>10</td>
+        <td>@Model.Awarie.Sum(a => a.Liczba)</td>
+        <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Nowe).Select(a => a.Liczba).FirstOrDefault()</td>
+        <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Trwa_usuwanie).Select(a => a.Liczba).FirstOrDefault()</td>
+        <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Usunieto_awarie).Select(a => a.Liczba).FirstOrDefault()</td>
+        <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Odrzucono).Select(a => a.Liczba).FirstOrDefault()</td>
+        <td>@Model.Awarie.Where(a => a.Status == ZarzadzanieNieruchomosciami.Models.Status.Uwaga).Select(a => a.Liczba).FirstOrDefault()</td>
 
     </tr>
 
@@ -46,24 +47,17 @@
 
     </tr>
 
-    <tr class="local">
-        <td>BUDYNEK 1 Adres</td>
-        <td>6</td>
-        <td>2</td>
-        <td>1</td>
-        <td>0</td>
-        <td>4</td>
+    @foreach (var item in Model.AwarieLokal)
+    {
+        <tr class="local">
+            <td>@item.Lokal</td>
+            <td>@(item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.awarie_mediow).Any() ? item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.awarie_mediow).Count() : 0)</td>
+            <td>@(item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.uszkodzenia_budynku).Any() ? item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.uszkodzenia_budynku).Count() : 0)</td>
+            <td>@(item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.otoczenie_budynku).Any() ? item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.otoczenie_budynku).Count() : 0)</td>
+            <td>@(item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.inne).Any() ? item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.inne).Count() : 0)</td>
+            <td>@(item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.uwagi_opinie).Any() ? item.Typ.Where(t => t == ZarzadzanieNieruchomosciami.Models.Typ.uwagi_opinie).Count() : 0)</td>
 
-    </tr>
-
-    <tr class="local">
-        <td>BUDYNEK 2 Adres</td>
-        <td>2</td>
-        <td>3</td>
-        <td>0</td>
-        <td>2</td>
-        <td>0</td>
-
-    </tr>
+        </tr>
+    }
 
 </table>

@@ -1,4 +1,4 @@
-﻿
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.WindykacjaViewModel
 @{
     ViewBag.Title = "Windykacja";
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
@@ -22,14 +22,16 @@
 
     </tr>
 
-    <tr class="local">
-        <td>Lipowa 12 m.1 </td>
-        <td>Jan Kowalski</td>
-        <td>Ul. Słoneczna 1 </td>
-        <td> 505202101</td>
-        <td> -300 zł </td>
-
-    </tr>
+    @foreach (var item in Model.WindykacjaItems)
+    {
+        <tr class="local">
+            <td>@item.LocalAddress</td>
+            <td>@item.FullName</td>
+            <td>@item.Address </td>
+            <td>@item.Phone</td>
+            <td>@item.Saldo zł </td>
+        </tr>
+    }
 
 
 
