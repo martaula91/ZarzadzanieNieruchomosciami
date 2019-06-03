@@ -4,9 +4,10 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
   <mvcSiteMapNode title="Home" controller="Zarzadzanie" action="Index">
-    <mvcSiteMapNode title="StronyKategori" controller="Zarzadzanie" action="StronyKategori" >
-      <mvcSiteMapNode title="szczegoly" controller="Kursy" action="Szczegoly"  />
-    </mvcSiteMapNode>
+      <mvcSiteMapNode title="{nazwa}" controller="Zarzadzanie" action="StronyKategori">
+      </mvcSiteMapNode>
+
+
     
   
     <mvcSiteMapNode title="Konto" controller="Manage" action="Index">
@@ -17,6 +18,6 @@
         <mvcSiteMapNode title="Zamówienia" controller="Manage" action="ListaZamowien" /> -->
       </mvcSiteMapNode>
   
-  </mvcSiteMapNode>
+ </mvcSiteMapNode>
 
 </mvcSiteMap>

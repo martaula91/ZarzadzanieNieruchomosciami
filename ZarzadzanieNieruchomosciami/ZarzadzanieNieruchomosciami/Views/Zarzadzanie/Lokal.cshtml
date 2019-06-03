@@ -6,12 +6,13 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
-<div id="Breadcrumb">
+
+@*<div id="Breadcrumb">
     <img src="../Content/Images/dommaly.png" />
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
     </a>
-</div>
+</div>*@
 
 <div id="SekcjaListaKategori">
 
@@ -24,7 +25,7 @@
 
 
                     <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = lokal.LokalID })">
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                        <img class="kurs" src="../Content/Kursy/obrazekcsharp.png" />
                         <h1>
                             @lokal.LokalID - @lokal.Adres
                         </h1>

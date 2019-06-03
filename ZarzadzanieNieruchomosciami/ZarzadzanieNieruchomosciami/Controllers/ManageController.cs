@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZarzadzanieNieruchomosciami.App_Start;
 using ZarzadzanieNieruchomosciami.DAL;
+using ZarzadzanieNieruchomosciami.Infrastructure;
 using ZarzadzanieNieruchomosciami.Models;
 using ZarzadzanieNieruchomosciami.ViewModels;
 
@@ -331,23 +332,44 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             }
             else
             {
-                // dodanie nowego
-                if (ModelState.IsValid)
+                // Sprawdzenie, czy użytkownik wybrał plik
+                if (file != null && file.ContentLength > 0)
                 {
-                    db.Entry(model.Budynek).State = EntityState.Added;
-                    db.SaveChanges();
+                    if (ModelState.IsValid)
+                    {
+                        // Generowanie pliku
+                        var fileExt = Path.GetExtension(file.FileName);
+                        var filename = Guid.NewGuid() + fileExt;
 
-                    return RedirectToAction("DodajBudynek", new { potwierdzenie = true });
+                        var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiFolderWzgledny), filename);
+                        file.SaveAs(path);
+
+                        model.Budynek.NazwaPlikuObrazka = filename;
+
+
+                        db.Entry(model.Budynek).State = EntityState.Added;
+                        db.SaveChanges();
+
+                        return RedirectToAction("DodajBudynek", new { potwierdzenie = true });
+                    }
+                    else
+                    {
+                        //var kategorie = db.BlokiMieszkalne.ToList();
+                        //model.BlokiMieszkalne = kategorie;
+                        return View(model);
+                    }
                 }
+
                 else
                 {
-                    //var kategorie = db.BlokiMieszkalne.ToList();
-                    //model.BlokiMieszkalne = kategorie;
+                    ModelState.AddModelError("", "Nie wskazano pliku");
+
+                    
                     return View(model);
                 }
-            }
 
         }
+}
 
 
         [Authorize(Roles = "Employee")]

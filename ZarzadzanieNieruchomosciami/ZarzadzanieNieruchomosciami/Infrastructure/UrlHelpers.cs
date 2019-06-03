@@ -27,5 +27,14 @@ namespace ZarzadzanieNieruchomosciami.Infrastructure
 
             return sciezkaBezwzglendna;
         }
+
+        public static string ObrazkiSciezka(this UrlHelper helper, string nazwaObrazka)
+        {
+            var ObrazkiFolder = AppConfig.ObrazkiFolderWzgledny;
+            var sciezka = Path.Combine(ObrazkiFolder, nazwaObrazka);
+            var sciezkaBezwzglendna = helper.Content(sciezka);
+
+            return sciezkaBezwzglendna;
+        }
     }
 }

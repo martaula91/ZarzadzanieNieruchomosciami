@@ -11,6 +11,7 @@ namespace ZarzadzanieNieruchomosciami.Models
 
         public int BlokMieszkalnyId { get; set; }
 
+        public string NazwaPlikuObrazka { get; set; }
 
         public string Ulica { get; set; }
         public int NumerBlokuMieszkalnego { get; set; }

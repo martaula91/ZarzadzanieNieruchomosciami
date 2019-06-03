@@ -27,5 +27,16 @@ namespace ZarzadzanieNieruchomosciami.Infrastructure
                 return _dokWlasneFolderWzgledny;
             }
         }
+
+        private static string _obrazkiFolderWzgledny = ConfigurationManager.AppSettings["ObrazkiFolder"];
+
+        public static string ObrazkiFolderWzgledny
+        {
+            get
+            {
+                return _obrazkiFolderWzgledny;
+            }
+        }
+
     }
 }

@@ -362,6 +362,10 @@
     <Compile Include="Migrations\201905152225106_zmianny.Designer.cs">
       <DependentUpon>201905152225106_zmianny.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906012243002_BudynekObrazek.cs" />
+    <Compile Include="Migrations\201906012243002_BudynekObrazek.Designer.cs">
+      <DependentUpon>201906012243002_BudynekObrazek.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
@@ -473,6 +477,12 @@
     <Content Include="Views\Zarzadzanie\WynikiGlosowania.cshtml" />
     <Content Include="Views\Manage\DodajRozliczenie.cshtml" />
     <Content Include="Views\Zarzadzanie\SzczegolyOsoby.cshtml" />
+    <Content Include="Views\Home\Firma.cshtml" />
+    <Content Include="Views\Home\Artykuly.cshtml" />
+    <Content Include="Views\Home\OfertaWspolnota.cshtml" />
+    <Content Include="Views\Home\OfertaDeweloper.cshtml" />
+    <Content Include="Views\Home\Galeria.cshtml" />
+    <Content Include="Views\Home\Referencje.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -540,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905152225106_zmianny.resx">
       <DependentUpon>201905152225106_zmianny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906012243002_BudynekObrazek.resx">
+      <DependentUpon>201906012243002_BudynekObrazek.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

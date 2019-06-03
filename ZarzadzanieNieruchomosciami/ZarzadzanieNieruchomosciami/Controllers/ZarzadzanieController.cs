@@ -753,14 +753,39 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         public ActionResult GlosowaniaBudynku(int id)
         {
-            var glosy = new List<Glosowanie>();
+            var glos = new List<Glosowanie>();
 
-            glosy = (from b in db.BlokiMieszkalne 
+            glos = (from b in db.BlokiMieszkalne 
                      join g in db.Glosowanie on b.BlokMieszkalnyId equals g.BlokMieszkalnyId
                      where g.BlokMieszkalnyId == id
                      select g).ToList();
 
-            return View("Glosowanie", glosy);
+            var glosowania = new List<GlosowanieExtendedModel>();
+            var userId = User.Identity.GetUserId();
+            foreach (var g in glos)
+            {
+                var pytaniaIds = g.Pytania.Select(p => p.PytanieId).ToList();
+                var glosUser = db.Glos.Where(x => pytaniaIds.Contains(x.PytanieId) && x.UserId == userId).ToList();
+
+                var glosowanieDoDodania = new GlosowanieExtendedModel()
+                {
+                    GlosowanieId = g.GlosowanieId,
+                    BlokMieszkalnyId = g.BlokMieszkalnyId,
+                    NumerUchwaly = g.NumerUchwaly,
+                    Nazwa = g.Nazwa,
+                    DataUtworzeniaGlosowania = g.DataUtworzeniaGlosowania,
+                    DataKoncaGlosowania = g.DataKoncaGlosowania,
+                    CzyMozeUserMozeGlosowac = g.DataKoncaGlosowania > DateTime.Now && !glosUser.Any(),
+                    CzyZakonczone = g.DataKoncaGlosowania < DateTime.Now,
+                };
+
+                glosowania.Add(glosowanieDoDodania);
+            }
+
+            var model = new GlosowanieViewModel();
+            model.Glosowania = glosowania;
+
+            return View("Glosowanie", model);
         }
 
     }

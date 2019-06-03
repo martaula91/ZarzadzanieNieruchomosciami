@@ -5,33 +5,33 @@
 
 
 <ul id="menu">
-    <li><a href="#">Strona Startowa</a></li>
+    <li><a href="@Url.Action("Index","Home")">Strona Startowa</a></li>
     <li>
         <a href="#">O nas</a>
         <ul>
-            <li><a href="#">Firma</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Firma" })">Firma</a></li>
         </ul>
     </li>
-    <li><a href="#">Artykuły</a></li>
+    <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Artykuly" })">Artykuły</a></li>
     <li>
         <a href="#">Oferta</a>
         <ul>
-            <li><a href="#">Wspolnoty</a></li>
-            <li><a href="#">deweloperzy</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaWspolnota" })">Wspolnoty</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaDeweloper" })">deweloperzy</a></li>
         </ul>
     </li>
-    <li><a href="#">Galeria</a></li>
+    <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Galeria" })">Galeria</a></li>
     <li>
         <a href="#">Kontakt</a>
         <ul>
-            <li><a href="#">Formularz kontaktowy</a></li>
-            <li><a href="#">Pomoc</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Kontakt" })">Formularz kontaktowy</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Pomoc" })">Pomoc</a></li>
         </ul>
     </li>
     <li>
         <a href="#">Referencje</a>
         <ul>
-            <li><a href="#">Wymiana linkiem</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Referencje" })">Wymiana linkiem</a></li>
         </ul>
     </li>
 </ul>
