@@ -65,6 +65,7 @@
                     <td>@Html.LabelFor(o => o.Awaria.Typ, "Typ zgłoszenia:")</td>
                     <td> @Html.EnumDropDownListFor(o => o.Awaria.Typ, new { @class = "Typ" })</td>
                 </tr>
+
                 <tr>
                     <td>@Html.LabelFor(o => o.Budynek, "Blok Mieszkalny:")</td>
                     <td>@Html.DropDownListFor(m => m.Awaria.BlokMieszkalnyId, new SelectList(Model.Budynek, "BlokMieszkalnyId", "Adres", Model.Budynek.First().BlokMieszkalnyId))</td>

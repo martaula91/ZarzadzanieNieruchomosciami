@@ -366,6 +366,14 @@
     <Compile Include="Migrations\201906012243002_BudynekObrazek.Designer.cs">
       <DependentUpon>201906012243002_BudynekObrazek.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906032133378_weryfikacja Licznika.cs" />
+    <Compile Include="Migrations\201906032133378_weryfikacja Licznika.Designer.cs">
+      <DependentUpon>201906032133378_weryfikacja Licznika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906032141160_weryfikacja Licznika2.cs" />
+    <Compile Include="Migrations\201906032141160_weryfikacja Licznika2.Designer.cs">
+      <DependentUpon>201906032141160_weryfikacja Licznika2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
@@ -553,6 +561,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906012243002_BudynekObrazek.resx">
       <DependentUpon>201906012243002_BudynekObrazek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906032133378_weryfikacja Licznika.resx">
+      <DependentUpon>201906032133378_weryfikacja Licznika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906032141160_weryfikacja Licznika2.resx">
+      <DependentUpon>201906032141160_weryfikacja Licznika2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

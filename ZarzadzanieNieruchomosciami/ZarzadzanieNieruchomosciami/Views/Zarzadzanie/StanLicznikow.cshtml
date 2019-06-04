@@ -6,29 +6,46 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
-<div id="Breadcrumb">
+@*<div id="Breadcrumb">
     <img src="../Content/Images/dommaly.png" />
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
     </a>
-</div>
+</div>*@
 
 
 
 <br><br>
 <b>Stan na dzień:</b> <br><br>
 <table id="lokale">
-    <tr class="header">
 
-        <td>Data:</td>
-        <td>Szczegóły:</td>
-
-    </tr>
    @foreach (var licznik in Model)
             {
-        <tr class="local">
-
+        <tr  @if (licznik.Weryfikacja == ZarzadzanieNieruchomosciami.Models.Weryfikacja.Niezweryfikowano) { <text> class="nowaWeryfikacja" </text>         }>
+            <td>Data:</td>
             <td><center>@licznik.StanNaDzien.ToString().Substring(0, 10)</center></td>
+            @*<td>Lokal:</td>
+            <td><center>@licznik.LokalMieszkalny.Adres</center></td>*@
+            <td>Weryfikacja:</td>
+            <td>  @*@licznik.Weryfikacja*@
+               @if (@User.IsInRole("Employee")) { 
+               using (Html.BeginForm("ZmianaWeryfikacji", "Zarzadzanie"))
+               {
+                        @Html.HiddenFor(o => licznik.StanLicznikowID)
+                        @Html.EnumDropDownListFor(o => licznik.Weryfikacja, new { @class = "StanWeryfikacjiZmien" }) 
+                    }                                                         
+                }
+                else
+                {
+                @Html.DisplayFor(o => licznik.Weryfikacja)
+                }
+            
+            </td>
+         
+
+
+
+            <td>Szczegóły:</td>
           @*  <td>@licznik.LokalMieszkalnyID</td>*@
          <td><center> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyLicznikow", "Zarzadzanie", new { id = licznik.StanLicznikowID })"> >>kliknij<< </a></center></td>
 
@@ -37,6 +54,29 @@
     }
 </table>
 
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+
+    <script>
+    $(".StanWeryfikacjiZmien").on('change', function (e) {
+        //e.preventDefault();
+        var f = $(this.form);
+        var tr = f.closest("tr");
+        var action = f.attr("action");
+        var serializedForm = f.serialize();
+        $.post(action, serializedForm).done(function (data) {
+            if (data == '@ZarzadzanieNieruchomosciami.Models.Weryfikacja.Niezweryfikowano.ToString()') {
+                tr.addClass("nowaWeryfikacja")
+            }
+            else {
+                tr.removeClass("nowaWeryfikacja");
+            }
+          });
+    });
+    </script>
+}
 
 
 

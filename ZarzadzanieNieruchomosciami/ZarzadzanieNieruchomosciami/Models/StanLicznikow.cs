@@ -16,7 +16,15 @@ namespace ZarzadzanieNieruchomosciami.Models
         public int Gaz { get; set; }
 
         public DateTime StanNaDzien { get; set; }
+        public Weryfikacja Weryfikacja { get; set; }
 
         public virtual LokalMieszkalny LokalMieszkalny { get; set; }
+
+    }
+    public enum Weryfikacja
+    {
+        Niezweryfikowano,
+        Zweryfikowano,
+        Odrzucono
     }
 }

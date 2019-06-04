@@ -286,6 +286,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             StanLicznikow stanLicznikow;
 
+
             if (stanLicznikowID.HasValue)
             {
                 ViewBag.EditMode = true;
@@ -326,7 +327,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                                                              where u.UserName == User.Identity.Name
                                                              select l.LokalID).FirstOrDefault();
 
-                    //model.StanLicznikow.StanNaDzien = DateTime.Now;
+                   model.StanLicznikow.StanNaDzien = DateTime.Now;
                     db.Entry(model.StanLicznikow).State = EntityState.Added;
                     db.SaveChanges();
 
@@ -386,6 +387,23 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             //}
 
             return awaria.Status;
+        }
+        
+        /// ZMIANA waryfikacji licznika
+        [HttpPost]
+        [Authorize(Roles = "Employee")]
+        public Weryfikacja ZmianaWeryfikacji(StanLicznikow stanLicznikow)
+        {
+            StanLicznikow weryfikacjaDoModyfikacji = db.StanyLicznikow.Find(stanLicznikow.StanLicznikowID);
+            weryfikacjaDoModyfikacji.Weryfikacja = stanLicznikow.Weryfikacja;
+            db.SaveChanges();
+
+            //if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
+            //{
+            //    this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
+            //}
+
+            return stanLicznikow.Weryfikacja;
         }
 
         ///////////////////////// 
@@ -480,6 +498,10 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                                where u.UserName == User.Identity.Name
                                select r).ToList();
                     }
+                    else if (User.IsInRole("Employee"))
+                    {
+                        roz = db.Rozliczenia.ToList();
+                    }
                     else
                     {
                         roz = db.Rozliczenia.ToList();
@@ -489,7 +511,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 return View(nazwa, roz);
             }
             if (nazwa == "StanLicznikow")
-            {
+            { 
                 var stan = new List<StanLicznikow>();
                 if (User.Identity.IsAuthenticated)
                 {

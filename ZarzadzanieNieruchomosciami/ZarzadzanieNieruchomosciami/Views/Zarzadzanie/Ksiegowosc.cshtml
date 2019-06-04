@@ -6,12 +6,12 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
-<div id="Breadcrumb">
+@*<div id="Breadcrumb">
     <img src="../Content/Images/dommaly.png" />
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
     </a>
-</div>
+</div>*@
 
 
 @if(Model.IsInUserRole)
@@ -23,10 +23,10 @@
 
 <table id="lokale">
     <tr class="header">
-        <td>Nazwa:</td>
-        <td>OpisDokumentu:</td>
-        <td>DataDodania:</td>
-        <td>Szczegóły:</td>
+        <td>Nazwa</td>
+        <td>OpisDokumentu</td>
+        <td>DataDodania</td>
+        <td>Szczegóły</td>
 
     </tr>
 @foreach (var wplata in Model.Documents)

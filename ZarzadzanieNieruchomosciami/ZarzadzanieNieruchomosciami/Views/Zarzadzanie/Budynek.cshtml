@@ -7,10 +7,10 @@
 }
 
 <div id="Breadcrumb">
-    <img src="../Content/Images/dommaly.png" />
+    @*<img src="../Content/Images/dommaly.png" />
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
-    </a>
+    </a>*@
     <form id="search-form" method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
         <input id="search-filter" type="search" name="searchQuery"
                data-autocomplete-source="@Url.Action("BudynkiPodpowiedzi")"
@@ -27,10 +27,11 @@
             {
             <li>
                 <article>
-
+                    @*NazwaPlikuObrazka*@
 
                     <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyBloku", "Zarzadzanie", new { id = budynek.BlokMieszkalnyId })">
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                        @*<img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />*@
+                        <img class="kurs" src="@Url.ObrazkiSciezka(budynek.NazwaPlikuObrazka)" />
                         <h1>
                             @budynek.Adres
                         </h1>

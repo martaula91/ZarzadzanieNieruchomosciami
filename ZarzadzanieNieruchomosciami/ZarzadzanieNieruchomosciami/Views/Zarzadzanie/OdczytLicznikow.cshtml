@@ -38,7 +38,7 @@
             @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
         </div>
         @Html.HiddenFor(o => o.StanLicznikow.StanLicznikowID)
-        //Html.HiddenFor(o => o.Lokal.DataDodania)
+        @Html.HiddenFor(o => o.StanLicznikow.StanNaDzien)
         //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
 
         <div style="text-align: center;">
@@ -63,12 +63,15 @@
                     <td>@Html.TextBoxFor(o => o.StanLicznikow.Gaz)</td>
                     <td>@Html.ValidationMessageFor(o => o.StanLicznikow.Gaz)</td>
                 </tr>
-                <tr>
+                @*<tr>
                     <td>@Html.LabelFor(o => o.StanLicznikow.StanNaDzien, "Stan Na Dzien:")</td>
                     <td>@Html.TextBoxFor(o => o.StanLicznikow.StanNaDzien)</td>
                     <td>@Html.ValidationMessageFor(o => o.StanLicznikow.StanNaDzien)</td>
+                </tr>*@
+                 <tr>
+                    <td>@Html.LabelFor(o => o.StanLicznikow.Weryfikacja, "Weryfikacja:")</td>
+                    <td>@Html.DisplayFor(o => o.StanLicznikow.Weryfikacja)</td>
                 </tr>
-
 
                 @*<tr>
 
