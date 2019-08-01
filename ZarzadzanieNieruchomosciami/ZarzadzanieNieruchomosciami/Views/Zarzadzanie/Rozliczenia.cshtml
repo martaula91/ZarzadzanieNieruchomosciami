@@ -6,11 +6,23 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
-<div id="Breadcrumb">
+@*<div id="Breadcrumb">
     <img src="../Content/Images/dommaly.png" />
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
     </a>
+
+</div>*@
+
+<script type="text/javascript" src="@Url.Content("/Scripts/Chart.js")"></script>
+<div style="margin:10px 0">
+    <form method="get" action="/kategoria/Rozliczenia.html" id="formOkres">
+        <select onchange="document.getElementById('formOkres').submit();" id="iloscMiesiecy" name="iloscMiesiecy">
+            <option value="">Dowolny okres</option>
+            <option @(ViewBag.iloscMiesiecy == 6 ? "selected" : "") value="6">Ostatnie 6 miesięcy</option>
+            <option @(ViewBag.iloscMiesiecy == 12 ? "selected" : "") value="12">Ostatni rok</option>
+        </select>
+    </form>
 </div>
 
 
@@ -22,13 +34,13 @@
         <td>Szczegóły:</td>
 
     </tr>
-@foreach (var rozlicz in Model)
+    @foreach (var rozlicz in Model)
             {
         <tr class="local">
             <td>@rozlicz.Nazwa</td>
             <td>@rozlicz.StanNaDzien.ToString().Substring(0, 10)</td>
             <td>@rozlicz.OgolemDoZaplaty</td>
-         <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyRozliczen", "Zarzadzanie", new { id = rozlicz.RozliczenieId })"> >>kliknij<< </a></td>
+            <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyRozliczen", "Zarzadzanie", new { id = rozlicz.RozliczenieId })"> >>kliknij<< </a></td>
 
 
         </tr>
@@ -39,4 +51,51 @@
 {
     <a href="@Url.Action("DodajRozliczenie", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj</a>
 }
+
+<div style="margin-top: 20px">
+    <canvas id="canvasWykres"></canvas>
+</div>
+
+<script>
+    var horizontalBarChartData = {
+        labels: [
+                @foreach (var rozlicz in Model)
+                {
+                    @:'@rozlicz.Nazwa',
+                }
+            ],
+            datasets: [{
+            backgroundColor: 'rgb(54, 162, 235)',
+            data: [
+                @foreach (var rozlicz in Model)
+                {
+                    @:'@rozlicz.OgolemDoZaplaty',
+                }
+            ]
+        }]
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvasWykres').getContext('2d');
+        window.myHorizontalBar = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: horizontalBarChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                },
+            }
+        });
+    };
+</script>
+
 

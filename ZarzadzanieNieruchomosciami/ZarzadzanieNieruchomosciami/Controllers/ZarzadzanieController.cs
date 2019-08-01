@@ -22,19 +22,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         // GET: Zarzadzanie
         public ActionResult Index()
         {
-            //var kategorieDostepne = db.Kategorie.ToList();
-
-            //var vm = new StartViewModel()
-            //{
-            //    Kategoria = kategorieDostepne,
-
-            //};
-            //return View(vm); //vm
-
-
-
-
-            var informacje = db.Informacje.ToList();
+               var informacje = db.Informacje.ToList();
             return View(informacje);
 
             //return View();
@@ -46,8 +34,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var lokal = db.LokaleMieszkalne.Find(id);
             var name = User.Identity.Name;
-            //logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
-            //return View(lokal);
+       
 
 
             var vm = new LokalViewModels()
@@ -63,19 +50,12 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var result = new WypisanieLokaliZBlokuViewModel();
             result.BlokiMieszkalne = db.BlokiMieszkalne.Find(id);
-            //result.DaneUsera = db.DaneUsera.ToList();
+ 
             result.Lokal = db.LokaleMieszkalne.Where(k => k.BlokMieszkalnyID == id).ToList();
-            //result.Potwierdzenie = potwierdzenie;
+
 
             return View(result);
 
-
-
-
-
-            //var blok = db.BlokiMieszkalne.Find(id);
-            //var name = User.Identity.Name;
-            //return View(blok);
         }
 
         // SZCZEGOLY DOKUMENTU
@@ -83,11 +63,17 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var dok = db.Dokumenty.Find(id);
             var name = User.Identity.Name;
-            //logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
-            //return View(lokal);
-
 
             return View(dok);
+        }
+
+        // SZCZEGOLY DOKUMENTU
+        public ActionResult SzczegolyInformacji(int id)
+        {
+            var info = db.Informacje.Find(id);
+            var name = User.Identity.Name;
+
+            return View(info);
         }
 
         // SZCZEGOLY ROZLICZEN
@@ -95,9 +81,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var roz = db.Rozliczenia.Find(id);
             var name = User.Identity.Name;
-            //logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
-            //return View(lokal);
-
 
             return View(roz);
         }
@@ -107,9 +90,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var stan = db.StanyLicznikow.Find(id);
             var name = User.Identity.Name;
-            //logger.Info("Strona szczególy | " + kurs.TytulKursu + " | " + name);
-            //return View(lokal);
-
 
             return View(stan);
         }
@@ -120,14 +100,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var wplyw = db.Ksiegowosc.Find(id);
             var name = User.Identity.Name;
-            
-            //var vm = new LokalViewModels()
-            //{
-            //    Lokal = lokal,
-            //    BlokiMieszkalne = db.BlokiMieszkalne.ToList(),
-            //};
 
-            return View(wplyw); //vm
+            return View(wplyw); 
         }
 
         // SZCZEGOLY glosowania
@@ -135,12 +109,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             var glos = db.Glosowanie.Find(id);
             var name = User.Identity.Name;
-
-            //var vm = new LokalViewModels()
-            //{
-            //    Lokal = lokal,
-            //    BlokiMieszkalne = db.BlokiMieszkalne.ToList(),
-            //};
 
             return View(glos);
         }
@@ -162,16 +130,15 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             IEnumerable<Awaria> zgloszeniaUzytkownika;
 
-            // Dla administratora zwracamy wszystko
             if (isAdmin || isEmployee)
             {
-                zgloszeniaUzytkownika = db.Awaria.OrderByDescending(o => o.DataDodania).ToArray();
-            }                                    
+                zgloszeniaUzytkownika = db.Awaria.OrderBy(o => o.DataDodania).ToArray();
+            }
             else
             {
                 var userId = User.Identity.GetUserId();
                 zgloszeniaUzytkownika = db.Awaria.Where(o => o.UserId == userId).OrderByDescending(o => o.DataDodania).ToArray();
-            }                                                                  
+            }
 
             return View(zgloszeniaUzytkownika);
         }
@@ -197,7 +164,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             var result = new EditAwariaViewModel();
             result.Budynek = db.BlokiMieszkalne.ToList();
-            //result.DaneUsera = db.DaneUsera.ToList();
             result.Awaria = awaria;
             result.Potwierdzenie = potwierdzenie;
 
@@ -209,7 +175,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         {
             if (model.Awaria.AwariaID > 0)
             {
-                // modyfikacja awari
                 db.Entry(model.Awaria).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("DodajAwarie", new { potwierdzenie = true });
@@ -238,8 +203,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
 
         ///////////////////////// ODDAJ GLOS
-
-
         public ActionResult OddajGlos(int glosowanieId)
         {
             var glosowanie = db.Glosowanie.Find(glosowanieId);
@@ -280,8 +243,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         }
 
         ///////////////////////// DODAJ ODCZYT LICZNIKOW
-
-
         public ActionResult OdczytLicznikow(int? stanLicznikowID, bool? potwierdzenie)
         {
             StanLicznikow stanLicznikow;
@@ -300,7 +261,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
             var result = new EditLicznikViewModel();
             result.Lokal = db.LokaleMieszkalne.ToList();
-            //result.DaneUsera = db.DaneUsera.ToList();
             result.StanLicznikow = stanLicznikow;
             result.Potwierdzenie = potwierdzenie;
 
@@ -335,14 +295,12 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 }
                 else
                 {
-                   // var kategorie = db.LokaleMieszkalne.ToList();
-                   /// model.Lokal = kategorie;
+
                     return View(model);
                 }
             }
 
         }
-
 
         //[Authorize(Roles = "Admin")]
         //public ActionResult UkryjBudynek(int budynekID)
@@ -363,15 +321,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         //    return RedirectToAction("DodajBudynek", new { potwierdzenie = true });
         //}
-
-
-
-
-
-        /////////////////////////
-
-   
-            
+          
             /// ZMIANA STANU AWARII
         [HttpPost]
         [Authorize(Roles = "Employee")]
@@ -380,12 +330,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             Awaria awariaDoModyfikacji = db.Awaria.Find(awaria.AwariaID);
             awariaDoModyfikacji.Status = awaria.Status;
             db.SaveChanges();
-
-            //if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-            //{
-            //    this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-            //}
-
+ 
             return awaria.Status;
         }
         
@@ -398,10 +343,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             weryfikacjaDoModyfikacji.Weryfikacja = stanLicznikow.Weryfikacja;
             db.SaveChanges();
 
-            //if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-            //{
-            //    this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-            //}
 
             return stanLicznikow.Weryfikacja;
         }
@@ -415,18 +356,17 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return PartialView("_KategorieMenu"); //, kategorie
         }
 
-        public ActionResult StronyKategori(string nazwa)
+        public ActionResult StronyKategori(string nazwa, byte? iloscMiesiecy)
         {
             //NOWE
             var name = User.Identity.Name;
-            //LokalMieszkalny lokalmieszkalny;
 
             bool isAdmin = User.IsInRole("Admin");
             ViewBag.UserIsAdmin = isAdmin;
 
             bool isEmployee = User.IsInRole("Employee");
             ViewBag.UserIsEmployee = isEmployee;
-            //KONIEC
+
 
             if (nazwa == "Lokal")
             {
@@ -455,7 +395,6 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 return View(nazwa, blok);
             }
 
-            //return View(nazwa);
 
             if (nazwa == "Dokumenty")
             {
@@ -464,11 +403,15 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 {
                     if (User.IsInRole("User"))
                     {
+                        DateTime dT = new DateTime();
+                        string data = "2018 - 06 - 15";
+                        DateTime.TryParse(data, out dT);
+
                         dok = (from u in db.Users
                                join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
                                join b in db.BlokiMieszkalne on l.BlokMieszkalnyID equals b.BlokMieszkalnyId
                                join d in db.Dokumenty on b.BlokMieszkalnyId equals d.BlokMieszkalnyId
-                               where u.UserName == User.Identity.Name
+                               where u.UserName == User.Identity.Name && d.DataDokumentu>= dT.Date
                                select d).ToList();
                     }
                     else
@@ -490,22 +433,32 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 var roz = new List<Rozliczenie>();
                 if (User.Identity.IsAuthenticated)
                 {
+                    DateTime? minimalnaData = null;
+                    if (iloscMiesiecy.HasValue)
+                    {
+                        minimalnaData = DateTime.Today.AddMonths(-iloscMiesiecy.Value);
+                        minimalnaData = new DateTime(minimalnaData.Value.Year, minimalnaData.Value.Month, 1);
+                    }
                     if (User.IsInRole("User"))
                     {
                         roz = (from u in db.Users
                                join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
                                join r in db.Rozliczenia on l.LokalID equals r.LokalID
                                where u.UserName == User.Identity.Name
+                               where u.UserName == User.Identity.Name && (minimalnaData == null || r.StanNaDzien >= minimalnaData)
                                select r).ToList();
                     }
                     else if (User.IsInRole("Employee"))
                     {
                         roz = db.Rozliczenia.ToList();
+                        roz = db.Rozliczenia.Where(r => minimalnaData == null || r.StanNaDzien >= minimalnaData).ToList();
                     }
                     else
                     {
                         roz = db.Rozliczenia.ToList();
+                        roz = db.Rozliczenia.Where(r => minimalnaData == null || r.StanNaDzien >= minimalnaData).ToList();
                     }
+                    ViewBag.iloscMiesiecy = iloscMiesiecy;
                 }
 
                 return View(nazwa, roz);
@@ -538,6 +491,12 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             if (nazwa == "Awaria")
             {
                 return View(nazwa);
+            }
+            if (nazwa == "Stawki")
+            {
+                var stawki = db.Stawka.ToList();
+                return View(nazwa, stawki);
+                
             }
             if (nazwa == "ListaZgloszen")
             {
@@ -760,6 +719,19 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             return View("Dokumenty", dok);
         }
 
+        public ActionResult LokaleBudynku(int id)
+        {
+            var lok = new List<LokalMieszkalny>();
+
+            lok = (from b in db.BlokiMieszkalne
+                     join l in db.LokaleMieszkalne on b.BlokMieszkalnyId equals l.BlokMieszkalnyID
+                   where l.BlokMieszkalnyID == id
+                     select l).ToList();
+
+
+            return View("Lokal", lok);
+        }
+
         public ActionResult Wlasciciel(int id)
         {
             var name = User.Identity.Name;
@@ -769,9 +741,14 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                          join l in db.LokaleMieszkalne on u.DaneUser.LokalId equals l.LokalID
                          where u.DaneUser.LokalId == id
                          select u).SingleOrDefault();
-
-            return View("SzczegolyOsoby", osoba);
+            if (osoba != null)
+                return View("SzczegolyOsoby", osoba);
+            else
+                return View("DodajLokalOsobie");
+                //return RedirectToAction("DodajLokalOsobie", "Zarzadzanie", id);
         }
+
+
 
         public ActionResult GlosowaniaBudynku(int id)
         {

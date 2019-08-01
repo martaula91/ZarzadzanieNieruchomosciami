@@ -1,0 +1,123 @@
+﻿@model ZarzadzanieNieruchomosciami.ViewModels.EditStawkaViewModel
+
+@{
+    ViewBag.Title = "DodajStawke";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<hr />
+<h2 class="manageHeader">Edycja stawki</h2>
+<div>
+    @if (Model.Potwierdzenie.HasValue && Model.Potwierdzenie.Value)
+    {
+        <div style="text-align: center; margin: 50px;">
+            Pomyślnie wprowadzono zmiany!
+        </div>
+    }
+    <!--"multipart/form-data"  możliwosc przeslania pliku -->
+    @using (@Html.BeginForm("DodajStawke", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() <!--zabezpieczenie przed niepowołanym dostepem-->
+
+        <div class="error-summary-centered">
+            @Html.ValidationSummary()  <!--informacje sumaryczne walidatora-->
+        </div>
+        @Html.HiddenFor(o => o.Stawka.StawkaID)
+        @Html.HiddenFor(o => o.Stawka.DataDodania)
+
+
+            <div style="text-align: center;">
+                <table id="albumedit-address-table">
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.Okres, "Nazwa")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.Okres)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.Okres)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaCentralneOgrzewanie, "StawkaCentralneOgrzewanie")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaCentralneOgrzewanie)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaCentralneOgrzewanie)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaZWiSC, "StawkaZWiSC")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaZWiSC)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaZWiSC)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaCW, "StawkaCW")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaCW)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaCW)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaEnergiaElekCzescWspolna, "StawkaEnergiaElekCzescWspolna")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaEnergiaElekCzescWspolna)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaEnergiaElekCzescWspolna)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaWywozSmieci, "StawkaWywozSmieci")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaWywozSmieci)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaWywozSmieci)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaKosztyAdministrowania, "StawkaKosztyAdministrowania")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaKosztyAdministrowania)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaKosztyAdministrowania)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaKosztyObslugiBankUbezp, "StawkaKosztyObslugiBankUbezp")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaKosztyObslugiBankUbezp)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaKosztyObslugiBankUbezp)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Stawka.StawkaFunduszRemontowy, "StawkaFunduszRemontowy")</td>
+                        <td>@Html.TextBoxFor(o => o.Stawka.StawkaFunduszRemontowy)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Stawka.StawkaFunduszRemontowy)</td>
+                    </tr>
+
+
+
+
+
+                    <!-- <malpka> if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                    {
+                        <tr>
+                            <td colspan="3">
+                                <div class="upload">
+                                    <input type="file" name="file" />
+                                </div>
+                            </td>
+                        </tr>
+                    }-->
+                    <tr>
+
+                        @*<td style="text-align: left">
+                            @if (ViewBag.EditMode)
+                            {
+                                if (Model.Lokal.Ukryty)
+                                {
+                                    <a href="@Url.Action("PokazLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Przywróć
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("UkryjLokal", "Manage", new { LokalId = Model.Lokal.LokalID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                        Usuń
+                                    </a>
+                                }
+                            }
+                        </td>*@
+
+
+                        <td style="text-align: right;">
+                            <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Stawki" })" style="">Historia stawek</a>
+            </div>
+    }
+</div>

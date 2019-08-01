@@ -10,7 +10,7 @@
         <!-- <li><a href="Url.Action("StronyKategori","Zarzadzanie", new {  nazwaKategori = kategoria.NazwaKategorii.ToLower()  })" style="">Lokal/Lokale</a></li> -->
         @if (User.Identity.IsAuthenticated && (User.IsInRole("User") || User.IsInRole("Admin")))
         {
-            <li><a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Lokal" })" style="">Lokal/Lokale</a></li>
+            <li><a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Lokal" })" style="">Lokale</a></li>
         }
         @if (User.Identity.IsAuthenticated && (User.IsInRole("Employee") || User.IsInRole("Admin")) )
         {
@@ -37,6 +37,9 @@
         }
         @if (User.Identity.IsAuthenticated && (User.IsInRole("Employee") || User.IsInRole("Admin")))
         {
+            <li><a href="@Url.Action("DodajKsiegowosc", "Manage")" style="">Zaksiegowanie</a></li>
+            <li><a href="@Url.Action("DodajStawke", "Manage")" style="">Stawki opłat</a></li>
+
             <li><a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Statystyka" })" style="">Statystyka</a></li>
             <li><a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Windykacja" })" style="">Windykacja</a></li>
         }

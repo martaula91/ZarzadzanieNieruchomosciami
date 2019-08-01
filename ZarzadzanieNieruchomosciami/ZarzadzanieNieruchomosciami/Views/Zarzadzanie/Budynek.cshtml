@@ -11,12 +11,12 @@
     <a href="link">
         @Html.MvcSiteMap().SiteMapPath()
     </a>*@
-    <form id="search-form" method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
+    @*<form id="search-form" method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
         <input id="search-filter" type="search" name="searchQuery"
                data-autocomplete-source="@Url.Action("BudynkiPodpowiedzi")"
                placeholder="Wprowadź tekst, aby wyfiltrować..." />
         <input type="submit" value="" />
-    </form>
+    </form>*@
 
 </div>
 
@@ -46,6 +46,8 @@
 {
     <a href="@Url.Action("DodajBudynek", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj Budynek</a>
 }
+
+
 
 @section Scripts
 {

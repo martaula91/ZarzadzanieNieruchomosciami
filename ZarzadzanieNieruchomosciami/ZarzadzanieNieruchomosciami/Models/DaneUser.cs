@@ -15,6 +15,9 @@ namespace ZarzadzanieNieruchomosciami.Models
         //public int UzytkownikId { get; set; }
         public int KategoriaId { get; set; }
         public int LokalId { get; set; }
+        public int LokalId2 { get; set; }
+        public int LokalId3 { get; set; }
+        public int LokalId4 { get; set; }
 
 
         public string Imie { get; set; }

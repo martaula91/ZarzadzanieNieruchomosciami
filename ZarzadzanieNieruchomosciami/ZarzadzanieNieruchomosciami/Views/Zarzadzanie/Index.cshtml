@@ -25,7 +25,12 @@
                         <h1>
                             @informacja.Tytul - @informacja.DataDodania.ToString().Substring(0, 10)
                         </h1>
-                        @informacja.Tresc
+                        @informacja.Wstep - 
+                       
+                            <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyInformacji", "Zarzadzanie",
+                                                new { id = informacja.InformacjaID })"><b>Więcej</b> </a>
+                       
+
                     </a>
                     <br /><br /><br /><br /><br />
                 </article>

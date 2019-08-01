@@ -42,10 +42,10 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var bloki = new List<BlokMieszkalny>
             {
-                new BlokMieszkalny { BlokMieszkalnyId = 1, Ulica = "Lipowa", NumerBlokuMieszkalnego = 12, Adres= "Lipowa 12", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
-                new BlokMieszkalny { BlokMieszkalnyId = 2, Ulica = "Cicha", NumerBlokuMieszkalnego = 2, Adres= "Cicha 2",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
-                new BlokMieszkalny { BlokMieszkalnyId = 3, Ulica = "Klonowa", NumerBlokuMieszkalnego = 8, Adres= "Klonowa 8",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
-                new BlokMieszkalny { BlokMieszkalnyId = 4, Ulica = "Tuwima", NumerBlokuMieszkalnego = 10, Adres= "Tuwima 10", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 12,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0)  }
+                //new BlokMieszkalny { BlokMieszkalnyId = 1, Ulica = "Lipowa", NumerBlokuMieszkalnego = 12, Adres= "Lipowa 12", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                //new BlokMieszkalny { BlokMieszkalnyId = 2, Ulica = "Cicha", NumerBlokuMieszkalnego = 2, Adres= "Cicha 2",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                //new BlokMieszkalny { BlokMieszkalnyId = 3, Ulica = "Klonowa", NumerBlokuMieszkalnego = 8, Adres= "Klonowa 8",PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 123, DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0) },
+                //new BlokMieszkalny { BlokMieszkalnyId = 4, Ulica = "Tuwima", NumerBlokuMieszkalnego = 10, Adres= "Tuwima 10", PowierzchniaUzytkowa = 1234, LiczbaLokali = 45, PowDzialki = 1234, NrEwidDzialki = 12,DataZalozeniaKsiegiOB= new DateTime(2019, 1, 11, 7, 0, 0) , DataOstProtokołuKontroli= new DateTime(2019, 1, 11, 7, 0, 0) , DataKontroliSysOgrzewania= new DateTime(2019, 1, 11, 7, 0, 0)  }
 
             };
 
@@ -57,21 +57,21 @@ namespace ZarzadzanieNieruchomosciami.DAL
 
             var lokale = new List<LokalMieszkalny>
             {
-               new LokalMieszkalny { LokalID = 1, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 2, BlokMieszkalnyID=1, Adres= "Lipowa 12", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 3, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 1, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 2, BlokMieszkalnyID=1, Adres= "Lipowa 12", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 3, BlokMieszkalnyID=1,  Adres= "Lipowa 12", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
 
-                new LokalMieszkalny { LokalID = 4, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 5, BlokMieszkalnyID=2, Adres= "Cicha 2", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 6, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               // new LokalMieszkalny { LokalID = 4, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 5, BlokMieszkalnyID=2, Adres= "Cicha 2", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 6, BlokMieszkalnyID=2,  Adres= "Cicha 2", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
 
-               new LokalMieszkalny { LokalID = 7, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 8, BlokMieszkalnyID=3, Adres= "Klonowa 8", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 9, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 7, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 8, BlokMieszkalnyID=3, Adres= "Klonowa 8", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 9, BlokMieszkalnyID=3,  Adres= "Klonowa 8", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
 
-               new LokalMieszkalny { LokalID = 10, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 11, BlokMieszkalnyID=4, Adres= "Tuwima 10", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
-               new LokalMieszkalny { LokalID = 12, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 10, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=1,PowierzchniaLokalu=54.52 ,LiczbaIzb=3, PowPiwnicy = 7.6, Pietro = 1, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 11, BlokMieszkalnyID=4, Adres= "Tuwima 10", NumerLokalu=2,PowierzchniaLokalu=54.52 ,LiczbaIzb=1, PowPiwnicy = 7.6, Pietro = 4, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
+               //new LokalMieszkalny { LokalID = 12, BlokMieszkalnyID=4,  Adres= "Tuwima 10", NumerLokalu=3,PowierzchniaLokalu=54.52 ,LiczbaIzb=2, PowPiwnicy = 7.6, Pietro = 2, LiczbaLokatorow = 1, LiczbaWodyZimnej = 7,  LiczbaWodyCieplej = 3.5},
             };
 
             lokale.ForEach(k => context.LokaleMieszkalne.AddOrUpdate(k));

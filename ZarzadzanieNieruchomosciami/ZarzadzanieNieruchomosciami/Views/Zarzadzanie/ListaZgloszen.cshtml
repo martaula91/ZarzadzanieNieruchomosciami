@@ -40,48 +40,22 @@
                             }
                         </td>
                         <td>
-                            @*<strong>Dane zglaszajcego:</strong><br />
-                                    @zgloszenie.Imie @zgloszenie.Nazwisko<br />
-                                    @zgloszenie.Adres<br />
-                                    @zgloszenie.KodPocztowy @zgloszenie.Miasto<br />
-                                </td>
-                                <td>
-                                    <strong>Uwagi: </strong><br />
-                                    @zgloszenie.Komentarz
-                                </td>*@
+
                         <td>
                             <strong>Typ:</strong> @zgloszenie.Typ
                         </td>
                         <td>
                             <strong>Opis:</strong> @zgloszenie.Opis
                         </td>
-                        <td>
-                            <strong>Blok:</strong> @zgloszenie.BlokMieszkalnyId
-                        </td>
-                    </tr>
-                    @*<tr>
-                            <td colspan="6">
-                                <section>
-                                    <ul class="TrzyKolumnyList duzaListaKursy-bottom">
 
-                                        @foreach (var pozycjaZamowienia in zgloszenie.PozycjeZamowienia)
-                                        {
-                                            <li>
-                                                <article>
-                                                    <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly", "Kursy", new { id = pozycjaZamowienia.KursId })">
-                                                        <img class="kurs" src="@Url.Content("~/Content/Kursy/" + pozycjaZamowienia.kurs.NazwaPlikuObrazka)" />
-                                                        <h1>
-                                                            @pozycjaZamowienia.kurs.AutorKursu - @pozycjaZamowienia.kurs.TytulKursu<br />
-                                                            <strong>sztuk: @pozycjaZamowienia.Ilosc, łącznie: @(pozycjaZamowienia.Ilosc * @pozycjaZamowienia.CenaZakupu)  zł</strong>
-                                                        </h1>
-                                                    </a>
-                                                </article>
-                                            </li>
-                                        }
-                                    </ul>
-                                </section>
-                            </td>
-                        </tr>*@
+@if (ViewBag.UserIsAdmin || ViewBag.UserIsEmployee)
+{
+                        <td>
+                            <strong>Blok:</strong> @zgloszenie.BlokMieszkalny.Ulica @*.BlokMieszkalnyId*@ @zgloszenie.BlokMieszkalny.NumerBlokuMieszkalnego
+                        </td>
+}
+                    </tr>
+
                     <tr>
                         <td colspan="6"></td>
                     </tr>

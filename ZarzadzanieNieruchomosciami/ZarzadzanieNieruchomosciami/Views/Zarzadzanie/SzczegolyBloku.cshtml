@@ -21,7 +21,13 @@
     <a href="@Url.Action("GlosowaniaBudynku", "Zarzadzanie", new { id = @Model.BlokiMieszkalne.BlokMieszkalnyId })" style="margin-top: 20px; font-weight: bold; display: block;">
         Głosowania
     </a>
+    <a href="@Url.Action("LokaleBudynku", "Zarzadzanie", new { id = @Model.BlokiMieszkalne.BlokMieszkalnyId })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Lokale
+    </a>
+ 
 }
+
+
 <br /><br /><br />
 <table id="lokale">
     <tr class="header">
@@ -98,26 +104,8 @@
         <td>@Model.BlokiMieszkalne.Smietnik</td>
     </tr>
 </table>
-<br /><br /><br />
-@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
-{
-    @*WIDOK LOKALI*@
 
-<h1> Lokale</h1>
-    <table id="lokale" bgcolor="white">
-        @*<tr class="header">LOKALE</tr>*@
-        @foreach (var lokal in Model.Lokal)
-        {
-            <tr > @*//class="local"*@
-                <td>
-                    <a href="@Url.Action("SzczegolyLokalu", "Zarzadzanie", new { id = @lokal.LokalID })">@lokal.LokalID </a> @*class="kursSzczegolyLink"*@
-                </td>
 
-            </tr>
-        }
-    </table>
-
-}
 
 
 <br /><br /><br />
@@ -172,6 +160,9 @@
             </tr>
             
 </table>
+
+
+
 
     }
 

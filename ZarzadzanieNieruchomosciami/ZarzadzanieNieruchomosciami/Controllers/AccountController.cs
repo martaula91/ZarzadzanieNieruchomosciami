@@ -115,6 +115,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
             var reservedApartmentsIds = context.Users.Select(u => u.DaneUser.LokalId).Distinct().ToList();
             model.AvailableApartments = context.LokaleMieszkalne.Where(l => !reservedApartmentsIds.Contains(l.LokalID)).Select(l => new AvailableApartment() { Id = l.LokalID, Name = string.Concat(l.Adres, " m.", l.NumerLokalu) }).ToList();
 
+                     
+
             return View(model);
         }
 
@@ -128,6 +130,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
                 if (model.SelectedRoleName == "User")
                 {
                     user.DaneUser.LokalId = model.SelectedApartmentId;
+                 
                 }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

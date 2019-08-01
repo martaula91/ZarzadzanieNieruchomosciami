@@ -1,0 +1,19 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.Informacja
+@{
+    ViewBag.Title = "SzczegolyInformacji";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+<div id="szczegolyInformacji">
+    <h1>
+        @Model.Tytul - @Model.DataDodania.ToString().Substring(0, 10)
+    </h1> <br />
+    @Model.Tresc
+</div>
+</br></br></br>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
+    <a href="@Url.Action("DodajInformacje", "Manage", new { informacjaId = @Model.InformacjaID })" style="margin-top: 20px; font-weight: bold; display: block;">
+        Edytuj
+    </a>
+}

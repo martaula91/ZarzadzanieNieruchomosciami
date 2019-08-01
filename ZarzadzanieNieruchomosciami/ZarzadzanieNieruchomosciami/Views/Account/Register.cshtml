@@ -73,14 +73,23 @@
                     @Html.DropDownListFor(m => m.SelectedRoleName, new SelectList(Model.AvailableRoles, "Name", "Name"))                    
                 </td>
             </tr>
+
+
             <tr id="apartment_panel" @(Model.SelectedRoleName == "User" ? "" : "class=hidden")>
                 <td style="padding: 0px 20px 0px 0px; text-align: left;">
                     @Html.LabelFor(m => m.SelectedApartmentId, "Lokal:")
                 </td>
                 <td style="padding: 0px; text-align: left;">
                     @Html.DropDownListFor(m => m.SelectedApartmentId, new SelectList(Model.AvailableApartments, "Id", "Name"))
-                </td>               
+                </td>
+
             </tr>
+
+
+           
+
+
+
             <tr>
                 <td></td>
                 <td colspan="2" style="text-align: right; padding-right: 20px;">
@@ -113,4 +122,17 @@
             });
         });
     </script>
+
+<script type="text/javascript">
+        $(function () {
+            $("#SelectedApartmentId").change(function () {
+                var val = $(this).val();
+                if (val == 0) {
+                    $("#apar_panel").hide();
+                } else 
+                    $("#apart_panel").show();
+                
+            });
+        });
+</script>
 }

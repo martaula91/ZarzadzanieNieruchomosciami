@@ -1,0 +1,42 @@
+﻿@model ZarzadzanieNieruchomosciami.Models.ApplicationUser
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "DodajLokalOsobie";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+
+
+Jeszcze nie przypisano osobie.
+
+@*<tbale>
+    <tr id="apartment_panel" @(Model.SelectedRoleName == "User" ? "" : "class=hidden")>
+        <td style="padding: 0px 20px 0px 0px; text-align: left;">
+            @Html.LabelFor(m => m.SelectedApartmentId, "Lokal:")
+        </td>
+        <td style="padding: 0px; text-align: left;">
+            @Html.DropDownListFor(m => m.SelectedApartmentId, new SelectList(Model.AvailableApartments, "Id", "Name"))
+        </td>
+    </tr>
+</tbale>
+
+
+
+
+<table id="lokale">
+    <tr class="header">
+        <td>Imie</td>
+        <td>Nazwisko</td>
+        <td>Adres</td>
+
+    </tr>
+
+    <tr class="local">
+        <td>@Model.DaneUser.Imie</td>
+        <td>@Model.DaneUser.Nazwisko </td>
+        <td>@Model.DaneUser.Adres</td>
+
+    </tr>
+
+</table>*@

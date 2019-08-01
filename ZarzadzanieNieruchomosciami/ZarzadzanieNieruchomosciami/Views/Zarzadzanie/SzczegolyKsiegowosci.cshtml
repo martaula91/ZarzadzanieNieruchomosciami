@@ -31,6 +31,11 @@
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
 {
+    <a href="@Url.Action("DodajStawke", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj stawke</a>
+}
+</br></br></br>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
     <a href="@Url.Action("DodajKsiegowosc", "Manage", new { ksiegowoscId = @Model.KsiegowoscID })" style="margin-top: 20px; font-weight: bold; display: block;">
         Edytuj
     </a>

@@ -405,9 +405,17 @@ nav.KategorieVertical {
     padding-top: 40px;
 }
 
-    /*TEST SZCZEGOLY MOJE LOKALE*/
+
+#szczegolyInformacji {
+    width: 700px; /*500*/
+    float: left;
+    margin-top: 20px;
+}
+
+
+/*TEST SZCZEGOLY MOJE LOKALE*/
 #SekcjaSzczegołyLokalu {
-    width: 768px;       
+    width: 768px;
     float: left;
     margin-top: 20px;
 }

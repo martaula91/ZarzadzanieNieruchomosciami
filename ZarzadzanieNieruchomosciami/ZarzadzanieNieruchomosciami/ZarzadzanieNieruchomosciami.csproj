@@ -176,6 +176,13 @@
     <Content Include="Content\Kategorie\javascript.png" />
     <Content Include="Content\Kategorie\jquery.png" />
     <Content Include="Content\Kategorie\xml.png" />
+    <Content Include="Content\Kursy\9fb66b8f-0891-440f-805b-0c7e996405e5.png" />
+    <Content Include="Content\Kursy\Cicha.png" />
+    <Content Include="Content\Kursy\dfb61414-680b-4c00-938e-18fa7af15a3a.png" />
+    <Content Include="Content\Kursy\f35b5249-6115-4bd5-aefd-e7832c2dff2b.png" />
+    <Content Include="Content\Kursy\Klonowa.png" />
+    <Content Include="Content\Kursy\Lipowa.png" />
+    <Content Include="Content\Kursy\nowa.png" />
     <Content Include="Content\Kursy\obrazekaspnet.png" />
     <Content Include="Content\Kursy\obrazekcsharp.png" />
     <Content Include="Content\Kursy\obrazekcss.png" />
@@ -185,6 +192,9 @@
     <Content Include="Content\Kursy\obrazekmvc.png" />
     <Content Include="Content\Kursy\obrazekmvc2.png" />
     <Content Include="Content\Kursy\obrazekxml.png" />
+    <Content Include="Content\Kursy\Sloneczna.png" />
+    <Content Include="Content\Kursy\Tuwima.png" />
+    <Content Include="Content\Kursy\Wesola.png" />
     <Content Include="Content\Prototype.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -252,6 +262,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -374,6 +385,14 @@
     <Compile Include="Migrations\201906032141160_weryfikacja Licznika2.Designer.cs">
       <DependentUpon>201906032141160_weryfikacja Licznika2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906052149310_wstep do informacji.cs" />
+    <Compile Include="Migrations\201906052149310_wstep do informacji.Designer.cs">
+      <DependentUpon>201906052149310_wstep do informacji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906102334305_kilkaLokaliDlaOsoby.cs" />
+    <Compile Include="Migrations\201906102334305_kilkaLokaliDlaOsoby.Designer.cs">
+      <DependentUpon>201906102334305_kilkaLokaliDlaOsoby.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Awaria.cs" />
     <Compile Include="Models\BlokMieszkalny.cs" />
@@ -396,6 +415,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AwarieAdresViewModel.cs" />
     <Compile Include="ViewModels\EditAwariaViewModel.cs" />
     <Compile Include="ViewModels\EditBudynekViewModel.cs" />
     <Compile Include="ViewModels\EditDokumentViewModel.cs" />
@@ -405,6 +425,7 @@
     <Compile Include="ViewModels\EditLicznikViewModel.cs" />
     <Compile Include="ViewModels\EditLokalViewModel.cs" />
     <Compile Include="ViewModels\EditRozliczenieViewModel.cs" />
+    <Compile Include="ViewModels\EditStawkaViewModel.cs" />
     <Compile Include="ViewModels\GlosowanieViewModel.cs" />
     <Compile Include="ViewModels\KsiegowoscViewModel.cs" />
     <Compile Include="ViewModels\LokalViewModels.cs" />
@@ -491,6 +512,13 @@
     <Content Include="Views\Home\OfertaDeweloper.cshtml" />
     <Content Include="Views\Home\Galeria.cshtml" />
     <Content Include="Views\Home\Referencje.cshtml" />
+    <Content Include="Views\Zarzadzanie\SzczegolyInformacji.cshtml" />
+    <Content Include="Views\Manage\DodajStawke.cshtml" />
+    <Content Include="Views\Home\Kariera.cshtml" />
+    <Content Include="Views\Home\Doswiadczenie.cshtml" />
+    <Content Include="Views\Home\Zespol.cshtml" />
+    <Content Include="Views\Zarzadzanie\Stawki.cshtml" />
+    <Content Include="Views\Zarzadzanie\DodajLokalOsobie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -567,6 +595,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906032141160_weryfikacja Licznika2.resx">
       <DependentUpon>201906032141160_weryfikacja Licznika2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906052149310_wstep do informacji.resx">
+      <DependentUpon>201906052149310_wstep do informacji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906102334305_kilkaLokaliDlaOsoby.resx">
+      <DependentUpon>201906102334305_kilkaLokaliDlaOsoby.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

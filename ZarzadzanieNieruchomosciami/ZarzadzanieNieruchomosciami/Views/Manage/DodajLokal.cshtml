@@ -29,33 +29,43 @@
         <div style="text-align: center;">
             <table id="albumedit-address-table">
                 <tr>
-                    <td>@Html.LabelFor(o => o.Lokal.NumerLokalu, "Numer lokalu:")</td>
+                    <td>@Html.LabelFor(o => o.Lokal.NumerLokalu, "Numer lokalu")</td>
                     <td>@Html.TextBoxFor(o => o.Lokal.NumerLokalu)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.NumerLokalu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Lokal.PowierzchniaLokalu, "Powierzchnia lokalu:")</td>
+                    <td>@Html.LabelFor(o => o.Lokal.Adres, "Adres")</td>
+                    <td>@Html.TextBoxFor(o => o.Lokal.Adres)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Lokal.Adres)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Lokal.PowierzchniaLokalu, "Powierzchnia lokalu")</td>
                     <td>@Html.TextBoxFor(o => o.Lokal.PowierzchniaLokalu)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.PowierzchniaLokalu)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Lokal.LiczbaIzb, "Liczba izb przynalezna do lokalu:")</td>
+                    <td>@Html.LabelFor(o => o.Lokal.LiczbaIzb, "Liczba izb przynalezna do lokalu")</td>
                     <td>@Html.TextBoxFor(o => o.Lokal.LiczbaIzb)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.LiczbaIzb)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Lokal.PowPiwnicy, "Powierzchnia piwnicy przynaleznej do lokalu:")</td>
+                    <td>@Html.LabelFor(o => o.Lokal.PowPiwnicy, "Powierzchnia piwnicy przynaleznej do lokalu")</td>
                     <td>@Html.TextBoxFor(o => o.Lokal.PowPiwnicy)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.PowPiwnicy)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Lokal.Pietro, "Pietro:")</td>
+                    <td>@Html.LabelFor(o => o.Lokal.Pietro, "Pietro")</td>
                     <td>@Html.TextBoxFor(o => o.Lokal.Pietro)</td>
                     <td>@Html.ValidationMessageFor(o => o.Lokal.Pietro)</td>
                 </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Lokal.LiczbaLokatorow, "Liczba lokatorów")</td>
+                    <td>@Html.TextBoxFor(o => o.Lokal.LiczbaLokatorow)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Lokal.LiczbaLokatorow)</td>
+                </tr>
 
                 <tr>
-                    <td>@Html.LabelFor(o => o.BlokiMieszkalne, "Blok Mieszkalny:")</td>
+                    <td>@Html.LabelFor(o => o.BlokiMieszkalne, "Blok Mieszkalny")</td>
                     <td>@Html.DropDownListFor(m => m.Lokal.BlokMieszkalnyID, new SelectList(Model.BlokiMieszkalne, "BlokMieszkalnyId", "Adres", Model.BlokiMieszkalne.First().BlokMieszkalnyId))</td>
                     @*<td>@Html.DropDownListFor(m => m.Kurs.KategoriaId, new SelectList(Model.Kategorie, "KategoriaId", "NazwaKategorii",       Model.Kategorie.First().KategoriaId))</td>*@
                     <td></td>

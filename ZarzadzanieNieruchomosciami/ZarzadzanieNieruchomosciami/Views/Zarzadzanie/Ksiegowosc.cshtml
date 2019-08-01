@@ -23,26 +23,25 @@
 
 <table id="lokale">
     <tr class="header">
+        <td>DataDodania</td>
         <td>Nazwa</td>
         <td>OpisDokumentu</td>
-        <td>DataDodania</td>
         <td>Szczegóły</td>
 
     </tr>
 @foreach (var wplata in Model.Documents)
             {
         <tr class="local">
+            <td>@wplata.DataDodania.ToString().Substring(0, 10)</td>
             <td>@wplata.Nazwa</td>
             <td>@wplata.OpisDokumentu</td>
-            <td>@wplata.DataDodania.ToString().Substring(0, 10)</td>
+            
          <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyKsiegowosci", "Zarzadzanie", new { id = wplata.KsiegowoscID })"> >>kliknij<< </a></td>
 
 
         </tr>
     }
 </table>
-
-
 
 
 

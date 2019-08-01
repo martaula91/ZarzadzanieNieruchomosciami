@@ -14,6 +14,7 @@ namespace ZarzadzanieNieruchomosciami.Models
         //public int BlokMieszkalnyId { get; set; }
 
         public string Tytul { get; set; }
+        public string Wstep { get; set; }
         public string Tresc { get; set; }
         public DateTime DataDodania { get; set; }
         public bool Ukryty { get; set; }

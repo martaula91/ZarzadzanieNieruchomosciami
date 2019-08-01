@@ -53,6 +53,18 @@ namespace ZarzadzanieNieruchomosciami.ViewModels
         public int SelectedApartmentId { get; set; }
 
         public List<AvailableApartment> AvailableApartments { get; set; }
+
+
+        [Display(Name = "Lokal2")]
+        public int SelectedApartmentId2 { get; set; }
+        
+        [Display(Name = "Lokal3")]
+        public int SelectedApartmentId3 { get; set; }
+       
+
+        [Display(Name = "Lokal4")]
+        public int SelectedApartmentId4 { get; set; }
+      
     }
 
     public class AvailableApartment

@@ -196,23 +196,7 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
-        /*   [HttpPost]
-          [Authorize(Roles = "Admin")]
-          public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
-          {
-              Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
-              zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
-              db.SaveChanges();
-
-              if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-              {
-                  this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-              }
-
-              return zamowienie.StanZamowienia;
-          }
-          */
-
+  
         /////////////////////////
 
         [Authorize(Roles = "Employee")]
@@ -276,7 +260,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         public ActionResult UkryjLokal(int lokalId)
         {
             var lokal = db.LokaleMieszkalne.Find(lokalId);
-            lokal.Ukryty = true;
+            db.Entry(lokal).State = EntityState.Deleted;
+           // lokal.Ukryty = true;
             db.SaveChanges();
 
             return RedirectToAction("DodajLokal", new { potwierdzenie = true });
@@ -373,19 +358,20 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
 
         [Authorize(Roles = "Employee")]
-        public ActionResult UkryjBudynek(int budynekID)
+        public ActionResult UkryjBudynek(int BlokMieszkalnyId)
         {
-            var budynek = db.BlokiMieszkalne.Find(budynekID);
-            budynek.Ukryty = true;
+            var budynek = db.BlokiMieszkalne.Find(BlokMieszkalnyId);
+            db.Entry(budynek).State = EntityState.Deleted;
+            //budynek.Ukryty = true;
             db.SaveChanges();
 
             return RedirectToAction("DodajBudynek", new { potwierdzenie = true });
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult PokazBudynek(int budynekID)
+        public ActionResult PokazBudynek(int BlokMieszkalnyId)
         {
-            var budynek = db.BlokiMieszkalne.Find(budynekID);
+            var budynek = db.BlokiMieszkalne.Find(BlokMieszkalnyId);
             budynek.Ukryty = false;
             db.SaveChanges();
 
@@ -456,7 +442,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         public ActionResult UkryjDokument(int dokumentID)
         {
             var dokument = db.Dokumenty.Find(dokumentID);
-            dokument.Ukryty = true;
+            db.Entry(dokument).State = EntityState.Deleted;
+            //dokument.Ukryty = true;
             db.SaveChanges();
 
             return RedirectToAction("DodajDokument", new { potwierdzenie = true });
@@ -535,7 +522,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         public ActionResult UkryjInformacje(int informacjaID)
         {
             var info = db.Informacje.Find(informacjaID);
-            info.Ukryty = true;
+            db.Entry(info).State = EntityState.Deleted;
+            //info.Ukryty = true;
             db.SaveChanges();
 
             return RedirectToAction("DodajInformacje", new { potwierdzenie = true });
@@ -545,7 +533,8 @@ namespace ZarzadzanieNieruchomosciami.Controllers
         public ActionResult PokazInformacje(int informacjaID)
         {
             var info = db.Informacje.Find(informacjaID);
-            info.Ukryty = false;
+            db.Entry(info).State = EntityState.Deleted;
+            // info.Ukryty = false;
             db.SaveChanges();
 
             return RedirectToAction("DodajInformacje", new { potwierdzenie = true });
@@ -756,7 +745,62 @@ namespace ZarzadzanieNieruchomosciami.Controllers
 
         }
 
+        /////////////////////////Dodaj Stawke
 
+        [Authorize(Roles = "Employee")]
+        public ActionResult DodajStawke(int? stawkaId, bool? potwierdzenie)
+        {
+            Stawka stawka;
+
+            if (stawkaId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                stawka = db.Stawka.Find(stawkaId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                stawka = new Stawka();
+            }
+
+            var result = new EditStawkaViewModel();
+            result.Stawka = stawka;
+            result.Potwierdzenie = potwierdzenie;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Employee")]
+        public ActionResult DodajStawke(EditStawkaViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Stawka.StawkaID > 0)
+            {
+                // modyfikacja 
+                db.Entry(model.Stawka).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DodajStawke", new { potwierdzenie = true });
+            }
+            else
+            {
+                // dodanie nowego
+                if (ModelState.IsValid)
+                {
+                    model.Stawka.DataDodania = DateTime.Now;
+                    db.Entry(model.Stawka).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    return RedirectToAction("DodajStawke", new { potwierdzenie = true });
+                }
+                else
+                {
+
+                    return View(model);
+                }
+
+            }
+
+        }
 
         /*
 [Authorize(Roles = "Admin")]

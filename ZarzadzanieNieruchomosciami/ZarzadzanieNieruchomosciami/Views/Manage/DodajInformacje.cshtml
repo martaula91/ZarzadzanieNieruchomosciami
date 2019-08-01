@@ -25,18 +25,23 @@
         </div>
         @Html.HiddenFor(o => o.Informacja.InformacjaID)
         @Html.HiddenFor(o => o.Informacja.DataDodania)
-        //Html.HiddenFor(o => o.Lokal.NazwaPlikuObrazka)
-
-        <div style="text-align: center;">
+        <div >
             <table id="albumedit-address-table">
                 <tr>
-                    <td>@Html.LabelFor(o => o.Informacja.Tytul, "Tytul:")</td>
+                    <td>@Html.LabelFor(o => o.Informacja.Tytul, "Tytuł")</td>
                     <td>@Html.TextBoxFor(o => o.Informacja.Tytul)</td>
                     <td>@Html.ValidationMessageFor(o => o.Informacja.Tytul)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Informacja.Tresc, "Tresc")</td>
-                    <td>@Html.TextBoxFor(o => o.Informacja.Tresc)</td>
+                    <td>@Html.LabelFor(o => o.Informacja.Wstep, "Wstępne informacje")</td>
+                    <@*td>@Html.TextBoxFor(o => o.Informacja.Tresc)</td>*@
+                    <td>@Html.TextAreaFor(o => o.Informacja.Wstep, new { style = " height: 200px;" })</td>
+                    <td>@Html.ValidationMessageFor(o => o.Informacja.Wstep)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Informacja.Tresc, "Treść głowna")</td>
+                    <@*td>@Html.TextBoxFor(o => o.Informacja.Tresc)</td>*@
+                    <td>@Html.TextAreaFor(o => o.Informacja.Tresc, new { style = " height: 200px;" })</td>
                     <td>@Html.ValidationMessageFor(o => o.Informacja.Tresc)</td>
                 </tr>
 
@@ -65,13 +70,13 @@
                         {
                             if (Model.Informacja.Ukryty)
                             {
-                                <a href="@Url.Action("PokazInformacje", "Manage", new { BlokMieszkalnyId = Model.Informacja.InformacjaID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("PokazInformacje", "Manage", new { informacjaID = Model.Informacja.InformacjaID })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Przywróć
                                 </a>
                             }
                             else
                             {
-                                <a href="@Url.Action("UkryjInformacje", "Manage", new { BlokMieszkalnyId = Model.Informacja.InformacjaID })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("UkryjInformacje", "Manage", new { informacjaID = Model.Informacja.InformacjaID })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Usuń
                                 </a>
                             }

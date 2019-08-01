@@ -23,11 +23,11 @@
         <p>
             Zapraszamy do skorzystana z systemu głosowania nad uchwałami dla klientow firmy SMART Nieruchomości <br /><br />
         </p>
-        <p>Skorzystaj z poniższego formularza lub pobierz i wypełnij formularz ze strony  <b> <a href="https://www.forum.wroc.pl/dokumenty">Dokumenty</a> </b> i przekaż nam je <br />
+        <p>Skorzystaj z poniższego formularza lub pobierz i wypełnij formularz ze strony  <b> <a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Dokumenty" })">Dokumenty</a> </b> i przekaż nam je <br />
         osobiście, pocztą lub w formie skanu pocztą elektroniczną.</p><br /><br />
         <p>
             <b>UWAGA:</b> Z systemu skorzystać mogą tylko ci, którzy przedłożyli wczesniej oświadczenie dot. danych <br />
-            osobowych - kontaktowych. Wzór oświadczenia dostępny jest pod adresem: <b><a href="https://www.forum.wroc.pl/dokumenty">Pobierz wzór oświadczenia.</a> </b>   <br /><br /><br />
+            osobowych - kontaktowych. Wzór oświadczenia dostępny jest pod adresem: <b><a href="@Url.Action("StronyKategori", "Zarzadzanie", new { nazwa = "Dokumenty" })">Pobierz wzór oświadczenia.</a> </b>   <br /><br /><br />
         </p>
         
     </div>
@@ -58,7 +58,7 @@
                 }
                 else
                 {
-                    <td>X</td>
+                    <td>Już oddano głos</td>
                 }
 
 

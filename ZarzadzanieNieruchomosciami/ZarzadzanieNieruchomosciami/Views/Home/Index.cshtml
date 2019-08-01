@@ -7,31 +7,34 @@
 <ul id="menu">
     <li><a href="@Url.Action("Index","Home")">Strona Startowa</a></li>
     <li>
-        <a href="#">O nas</a>
+        <a >O nas</a>
         <ul>
             <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Firma" })">Firma</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Doswiadczenie" })">Nasze doświadczenie</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Zespol" })">Profesjonalny zespół</a></li>
         </ul>
     </li>
-    <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Artykuly" })">Artykuły</a></li>
+    <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Artykuly" })">RODO</a></li>
     <li>
-        <a href="#">Oferta</a>
+        <a >Oferta</a>
         <ul>
-            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaWspolnota" })">Wspolnoty</a></li>
-            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaDeweloper" })">deweloperzy</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaWspolnota" })">Wspolnota</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "OfertaDeweloper" })">Deweloper</a></li>
         </ul>
     </li>
     <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Galeria" })">Galeria</a></li>
     <li>
-        <a href="#">Kontakt</a>
+        <a >Kontakt</a>
         <ul>
-            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Kontakt" })">Formularz kontaktowy</a></li>
-            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Pomoc" })">Pomoc</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Kontakt" })">Dane kontaktowe</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Pomoc" })">Porady</a></li>
         </ul>
     </li>
     <li>
-        <a href="#">Referencje</a>
+        <a >Współpraca</a>
         <ul>
-            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Referencje" })">Wymiana linkiem</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Referencje" })">Program partnerski</a></li>
+            <li><a href="@Url.Action("StronyStatyczne","Home", new { nazwa = "Kariera" })">Kariera</a></li>
         </ul>
     </li>
 </ul>

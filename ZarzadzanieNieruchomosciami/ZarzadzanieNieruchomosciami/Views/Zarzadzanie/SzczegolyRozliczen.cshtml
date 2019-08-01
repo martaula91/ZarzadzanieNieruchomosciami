@@ -6,6 +6,8 @@
     Layout = "~/Views/Shared/_LayoutStart.cshtml";
 }
 
+<script type="text/javascript" src="@Url.Content("/Scripts/Chart.js")"></script>
+
 <h2 class="manageHeader">Informacje o opłatach @Model.Nazwa</h2>
 
 <table id="lokale">
@@ -102,3 +104,74 @@ PKO BP 58 1010 1333 0000 1202 1096 5582<br />
         Edytuj
     </a>
 }
+
+<div style="margin-top: 20px">
+    <canvas id="canvasWykres"></canvas>
+</div>
+
+<script>
+    @{
+        var sum = Model.CentralneOgrzewanie + Model.ZWiSCLicznik
+            + Model.CWLicznik + Model.EnergiaElekCzescWspolna + Model.WywozSmieci + Model.KosztyAdministrowania + Model.KosztyObslugiBankUbezp
+            + Model.FunduszRemontowy;
+    }
+    var daneDoWykresu = {
+        labels: [
+            'Centralne ogrzewanie @Model.CentralneOgrzewanie zł (@(Math.Round((double)@Model.CentralneOgrzewanie / sum * 100))%)',
+            'Zimna woda + ścieki @Model.ZWiSCLicznik zł (@(Math.Round((double)@Model.ZWiSCLicznik / sum * 100))%)',
+            'Woda ciepła licznik @Model.CWLicznik zł (@(Math.Round((double)@Model.CWLicznik / sum * 100))%)',
+            'Energia elektryczna @Model.EnergiaElekCzescWspolna zł (@(Math.Round((double)@Model.EnergiaElekCzescWspolna / sum * 100))%)',
+            'Wywóz śmieci @Model.WywozSmieci zł (@(Math.Round((double)@Model.WywozSmieci / sum * 100))%)',
+            'Koszty administrowania @Model.KosztyAdministrowania zł (@(Math.Round((double)@Model.KosztyAdministrowania / sum * 100))%)',
+            'Koszty obslugi bankowej i ubezp. @Model.KosztyObslugiBankUbezp zł (@(Math.Round((double)@Model.KosztyObslugiBankUbezp / sum * 100))%)',
+            'Fundusz Remontowy @Model.FunduszRemontowy zł (@(Math.Round((double)@Model.FunduszRemontowy / sum * 100))%)'
+            ],
+        datasets: [{
+            backgroundColor: [
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                'rgb(148, 139, 61)',
+                'rgb(100, 100, 100)'
+            ],
+            data: [
+                @Model.CentralneOgrzewanie.ToString().Replace(',', '.'),
+                @Model.ZWiSCLicznik.ToString().Replace(',', '.'),
+                @Model.CWLicznik.ToString().Replace(',', '.'),
+                @Model.EnergiaElekCzescWspolna.ToString().Replace(',', '.'),
+                @Model.WywozSmieci.ToString().Replace(',', '.'),
+                @Model.KosztyAdministrowania.ToString().Replace(',', '.'),
+                @Model.KosztyObslugiBankUbezp.ToString().Replace(',', '.'),
+                @Model.FunduszRemontowy.ToString().Replace(',', '.')
+            ]
+        }]
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvasWykres').getContext('2d');
+        window.myHorizontalBar = new Chart(ctx, {
+            type: 'pie',
+            data: daneDoWykresu,
+            options: {
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'right'
+                },
+                title: {
+                    display: false,
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem, data) {
+                            return data.labels[tooltipItem.index];
+                        }
+                    }
+                },
+            },
+        });
+    };
+</script>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ZarzadzanieNieruchomosciami.Models.Stawka>
+@using ZarzadzanieNieruchomosciami.Infrastructure
+
+@{
+    ViewBag.Title = "Stawki";
+    Layout = "~/Views/Shared/_LayoutStart.cshtml";
+}
+
+@*<div id="Breadcrumb">
+        <img src="../Content/Images/dommaly.png" />
+        <a href="link">
+            @Html.MvcSiteMap().SiteMapPath()
+        </a>
+    </div>*@
+
+<table id="lokale">
+    <tr class="header">
+        <td>Okres</td>
+        <td style="width: 25%">DataDodania           </td>
+        <td>Centralne ogrzewanie</td>
+        <td>ZWiSC</td>
+        <td>Ciepła woda</td>
+        <td>Energia Elektryczna</td>
+        <td>Wywoz śmieci</td>
+        <td>Koszty administrowania</td>
+        <td>Koszty obslugi bankowej</td>
+        <td>Fundusz remontowy</td>
+
+    </tr>
+    @foreach (var stawka in Model)
+            {
+        <tr class="local">
+            <td>@stawka.Okres</td>
+            <td>@stawka.DataDodania.ToString().Substring(0, 10)</td>
+            <td>@stawka.StawkaCentralneOgrzewanie</td>
+            <td>@stawka.StawkaZWiSC</td>
+            <td>@stawka.StawkaCW</td>
+            <td>@stawka.StawkaEnergiaElekCzescWspolna</td>
+
+            <td>@stawka.StawkaWywozSmieci</td>
+            <td>@stawka.StawkaKosztyAdministrowania</td>
+            <td>@stawka.StawkaKosztyObslugiBankUbezp</td>
+            <td>@stawka.StawkaFunduszRemontowy</td>
+
+
+
+            @* <td> <a class="kursSzczegolyLink" href="@Url.Action("SzczegolyStawki", "Zarzadzanie",
+                new { id = dokument.DokumentID })"> >>kliknij<< </a></td>*@
+
+
+
+        </tr>
+    }
+</table>
+
+
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+{
+    <a href="@Url.Action("DodajStawke", "Manage")" style="margin-top: 20px; font-weight: bold; display: block;">Dodaj stawke</a>
+}
