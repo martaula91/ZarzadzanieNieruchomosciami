@@ -14,3 +14,5 @@
   informacje o stanie konta i opłatach<br/>
   księgowanie należności i wpłat<br/>
   podstawowe dane statystyczne i windykacyjne<br/>
+#Baza danych:<br/>
+ZarzadzanieNieruchomosciami.DAL.ZarzadzanieContext.bak
